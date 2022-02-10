@@ -1,0 +1,16 @@
+.nav-bg{
+    background-color: white;
+    backdrop-filter: blur(5px);
+    
+    
+}
+.nav-text-color{
+    color: black;
+    font-weight: bold;
+}
+.nav-text-color:hover{
+    color: orange;
+}
+.logout-button{
+    cursor: pointer;
+}
