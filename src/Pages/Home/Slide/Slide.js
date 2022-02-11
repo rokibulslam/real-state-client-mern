@@ -30,7 +30,7 @@ const Slide = () => {
                 </div>
               </Slider>
             </div>
-            <div className="col-md-6 text-start slide-header">
+            <div className="col-md-6 px-5 text-start slide-header">
               <h1>Amenities</h1>
               <p>
                 In property and land use planning, amenity is something
