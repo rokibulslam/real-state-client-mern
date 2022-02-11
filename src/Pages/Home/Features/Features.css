@@ -2,5 +2,13 @@
 .features h1{
    color: rgb(134, 80, 25); 
 }
+.features p{
+   color: rgb(117, 110, 95); 
+}
+.features-icon{
+   color: rgb(134, 80, 25); 
+   
+}
+
 /* color: rgb(134, 80, 25); */
 /* color: rgb(247, 244, 242); */
