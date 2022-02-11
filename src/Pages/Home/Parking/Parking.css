@@ -12,7 +12,10 @@
     width: 200px;
     margin: 20px;
     color: rgb(134, 80, 25);
+    border-radius: 15px;
+    transition-duration: 0.5s;
 }
+
 .parking-paper h1{
     font-size: 60px;
 }
@@ -20,4 +23,6 @@
     font-size: 20px;
     font-weight: bold;
 }
-
+.parking-paper:hover{
+    box-shadow: rgba(175, 130, 7, 0.4) 5px 5px, rgba(179, 119, 9, 0.3) 10px 10px, rgba(138, 84, 4, 0.2) 15px 15px, rgba(192, 134, 8, 0.1) 20px 20px, rgba(240, 204, 46, 0.05) 25px 25px;
+}
