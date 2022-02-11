@@ -1,7 +1,33 @@
 .banner-bg{
-    background-image: url(../../../Images/annie-spratt-0ZPSX_mQ3xI-unsplash.jpg);
+    background-image: url(../../../Images/bg2.jpg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    height: 100vh;
     
+}
+
+.banner-text{
+    background-color: rgb(247, 244, 242);
+    padding: 30px;
+}
+.banner-text h1{
+    margin: 0%;
+    color: rgb(134, 80, 25);
+    font-weight: 600;
+}
+.banner-text p{
+    color: rgb(88, 87, 85);
+}
+.banner-btn{
+    background-color: rgb(134, 80, 25);
+    color: rgb(247, 244, 242);
+    font-size: 16px;
+    font-weight: bold;
+    padding: 8px 20px 8px 20px;
+    border: 0px;
+    border-radius: 5px;
+}
+.banner-btn:hover{
+    background-color: black;
 }

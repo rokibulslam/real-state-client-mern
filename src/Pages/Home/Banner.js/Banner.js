@@ -1,26 +1,33 @@
 import React from 'react';
+import { Row } from 'react-bootstrap';
 import './Banner.css'
-import img from '../../../Images/h1_slider_img1.png'
+
+
 const Banner = () => {
+ 
     return (
-      <div className="banner-bg py-5">
+      <div className="banner-bg p-1 d-flex">
         <div className="container">
-          <div className="row align-items-center justify-content-center">
-            <div className="col-md-6 col-sm-12 text-start">
-              <div>
-                <h3>THE TRENDY</h3>
-                <h1 className='fs-1 fw-bolder'>CAMELBACK</h1>
+          <div className="row justify-content-between align-content-center">
+            <div className="col-md-6 ">
+              <div></div>
+            </div>
+            <div className="col-md-6 ">
+              <div className="text-start banner-text rounded">
                 <p>
-                  FurnitureBari.com offers a unique selection of stylish,
-                  contemporary, and chic furniture online. Our online furniture
-                  range includes sofas, beds, dining tables, TV units,
-                  wardrobes, dressing tables, and lots more. All our wooden
-                  furniture designs are available online at furniturebari.com.
+                  <u>Aragon Ave, Coral Gables, FL 33134</u>
+                  <h1>Gables Grand Plaza</h1>
+                  <h1>Apartments</h1>
+                  <p>
+                    Our premium furnished apartments feature allow you and your
+                    favorite pet to enjoy all at Gables Grand Plaza!
+                  </p>
+                  <div>
+                    <h1>$625,000</h1>
+                    <button className="banner-btn">Buy Apartment</button>
+                  </div>
                 </p>
               </div>
-            </div>
-            <div className="col-md-6 col-sm-12">
-              <img className="img-fluid py-5" src={img} alt="" />
             </div>
           </div>
         </div>
@@ -29,3 +36,4 @@ const Banner = () => {
 };
 
 export default Banner;
+
