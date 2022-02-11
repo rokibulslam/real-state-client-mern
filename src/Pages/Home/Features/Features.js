@@ -4,10 +4,10 @@ import { faHome } from "@fortawesome/free-solid-svg-icons";
 import './Features.css'
 const Features = () => {
     return (
-      <div className="my-5 py-5 text-start features">
+      <div className="my-5 py-5 text-start features d-flex justify-content-center align-items-center">
         <div className="container">
-          <div className="row">
-            <div className="col-md-4">
+          <div className="row justify-content-center">
+            <div className="col-md-4 w-75">
               <p>GREAT FEATURES</p>
               <h1>
                 Classic Interiors & <br />
@@ -19,7 +19,7 @@ const Features = () => {
               </p>
               <button className="banner-btn my-5">Buy Apartment</button>
             </div>
-            <div className="col-md-8">
+            <div className="col-md-8 w-75">
               <div className="row ">
                 <div className="col-md-6 mb-3">
                   <div className="d-flex flex-column">
