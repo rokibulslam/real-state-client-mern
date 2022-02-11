@@ -2,8 +2,7 @@
     background-color: rgb(252, 246, 240);
     padding-top: 100px;
     padding-bottom: 100px;
-    margin-right: 0%;
-    padding-right: 0px;
+   
 }
 .parking-paper{
     background-color: white;
@@ -18,6 +17,8 @@
 
 .parking-paper h1{
     font-size: 60px;
+    padding-left: 0px;
+    padding-right: 0px;
 }
 .parking-paper p{
     font-size: 20px;

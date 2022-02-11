@@ -2,10 +2,11 @@
 .nav-bg-active{
      background: transparent;
      height: 80px;
+     color: black;
 }
 .nav-bg{
-    background-color: rgba(206, 160, 115, 0.671);
-    
+    background-color: rgba(247, 244, 241, 0.993);
+    color: red;
     /* background-color: rgba(8, 8, 8, 0.288); */
 }
 .nav-text-color{

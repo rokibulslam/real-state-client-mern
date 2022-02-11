@@ -24,7 +24,7 @@ const Navigation = () => {
         expand="lg"
       >
         <Container>
-          <Navbar.Brand className="text-black  me-5 fs-1" href="#home">
+          <Navbar.Brand className="  me-5 fs-1" href="#home">
             WOODX
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -32,26 +32,26 @@ const Navigation = () => {
             <Nav className="me-auto">
               <NavLink
                 to="/home"
-                className="  text-decoration-none me-3 nav-text-color fs-5"
+                className="  text-decoration-none me-3  fs-5"
                 href="#features"
               >
                 Home
               </NavLink>
               <NavLink
                 to="/dashboard"
-                className="text-decoration-none me-3 nav-text-color fs-5"
+                className="text-decoration-none me-3  fs-5"
               >
                 Dashboard
               </NavLink>
               <NavLink
                 to="/explore"
-                className="nav-text-color text-decoration-none me-3 fs-5"
+                className=" text-decoration-none me-3 fs-5"
               >
                 Explore
               </NavLink>
               <NavLink
                 to="/contact"
-                className="text-decoration-none me-3 nav-text-color fs-5"
+                className="text-decoration-none me-3  fs-5"
               >
                 Contact
               </NavLink>
@@ -81,9 +81,9 @@ const Navigation = () => {
                   alt=""
                 />
               </span>
-              <p className="text-white text-decoration-none me-3 mb-lg-0"></p>
+              <p className="text-decoration-none me-3 mb-lg-0"></p>
               <p
-                className="logout-button  text-decoration-none me-3 mb-lg-0 nav-text-color fs-5"
+                className="logout-button  text-decoration-none me-3 mb-lg-0  fs-5"
                 onClick="{logout}"
               >
                 Logout
@@ -92,9 +92,9 @@ const Navigation = () => {
 
             <NavLink
               to="/login"
-              className="nav-text-color text-decoration-none me-3"
+              className=" text-decoration-none me-3"
             >
-              <p className="logout-button text-white text-decoration-none me-3 mb-lg-0 fs-5">
+              <p className="logout-button  text-decoration-none me-3 mb-lg-0 fs-5">
                 Login
               </p>
             </NavLink>
