@@ -1,15 +1,19 @@
+
+.nav-bg-active{
+     background: transparent;
+     height: 80px;
+}
 .nav-bg{
-    background-color: white;
-    backdrop-filter: blur(5px);
+    background-color: rgba(206, 160, 115, 0.671);
     
-    
+    /* background-color: rgba(8, 8, 8, 0.288); */
 }
 .nav-text-color{
-    color: black;
-    font-weight: bold;
+    color: rgb(245, 242, 237);
+    
 }
 .nav-text-color:hover{
-    color: orange;
+    color: rgb(255, 8, 0);
 }
 .logout-button{
     cursor: pointer;

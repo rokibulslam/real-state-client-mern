@@ -1,19 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button, Container, Nav, Navbar } from "react-bootstrap";
 import { Link, NavLink } from "react-router-dom";
 import "./Navigation.css";
 import profile from "../../../Images/profile.png";
 
 const Navigation = () => {
-  
+  const [nav, setNav]= useState(false)
+  const changeBackground = () => {
+    
+    if (window.scrollY >= 80) {
+      setNav(true)
+    } else {
+      setNav(false)
+    }
+  }
+  window.addEventListener('scroll', changeBackground)
   return (
     <div>
       <Navbar
-        className="nav-bg"
+        className={nav ? "nav-bg" : "nav-bg-active"}
         collapseOnSelect
-        sticky="top"
+        fixed="top"
         expand="lg"
-        variant="dark"
       >
         <Container>
           <Navbar.Brand className="text-black  me-5 fs-1" href="#home">
@@ -48,11 +56,10 @@ const Navigation = () => {
                 Contact
               </NavLink>
             </Nav>
-            
-              <div className="d-flex justify-content-center align-items-center">
-                <span>
-                  
-                    {/* <img
+
+            <div className="d-flex justify-content-center align-items-center">
+              <span>
+                {/* <img
                       style={{
                         height: "45px",
                         width: "45px",
@@ -62,39 +69,35 @@ const Navigation = () => {
                       src="{user.photoURL}"
                       alt=""
                     /> */}
-                 
-                    <img
-                      style={{
-                        height: "45px",
-                        width: "45px",
-                        borderRadius: "50%",
-                        marginRight: "10px",
-                      }}
-                      src={profile}
-                      alt=""
-                    />
-                  
-                </span>
-                <p className="text-white text-decoration-none me-3 mb-lg-0">
-                  
-                </p>
-                <p
-                  className="logout-button  text-decoration-none me-3 mb-lg-0 nav-text-color fs-5"
-                  onClick="{logout}"
-                >
-                  Logout
-                </p>
-              </div>
-            
-              <NavLink
-                to="/login"
-                className="nav-text-color text-decoration-none me-3"
+
+                <img
+                  style={{
+                    height: "45px",
+                    width: "45px",
+                    borderRadius: "50%",
+                    marginRight: "10px",
+                  }}
+                  src={profile}
+                  alt=""
+                />
+              </span>
+              <p className="text-white text-decoration-none me-3 mb-lg-0"></p>
+              <p
+                className="logout-button  text-decoration-none me-3 mb-lg-0 nav-text-color fs-5"
+                onClick="{logout}"
               >
-                <p className="logout-button text-white text-decoration-none me-3 mb-lg-0 fs-5">
-                  Login
-                </p>
-              </NavLink>
-            
+                Logout
+              </p>
+            </div>
+
+            <NavLink
+              to="/login"
+              className="nav-text-color text-decoration-none me-3"
+            >
+              <p className="logout-button text-white text-decoration-none me-3 mb-lg-0 fs-5">
+                Login
+              </p>
+            </NavLink>
           </Navbar.Collapse>
         </Container>
       </Navbar>
