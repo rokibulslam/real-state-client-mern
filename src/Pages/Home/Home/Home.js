@@ -5,6 +5,7 @@ import Features from '../Features/Features';
 import Footer from '../Footer/Footer';
 import Navigation from '../Navigation/Navigation';
 import Parking from '../Parking/Parking';
+import Reviews from '../Reviews/Reviews';
 import Slide from '../Slide/Slide';
 
 const Home = () => {
@@ -17,6 +18,7 @@ const Home = () => {
             
             <Parking></Parking>
             <Slide></Slide>
+            <Reviews></Reviews>
             <Footer></Footer>
         </div>
     );
