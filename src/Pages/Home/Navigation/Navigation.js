@@ -7,7 +7,7 @@ import useAuth from "../../../Hooks/useAuth";
 
 const Navigation = () => {
   const [nav, setNav] = useState(false)
-  const {logout} = useAuth() 
+  const {logout, user} = useAuth() 
 
   const changeBackground = () => {
     
@@ -62,17 +62,17 @@ const Navigation = () => {
 
             <div className="d-flex justify-content-center align-items-center">
               <span>
-                {/* <img
+                {user.photoURL ? <img
                       style={{
                         height: "45px",
                         width: "45px",
                         borderRadius: "50%",
                         marginRight: "10px",
                       }}
-                      src="{user.photoURL}"
+                      src={user.photoURL}
                       alt=""
-                    /> */}
-
+                    />
+                      :
                 <img
                   style={{
                     height: "45px",
@@ -82,24 +82,24 @@ const Navigation = () => {
                   }}
                   src={profile}
                   alt=""
-                />
+                />}
               </span>
-              <p className="text-decoration-none me-3 mb-lg-0"></p>
-              <p
+              <p className="text-decoration-none me-3 mb-lg-0">{user.displayName}</p>
+              {user.email && <p
                 className="logout-button  text-decoration-none me-3 mb-lg-0  fs-5"
                 onClick={logout}
               >
                 Logout
-              </p>
+              </p>}
             </div>
 
             <NavLink
               to="/login"
               className=" text-decoration-none me-3"
             >
-              <p className="logout-button  text-decoration-none me-3 mb-lg-0 fs-5">
+              {!user.email && <p className="logout-button  text-decoration-none me-3 mb-lg-0 fs-5">
                 Login
-              </p>
+              </p>}
             </NavLink>
           </Navbar.Collapse>
         </Container>
