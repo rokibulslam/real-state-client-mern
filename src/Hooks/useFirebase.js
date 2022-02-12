@@ -21,7 +21,7 @@ const useFirebase = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [authError, setAuthError] = useState("");
   const [admin, setAdmin] = useState(false);
-
+console.log(admin)
   const auth = getAuth();
   const googleProvider = new GoogleAuthProvider();
 
@@ -109,14 +109,14 @@ const useFirebase = () => {
   };
   // Get user role from database
   useEffect(() => {
-    fetch(`https://lit-forest-28611.herokuapp.com/users/${user?.email}`)
+    fetch(`http://localhost:5000/users/${user?.email}`)
       .then((res) => res.json())
       .then((data) => setAdmin(data.admin));
   }, [user?.email]);
   // Save user to database
   const saveUserData = (email, name, method) => {
     const userData = { email, name };
-    fetch("https://lit-forest-28611.herokuapp.com/users", {
+    fetch("http://localhost:5000/users", {
       method: method,
       headers: {
         "content-type": "application/json",
