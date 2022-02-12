@@ -3,9 +3,12 @@ import { Button, Container, Nav, Navbar } from "react-bootstrap";
 import { Link, NavLink } from "react-router-dom";
 import "./Navigation.css";
 import profile from "../../../Images/profile.png";
+import useAuth from "../../../Hooks/useAuth";
 
 const Navigation = () => {
-  const [nav, setNav]= useState(false)
+  const [nav, setNav] = useState(false)
+  const {logout} = useAuth() 
+
   const changeBackground = () => {
     
     if (window.scrollY >= 80) {
@@ -84,7 +87,7 @@ const Navigation = () => {
               <p className="text-decoration-none me-3 mb-lg-0"></p>
               <p
                 className="logout-button  text-decoration-none me-3 mb-lg-0  fs-5"
-                onClick="{logout}"
+                onClick={logout}
               >
                 Logout
               </p>

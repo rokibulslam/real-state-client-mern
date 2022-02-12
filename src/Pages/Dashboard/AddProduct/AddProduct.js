@@ -49,12 +49,10 @@ const AddProduct = () => {
   };
   return (
     <Container sx={{ display: "flex" }}>
-      
-
       <Container>
         <h1 className="register-header-text">Add A Food Item</h1>
 
-        {/* <Grid item sx={{ mt: 8 }} xs={12} md={6}> */}
+       
 
         <form onSubmit={handleSubmit}>
           <TextField
