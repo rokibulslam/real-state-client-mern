@@ -7,6 +7,7 @@ import Login from './Pages/User/Login/Login';
 import AuthProvider from './Context/AuthProvider';
 import Register from './Pages/User/Register/Register';
 import AddProduct from './Pages/Dashboard/AddProduct/AddProduct';
+import ProductPage from './Pages/AllProducts/ProductPage/ProductPage';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />}></Route>
             <Route path="/home" element={<Home />}></Route>
+            <Route path="/productPage" element={<ProductPage />}></Route>
             <Route path="/login" element={<Login />}></Route>
             <Route path="/addProduct" element={<AddProduct />}></Route>
             <Route path="/register" element={<Register />}></Route>

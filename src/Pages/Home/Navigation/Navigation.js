@@ -47,10 +47,10 @@ const Navigation = () => {
                 Dashboard
               </NavLink>
               <NavLink
-                to="/explore"
+                to="/productPage"
                 className=" text-decoration-none me-3 fs-5"
               >
-                Explore
+                Shop
               </NavLink>
               <NavLink
                 to="/contact"
