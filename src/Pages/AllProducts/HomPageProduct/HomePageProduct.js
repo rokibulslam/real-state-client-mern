@@ -5,7 +5,7 @@ import ProductCard from '../ProductCard/ProductCard';
 const HomePageProduct = () => {
     const [products, setProducts] = useState([])
     useEffect(() => {
-        fetch("http://localhost:5000/apartments/regular")
+        fetch("https://immense-wildwood-96183.herokuapp.com/apartments/regular")
           .then((res) => res.json())
           .then((data) => setProducts(data));
     }, [])

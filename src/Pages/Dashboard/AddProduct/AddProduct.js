@@ -41,21 +41,25 @@ const AddProduct = () => {
   const handleSubmit = (e) => {
     //   Send Product to Database
     e.preventDefault();
-    axios.post("http://localhost:5000/apartments", productDetails)
-     
+    axios
+      .post(
+        "https://immense-wildwood-96183.herokuapp.com/apartments",
+        productDetails
+      )
+
       .then((res) => {
-      if (res.data.insertedId) {
-        Swal.fire({
-          position: "center",
-          icon: "success",
-          title: `Food Item Inserted Successfully`,
-          showConfirmButton: false,
-          timer: 2000,
-        });
-        setProductDetails({});
-        window.location.reload();
-      }
-    });
+        if (res.data.insertedId) {
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: `Food Item Inserted Successfully`,
+            showConfirmButton: false,
+            timer: 2000,
+          });
+          setProductDetails({});
+          window.location.reload();
+        }
+      });
 
   };
   return (

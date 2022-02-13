@@ -109,14 +109,14 @@ console.log(admin)
   };
   // Get user role from database
   useEffect(() => {
-    fetch(`http://localhost:5000/users/${user?.email}`)
+    fetch(`https://immense-wildwood-96183.herokuapp.com/users/${user?.email}`)
       .then((res) => res.json())
       .then((data) => setAdmin(data.admin));
   }, [user?.email]);
   // Save user to database
   const saveUserData = (email, name, method) => {
     const userData = { email, name };
-    fetch("http://localhost:5000/users", {
+    fetch("https://immense-wildwood-96183.herokuapp.com/users", {
       method: method,
       headers: {
         "content-type": "application/json",

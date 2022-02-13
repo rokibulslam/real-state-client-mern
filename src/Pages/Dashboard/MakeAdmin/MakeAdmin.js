@@ -12,18 +12,18 @@ const MakeAdmin = () => {
         e.preventDefault();
         const userEmail = { email };
         console.log(email);
-        fetch("http://localhost:5000/users/admin", {
+        fetch("https://immense-wildwood-96183.herokuapp.com/users/admin", {
           method: "PUT",
           headers: { "content-type": "application/json" },
           body: JSON.stringify(userEmail),
         })
           .then((res) => res.json())
-            .then((data) => {
-               
+          .then((data) => {
             if (data.modifiedCount) {
-              setSuccess('1');
+              setSuccess("1");
             }
-          }).catch(error=>console.log(error.message))
+          })
+          .catch((error) => console.log(error.message));
     }
     return (
       <div>
