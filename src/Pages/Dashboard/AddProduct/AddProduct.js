@@ -1,32 +1,28 @@
 import {
   Button,
-  CircularProgress,
   Container,
   MenuItem,
   TextField,
 } from "@mui/material";
+import axios from "axios";
 
 import React, { useState } from "react";
 import Swal from "sweetalert2";
 
 // Food Category
-const currencies = [
+const categories = [
   {
-    value: "Pizza",
-    label: "Pizza",
+    value: "Featured",
+    label: "Featured",
   },
   {
-    value: "Burger",
-    label: "Burger",
+    value: "Regular",
+    label: "regular",
   },
   {
-    value: "Chicken",
-    label: "Chicken",
-  },
-  {
-    value: "Rice",
-    label: "Rice",
-  },
+    value: "Top rated",
+    label: "Top rated",
+  }
 ];
 
 const AddProduct = () => {
@@ -44,8 +40,21 @@ const AddProduct = () => {
 
   const handleSubmit = (e) => {
     //   Send Product to Database
-    
     e.preventDefault();
+    axios.post("http://localhost:5000/apartments", productDetails).then((res) => {
+      if (res.data.insertedId) {
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: `Food Item Inserted Successfully`,
+          showConfirmButton: false,
+          timer: 2000,
+        });
+        setProductDetails({});
+        window.location.reload();
+      }
+    });
+
   };
   return (
     <Container sx={{ display: "flex" }}>
@@ -111,7 +120,7 @@ const AddProduct = () => {
             value={category}
             onChange={handleOnChange}
           >
-            {currencies.map((option) => (
+            {categories.map((option) => (
               <MenuItem key={option.value} value={option.value}>
                 {option.label}
               </MenuItem>
