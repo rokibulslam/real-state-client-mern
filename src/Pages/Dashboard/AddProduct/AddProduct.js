@@ -17,11 +17,11 @@ const categories = [
   },
   {
     value: "Regular",
-    label: "regular",
+    label: "Regular",
   },
   {
-    value: "Top rated",
-    label: "Top rated",
+    value: "Top Rated",
+    label: "Top Rated",
   }
 ];
 
@@ -41,7 +41,9 @@ const AddProduct = () => {
   const handleSubmit = (e) => {
     //   Send Product to Database
     e.preventDefault();
-    axios.post("http://localhost:5000/apartments", productDetails).then((res) => {
+    axios.post("http://localhost:5000/apartments", productDetails)
+     
+      .then((res) => {
       if (res.data.insertedId) {
         Swal.fire({
           position: "center",
