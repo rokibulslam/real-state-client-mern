@@ -20,8 +20,8 @@ const categories = [
     label: "Regular",
   },
   {
-    value: "Top Rated",
-    label: "Top Rated",
+    value: "Top-Rated",
+    label: "Top-Rated",
   }
 ];
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import HomePageProduct from '../../AllProducts/HomPageProduct/HomePageProduct';
 import Banner from '../Banner.js/Banner';
 import Featured from '../Featured/Featured';
 import Features from '../Features/Features';
@@ -15,7 +16,7 @@ const Home = () => {
             <Banner></Banner>
             
             <Features></Features>
-            
+            <HomePageProduct></HomePageProduct>
             <Parking></Parking>
             <Slide></Slide>
             <Reviews></Reviews>
