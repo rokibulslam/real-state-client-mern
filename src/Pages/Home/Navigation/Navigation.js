@@ -28,7 +28,7 @@ const Navigation = () => {
       >
         <Container>
           <Navbar.Brand className="  me-5 fs-1" href="#home">
-            WOODX
+            MYHOME
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">

@@ -39,7 +39,7 @@ const ManageOrder = () => {
 
       if (confirm) {
         axios
-          .delete(`https://lit-forest-28611.herokuapp.com/delete/${id}`)
+          .delete(`http://localhost:5000/order/delete/${id}`)
           .then((res) => {
             if (res.data.deletedCount) {
               Swal.fire({
