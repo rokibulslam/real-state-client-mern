@@ -8,11 +8,10 @@ const ProductCard = (props) => {
   const { product } = props
   
     return (
-      <div className="col-md-4 col-sm-12">
-        <Card className="card-container">
+      <div className="col-md-4 col-sm-12 d-flex justify-content-center align-items-center">
+        <Card className="card-container ">
           <Card.Img
-           
-            style={{ borderRadius: "5px", width: '300px', height: '300px' }}
+            style={{ borderRadius: "5px", width: "300px", height: "300px" }}
             variant="top"
             src={product?.Image}
           />

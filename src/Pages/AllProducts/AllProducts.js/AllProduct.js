@@ -26,7 +26,7 @@ const AllProduct = () => {
            </div>
          )}
          <div className="container">
-           <div className="row g-5">
+           <div className="row g-5 ">
              {products?.map((product) => (
                <ProductCard
                  key={product._id}
