@@ -17,7 +17,11 @@ const Navigation = () => {
         variant="dark"
       >
         <Container>
-          <Navbar.Brand className="nav-text-color me-5 fs-1" href="#home">
+          <Navbar.Brand
+            style={{ color: "rgb(134, 80, 25)" }}
+            className=" me-5 fw-bolder fs-1"
+            href="#home"
+          >
             MYHome
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -76,7 +80,7 @@ const Navigation = () => {
                     />
                   )}
                 </span>
-                <p className="text-white text-decoration-none me-3 mb-lg-0">
+                <p className="text-success text-decoration-none me-3 mb-lg-0">
                   {user.displayName}
                 </p>
                 <p
@@ -91,7 +95,7 @@ const Navigation = () => {
                 to="/login"
                 className="nav-text-color text-decoration-none me-3"
               >
-                <p className="logout-button text-white text-decoration-none me-3 mb-lg-0 fs-5">
+                <p className="logout-button text-decoration-none me-3 mb-lg-0 fs-5">
                   Login
                 </p>
               </NavLink>

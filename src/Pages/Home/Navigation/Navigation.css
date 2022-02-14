@@ -1,11 +1,11 @@
 .nav-bg{
-    background-color: rgba(15, 15, 15, 0.74);
+    background-color: rgb(247, 244, 242);
     backdrop-filter: blur(5px);
     
     
 }
 .nav-text-color{
-    color: white;
+    color: rgb(17, 17, 17);
 }
 .nav-text-color:hover{
     color: orange;
