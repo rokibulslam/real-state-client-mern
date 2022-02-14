@@ -21,22 +21,23 @@ const ProductCard = (props) => {
                 <span className="discount-text">
                   20% Free
                 </span>
-              <span className="card-img-text">{product?.Category} Product</span>
+              <span className="card-img-text">{product?.Category}</span>
             </div>
           ) : (
-            <span className="card-img-text">{product?.Category} Product</span>
+            <span className="card-img-text">{product?.Category}</span>
           )}
           <Card.Body className="text-start">
             <Card.Title style={{ color: "rgb(134, 80, 25)", fontSize: "30px" }}>
               {product?.Name}
             </Card.Title>
-            <div className="d-flex justify-content-between align-items-center px-4">
+            <div className="d-flex justify-content-between align-items-center">
               <p
                 style={{
                   background: "transparent",
                   border: "0",
                   fontSize: "20px",
                   fontWeight: "bold",
+                  paddingRight:'20px'
                 }}
               >
                 ${product?.Price}

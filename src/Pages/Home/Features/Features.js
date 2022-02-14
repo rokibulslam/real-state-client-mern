@@ -2,6 +2,7 @@ import React from 'react';
  import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome } from "@fortawesome/free-solid-svg-icons";
 import './Features.css'
+import { NavLink } from 'react-router-dom';
 const Features = () => {
     return (
       <div className="my-5 py-5 text-start features d-flex justify-content-center align-items-center">
@@ -18,7 +19,9 @@ const Features = () => {
                   Generously sized, this home delivers the very <br /> best
                   Interiors & exteriors.
                 </p>
-                <button className="banner-btn my-5">Buy Apartment</button>
+                <NavLink to="/productPage">
+                  <button className="banner-btn my-5">Buy Apartment</button>
+                </NavLink>
               </div>
             </div>
             <div className="col-md-8 ">

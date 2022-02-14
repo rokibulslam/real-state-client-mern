@@ -14,7 +14,7 @@ const Navigation = () => {
         collapseOnSelect
         fixed="top"
         expand="lg"
-        variant="dark"
+        variant="light"
       >
         <Container>
           <Navbar.Brand

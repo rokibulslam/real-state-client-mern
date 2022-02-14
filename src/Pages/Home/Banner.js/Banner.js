@@ -1,5 +1,6 @@
 import React from 'react';
-import { Row } from 'react-bootstrap';
+import {  Row } from 'react-bootstrap';
+import { NavLink } from 'react-router-dom';
 import './Banner.css'
 
 
@@ -29,7 +30,9 @@ const Banner = () => {
                   </div>
 
                   <div className="col-md-6">
-                    <button className="banner-btn ">Buy Apartment</button>
+                    <NavLink to="/productPage">
+                      <button className="banner-btn ">Buy Apartment</button>
+                    </NavLink>
                   </div>
                 </div>
               </div>

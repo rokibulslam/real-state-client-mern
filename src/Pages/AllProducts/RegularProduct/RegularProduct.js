@@ -9,15 +9,17 @@ const RegularProduct = () => {
        .then((data) => setProducts(data));
    }, []);
     return (
-      <div>
-        <div className="row g-5">
-          {products?.map((product) => (
-            <ProductCard
-              key={product._id}
-              product={product}
-              className="col-md-6 col-sm-12"
-            />
-          ))}
+      <div className="py-5">
+        <div className="container">
+          <div className="row g-5">
+            {products?.map((product) => (
+              <ProductCard
+                key={product._id}
+                product={product}
+                className="col-md-3 col-sm-12"
+              />
+            ))}
+          </div>
         </div>
       </div>
     );
