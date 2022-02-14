@@ -16,8 +16,16 @@ const ProductCard = (props) => {
             variant="top"
             src={product?.Image}
           />
-          {product?.Category === 'Featured' ? <span className="card-img-text">20% Discount On <br />{product?.Category} Product</span>:
-          <span className="card-img-text">{product?.Category} Product</span>}
+          {product?.Category === "Featured" ? (
+            <div>
+                <span className="discount-text">
+                  20% Free
+                </span>
+              <span className="card-img-text">{product?.Category} Product</span>
+            </div>
+          ) : (
+            <span className="card-img-text">{product?.Category} Product</span>
+          )}
           <Card.Body className="text-start">
             <Card.Title style={{ color: "rgb(134, 80, 25)", fontSize: "30px" }}>
               {product?.Name}
