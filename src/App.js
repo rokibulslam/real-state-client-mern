@@ -14,6 +14,8 @@ import MyOrder from './Pages/Dashboard/MyOrder/MyOrder';
 import PrivateRoute from './Pages/User/PrivateRoute/PrivateRoute';
 import MakeAdmin from './Pages/Dashboard/MakeAdmin/MakeAdmin';
 import Review from './Pages/Dashboard/Review/Review';
+import Notfound from './Pages/Notfound/Notfound';
+import Contact from './Pages/Contact/Contact';
 
 function App() {
   return (
@@ -26,6 +28,7 @@ function App() {
             <Route path="/productPage" element={<ProductPage />}></Route>
             <Route path="/login" element={<Login />}></Route>
             <Route path="/register" element={<Register />}></Route>
+            <Route path="/contact" element={<Contact />}></Route>
             <Route
               path="/home/purchase/:id"
               element={
@@ -41,15 +44,21 @@ function App() {
                   <Dashboard />
                 </PrivateRoute>
               }
-            ></Route>
-            <Route
-              path="/dashboard/addProduct"
-              element={<AddProduct />}
-            ></Route>
-            <Route path="/dashboard/orders" element={<ManageOrder />}></Route>
-            <Route path="/dashboard/myOrders" element={<MyOrder />}></Route>
-            <Route path="/dashboard/makeAdmin" element={<MakeAdmin />}></Route>
-            <Route path="/dashboard/review" element={<Review />}></Route>
+            >
+              <Route
+                path="/dashboard/addProduct"
+                element={<AddProduct />}
+              ></Route>
+              <Route path="/dashboard/orders" element={<ManageOrder />}></Route>
+              <Route path="/dashboard/myOrders" element={<MyOrder />}></Route>
+              <Route
+                path="/dashboard/makeAdmin"
+                element={<MakeAdmin />}
+              ></Route>
+              <Route path="/dashboard/review" element={<Review />}></Route>
+            </Route>
+
+            <Route path="*" element={<Notfound></Notfound>}></Route>
           </Routes>
         </Router>
       </AuthProvider>

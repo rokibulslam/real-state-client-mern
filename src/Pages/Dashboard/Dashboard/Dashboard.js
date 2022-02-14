@@ -9,13 +9,16 @@ import IconButton from "@mui/material/IconButton";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
-
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemText from "@mui/material/ListItemText";
+import MailIcon from "@mui/icons-material/Mail";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import { Outlet, Link, NavLink, Route } from "react-router-dom";
 import { Button } from "@mui/material";
 import useAuth from "../../../Hooks/useAuth";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHome,
@@ -63,8 +66,8 @@ function Dashboard(props) {
           alignItems: "center",
         }}
       >
-        <span style={{ color: "red" }}>M</span>YHOM
-        <span style={{ color: "red" }}>E</span>
+        <span style={{ color: "red" }}>H</span>UNGR
+        <span style={{ color: "red" }}>Y</span>
       </Typography>
 
       <Divider style={{ color: "white", height: "2px" }} />
@@ -88,7 +91,7 @@ function Dashboard(props) {
                 </Button>
               </NavLink>
             </ListItem>
-            <ListItem>
+            {/* <ListItem>
               <NavLink
                 style={{ textDecoration: "none" }}
                 to="/dashboard/myOrders"
@@ -97,7 +100,7 @@ function Dashboard(props) {
                   My Order
                 </Button>
               </NavLink>
-            </ListItem>
+            </ListItem> */}
           </Box>
         )}
         {admin && (
@@ -107,7 +110,7 @@ function Dashboard(props) {
                 style={{ textDecoration: "none" }}
                 to="/dashboard/addProduct"
               >
-                <Button variant="text" style={{ color: "inherit" }}>
+                <Button variant="text" style={{ color: "white" }}>
                   Add a Product
                 </Button>
               </NavLink>
@@ -117,7 +120,7 @@ function Dashboard(props) {
                 style={{ textDecoration: "none" }}
                 to="/dashboard/manageProduct"
               >
-                <Button variant="text" style={{ color: "inherit" }}>
+                <Button variant="text" style={{ color: "white" }}>
                   ManageProduct
                 </Button>
               </NavLink>
@@ -127,7 +130,7 @@ function Dashboard(props) {
                 style={{ textDecoration: "none" }}
                 to="/dashboard/orders"
               >
-                <Button variant="text" style={{ color: "inherit" }}>
+                <Button variant="text" style={{ color: "white" }}>
                   Manage Order
                 </Button>
               </NavLink>
