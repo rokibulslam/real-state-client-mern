@@ -11,41 +11,40 @@ const ProductCard = (props) => {
       <div className="col-md-4 col-sm-12">
         <Card className="card-container">
           <Card.Img
-            className="img-fluid product-img"
-            style={{ borderRadius: "5px" }}
+           
+            style={{ borderRadius: "5px", width: '300px', height: '300px' }}
             variant="top"
             src={product?.Image}
           />
           {product?.Category === "Featured" ? (
             <div>
-                <span className="discount-text">
-                  20% Free
-                </span>
+              <span className="discount-text">20% Free</span>
               <span className="card-img-text">{product?.Category}</span>
             </div>
           ) : (
             <span className="card-img-text">{product?.Category}</span>
           )}
           <Card.Body className="text-start">
-            <Card.Title style={{ color: "rgb(134, 80, 25)", fontSize: "30px" }}>
-              {product?.Name}
-            </Card.Title>
-            <div className="d-flex justify-content-between align-items-center">
-              <p
-                style={{
-                  background: "transparent",
-                  border: "0",
-                  fontSize: "20px",
-                  fontWeight: "bold",
-                  paddingRight:'20px'
-                }}
+            <Card.Title>
+              <NavLink
+                className="card-title"
+                to={`/home/purchase/${product?._id}`}
               >
-                ${product?.Price}
-              </p>
-              <NavLink to={`/home/purchase/${product?._id}`}>
-                <button className="banner-btn">Details</button>
+                {product?.Name}
               </NavLink>
-            </div>
+            </Card.Title>
+            <p
+              style={{
+                background: "transparent",
+                border: "0",
+                fontSize: "20px",
+                fontWeight: "bold",
+                paddingRight: "20px",
+                paddingTop: "5px",
+              }}
+            >
+              ${product?.Price}
+            </p>
           </Card.Body>
         </Card>
       </div>
