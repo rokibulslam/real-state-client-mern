@@ -65,7 +65,7 @@ const AddProduct = () => {
   return (
     <Container sx={{ display: "flex" }}>
       <Container>
-        <h1 className="register-header-text">Add A Food Item</h1>
+        <h1 className="register-header-text">Add An Item</h1>
 
        
 
@@ -133,7 +133,7 @@ const AddProduct = () => {
             ))}
           </TextField>
           <Button sx={{ width: "75%", m: 1 }} type="submit" variant="contained">
-            Add Food
+            Add Apartment
           </Button>
         </form>
       </Container>
