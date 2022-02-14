@@ -11,7 +11,7 @@ const FeaturedProduct = () => {
     console.log(products);
     return (
       <div>
-        <div className="row">
+        <div className="row g-5">
           {products?.map((product) => (
             <ProductCard
               key={product._id}
