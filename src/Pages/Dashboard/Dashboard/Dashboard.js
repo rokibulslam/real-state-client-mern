@@ -18,18 +18,9 @@ import Typography from "@mui/material/Typography";
 import { Outlet, Link, NavLink, Route } from "react-router-dom";
 import { Button } from "@mui/material";
 import useAuth from "../../../Hooks/useAuth";
-
+import { FcAddDatabase, FcHeatMap, FcHome, FcPlus, FcRating } from "react-icons/fc";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faHome,
-  faStore,
-  faStar,
-  faShoppingBag,
-  faCartPlus,
-  faTasks,
-  faUser,
-  faSignOutAlt,
-} from "@fortawesome/free-solid-svg-icons";
+import {faSignOutAlt} from "@fortawesome/free-solid-svg-icons";
 import ManageOrder from "../ManageOrder/ManageOrder";
 import MakeAdmin from "../MakeAdmin/MakeAdmin";
 import MyOrder from "../MyOrder/MyOrder";
@@ -76,6 +67,9 @@ function Dashboard(props) {
           <Box>
             <ListItem>
               <NavLink style={{ textDecoration: "none" }} to="/">
+                <span style={{ fontSize: "20px", paddingRight: "2px" }}>
+                  <FcHome />
+                </span>
                 <Button variant="text" style={{ color: "white" }}>
                   Home
                 </Button>
@@ -86,6 +80,9 @@ function Dashboard(props) {
                 style={{ textDecoration: "none" }}
                 to="/dashboard/review"
               >
+                <span style={{ fontSize: "20px", paddingRight: "2px" }}>
+                  <FcRating />
+                </span>
                 <Button variant="text" style={{ color: "white" }}>
                   Add A Review
                 </Button>
@@ -110,6 +107,9 @@ function Dashboard(props) {
                 style={{ textDecoration: "none" }}
                 to="/dashboard/addProduct"
               >
+                <span style={{ fontSize: "20px", paddingRight: "2px" }}>
+                  <FcAddDatabase />
+                </span>
                 <Button variant="text" style={{ color: "white" }}>
                   Add a Product
                 </Button>
@@ -120,8 +120,11 @@ function Dashboard(props) {
                 style={{ textDecoration: "none" }}
                 to="/dashboard/manageProduct"
               >
+                <span style={{ fontSize: "20px", paddingRight: "2px" }}>
+                  <FcHeatMap />
+                </span>
                 <Button variant="text" style={{ color: "white" }}>
-                  ManageProduct
+                  Products
                 </Button>
               </NavLink>
             </ListItem>
@@ -130,6 +133,9 @@ function Dashboard(props) {
                 style={{ textDecoration: "none" }}
                 to="/dashboard/orders"
               >
+                <span style={{ fontSize: "20px", paddingRight: "2px" }}>
+                  <FcHeatMap />
+                </span>
                 <Button variant="text" style={{ color: "white" }}>
                   Manage Order
                 </Button>
@@ -151,11 +157,9 @@ function Dashboard(props) {
         <Box>
           <ListItem>
             <Button style={{ color: "white" }} onClick={logout} variant="text">
-              <FontAwesomeIcon
-                style={{ paddingRight: "10px" }}
-                icon={faSignOutAlt}
-                size="2x"
-              />
+              <span style={{ paddingRight: "10px", fontSize: "20px" }}>
+                <FontAwesomeIcon icon={faSignOutAlt} />
+              </span>
               Logout
             </Button>
           </ListItem>
