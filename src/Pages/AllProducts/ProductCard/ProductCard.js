@@ -11,7 +11,7 @@ const ProductCard = (props) => {
       <div className="col-md-4 col-sm-12">
         <Card className="card-container">
           <Card.Img
-            className="img-fluid"
+            className="img-fluid product-img"
             style={{ borderRadius: "5px" }}
             variant="top"
             src={product?.Image}

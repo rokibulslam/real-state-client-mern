@@ -13,9 +13,10 @@ const HomePageProduct = () => {
           .then((data) => setProducts(data))
           .finally(()=>setIsLoading(false))
     }, [])
-    console.log(products)
+    
     return (
       <div className="py-5">
+        <h1 className='py-4 pb-5'>Explore Our Apartments Collection</h1>
         {isLoading && (
           <div>
             <Spinner animation="grow" variant="primary" />
@@ -27,7 +28,7 @@ const HomePageProduct = () => {
           </div>
         )}
         <div className="container">
-          <div className="row">
+          <div className="row g-5">
             {products.slice(0, 6)?.map((product) => (
               <ProductCard
                 key={product._id}
