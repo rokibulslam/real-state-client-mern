@@ -16,6 +16,7 @@ import MakeAdmin from './Pages/Dashboard/MakeAdmin/MakeAdmin';
 import Review from './Pages/Dashboard/Review/Review';
 import Notfound from './Pages/Notfound/Notfound';
 import Contact from './Pages/Contact/Contact';
+import ManageProduct from './Pages/Dashboard/ManageProduct/ManageProduct';
 
 function App() {
   return (
@@ -56,6 +57,7 @@ function App() {
                 element={<MakeAdmin />}
               ></Route>
               <Route path="/dashboard/review" element={<Review />}></Route>
+              <Route path="/dashboard/manageProduct" element={<ManageProduct />}></Route>
             </Route>
 
             <Route path="*" element={<Notfound></Notfound>}></Route>
