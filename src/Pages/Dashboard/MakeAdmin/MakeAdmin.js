@@ -27,7 +27,10 @@ const MakeAdmin = () => {
           .catch((error) => console.log(error.message));
     }
     return (
-      <div>
+      <div style={{marginBottom: '100px'}}>
+        <h1 style={{ marginBottom: "50px", color: "rgb(134, 80, 25)" , fontWeight: 'bold'}}>
+          Make An Admin
+        </h1>
         <form onSubmit={handleMakeAdmin}>
           <TextField
             label="Email"
@@ -39,10 +42,7 @@ const MakeAdmin = () => {
             Make
           </Button>
         </form>
-        {success && (
-          <Alert severity="failed">Admin Made Success fully</Alert>
-        )}
-        
+        {success && <Alert severity="failed">Admin Made Success fully</Alert>}
       </div>
     );
 };

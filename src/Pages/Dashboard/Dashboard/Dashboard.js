@@ -66,8 +66,8 @@ function Dashboard(props) {
           alignItems: "center",
         }}
       >
-        <span style={{ color: "red" }}>H</span>UNGR
-        <span style={{ color: "red" }}>Y</span>
+        <span style={{ color: "red" }}>MY</span>HOM
+        <span style={{ color: "red" }}>E</span>
       </Typography>
 
       <Divider style={{ color: "white", height: "2px" }} />
@@ -168,7 +168,7 @@ function Dashboard(props) {
     window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box sx={{ display: "flex"}}>
       <CssBaseline />
       <AppBar
         position="fixed"
@@ -234,7 +234,9 @@ function Dashboard(props) {
             )}
           </span>
           <Box>
-            <Typography variant="h6" noWrap component="div">
+            <Typography
+              style={{ color: "black"}}
+              variant="h6" noWrap component="div">
               {user.displayName}
             </Typography>
           </Box>

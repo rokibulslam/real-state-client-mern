@@ -8,7 +8,7 @@ const HomePageProduct = () => {
   const [isLoading, setIsLoading]=useState(false)
   useEffect(() => {
       setIsLoading(true)
-        fetch("https://immense-wildwood-96183.herokuapp.com/apartments/regular")
+        fetch("https://immense-wildwood-96183.herokuapp.com/apartments")
           .then((res) => res.json())
           .then((data) => setProducts(data))
           .finally(()=>setIsLoading(false))
@@ -28,7 +28,7 @@ const HomePageProduct = () => {
         )}
         <div className="container">
           <div className="row">
-            {products?.map((product) => (
+            {products.slice(0, 6)?.map((product) => (
               <ProductCard
                 key={product._id}
                 product={product}

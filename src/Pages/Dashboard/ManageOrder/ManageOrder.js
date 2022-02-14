@@ -60,10 +60,12 @@ const ManageOrder = () => {
       }
     };
     return (
-      <div className="my-0 p-5 bg-white">
+      <div className="my-0 p-5 bg-white banner-text">
         <div className="container ">
           <div>
-            <h1 className="fw-light ">Manage All Orders</h1>
+            <h1 className="fw-bold mb-5">
+              Manage All Orders
+            </h1>
             <Table responsive striped bordered hover>
               <thead>
                 <tr className="">
