@@ -13,6 +13,7 @@ import useAuth from "../../../Hooks/useAuth";
 import Navigation from "../../Home/Navigation/Navigation";
 import { Box } from "@mui/system";
 import google from '../../../Images/google.png'
+
 const Login = () => {
   const [loginData, setLoginData] = useState({});
   const { user, signInWithGoogle, isLoading, authError, loginUser } = useAuth();
