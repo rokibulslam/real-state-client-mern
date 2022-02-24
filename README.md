@@ -9,6 +9,8 @@ Here is my Project Link [MY HOME](https://real-state-mern.web.app/).
 * HTML, CSS, Javascript, ES6, React, React router v@6, Firebase Authentication, Bootstrap, Material UI, Context API.
 ### Backend: 
 * CRUD operartion with Nodejs, Express, MongoDB
+### Other Technology: 
+* Fontawesome Icon, React Icon,Heroku for backend deployment, Firebase for frontend development.
 
 ### Features:
 * Fully Responsive Web Application
