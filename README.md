@@ -22,5 +22,5 @@ Here is my Project Link [MY HOME](https://real-state-mern.web.app/).
 * User can see user dashboard. He can add review and this review show on homepage dynamically
 * User can manage order, can cancel order, see order status.
 
-### Redux, Payment gateway, JWT, Shopping cart will be implemented soon....
+### Redux, Payment gateway, JWT, Shopping cart will be implemented soon.....
 
