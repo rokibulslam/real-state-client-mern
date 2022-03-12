@@ -75,7 +75,7 @@ const Purchase = () => {
 
   return (
     <div>
-          <h1>{id}</h1>
+         
       <Box>
         <Typography
           sx={{ textAlign: "center", mt: 5, color: "warning.main" }}
