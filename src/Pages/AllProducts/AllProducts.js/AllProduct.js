@@ -1,21 +1,34 @@
 import React, { useEffect, useState } from 'react';
 import { Spinner } from 'react-bootstrap';
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { productsListAction } from '../../../Redux/actions/productAction';
+import { PRODUCT_LIST_REQUEST } from '../../../Redux/constants/productConstants';
 import ProductCard from '../ProductCard/ProductCard';
 
 const AllProduct = () => {
-  const [products, setProducts] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const dispatch = useDispatch()
+  const productList = useSelector((state) => state.productList);
+  const {loading, products } = productList;
+  // const [products, setProducts] = useState([]);
+  // const [isLoading, setIsLoading] = useState(false);
+  
+
   useEffect(() => {
-        setIsLoading(true);
-       fetch("https://immense-wildwood-96183.herokuapp.com/apartments")
-         .then((res) => res.json())
-         .then((data) => setProducts(data))
-         .finally(() => setIsLoading(false));
-     }, []);
-     console.log(products);
+    
+    dispatch(productsListAction());
+  },[dispatch])
+  // useEffect(() => {
+  //       setIsLoading(true);
+  //      fetch("https://immense-wildwood-96183.herokuapp.com/apartments")
+  //        .then((res) => res.json())
+  //        .then((data) => setProducts(data))
+  //        .finally(() => setIsLoading(false));
+  //    }, []);
+     
      return (
        <div className="py-5">
-         {isLoading && (
+         {loading && (
            <div>
              <Spinner animation="grow" variant="primary" />
              <Spinner animation="grow" variant="secondary" />
