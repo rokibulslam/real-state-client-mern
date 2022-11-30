@@ -1,23 +1,23 @@
 import { Grid } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { Spinner } from 'react-bootstrap';
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { productsListAction } from '../../../Redux/actions/productAction';
 import ProductCard from '../ProductCard/ProductCard';
 
 const HomePageProduct = () => {
-  const [products, setProducts] = useState([])
-  const [isLoading, setIsLoading]=useState(false)
+  const dispatch = useDispatch();
+  const productList = useSelector(state => state.productList);
+  const { loading, products } = productList;
   useEffect(() => {
-      setIsLoading(true)
-        fetch("https://immense-wildwood-96183.herokuapp.com/apartments")
-          .then((res) => res.json())
-          .then((data) => setProducts(data))
-          .finally(()=>setIsLoading(false))
-    }, [])
+    dispatch(productsListAction())
+  }, [dispatch]);
     
     return (
       <div className="py-5">
         <h1 className='py-4 pb-5'>Explore Our Apartments Collection</h1>
-        {isLoading && (
+        {loading && (
           <div>
             <Spinner animation="grow" variant="primary" />
             <Spinner animation="grow" variant="secondary" />
