@@ -13,6 +13,8 @@ import useAuth from "../../../Hooks/useAuth";
 import Navigation from "../../Home/Navigation/Navigation";
 import { Box } from "@mui/system";
 import google from '../../../Images/google.png'
+import './Login.css'
+
 const Login = () => {
   const [loginData, setLoginData] = useState({});
   const { user, signInWithGoogle, isLoading, authError, loginUser } = useAuth();
@@ -49,62 +51,62 @@ const Login = () => {
           }}
         >
           <h1 className="register-header-text">Login Here</h1>
-          {!isLoading && (
-            <form onSubmit={handleLoginSubmit}>
-              <TextField
-                sx={{ width: "100%", my: 1 }}
-                id="standard-basic"
-                label="Your Email"
-                name="email"
-                type="email"
-                onBlur={handleOnBlur}
-                variant="standard"
-              />
-              <TextField
-                sx={{ width: "100%", my: 1 }}
-                id="standard-basic"
-                label="Your Password"
-                type="password"
-                name="password"
-                onBlur={handleOnBlur}
-                variant="standard"
-              />
-              <Box>
-                {isLoading && <CircularProgress />}
-                {user?.email && (
-                  <Alert sx={{ width: "100%", my: 1 }} severity="success">
-                    Logged In successfully!
-                  </Alert>
-                )}
-                {authError && (
-                  <Alert sx={{ width: "100%", my: 1 }} severity="error">
-                    {authError}
-                  </Alert>
-                )}
-              </Box>
-              <Button
-                sx={{ width: "100%", my: 1 }}
-                type="submit"
-                variant="contained"
-              >
-                Login
-              </Button>
-            </form>
-          )}
-          <Button
-            sx={{ width: "50%", my: 1 }}
-            onClick={handleGoogleSign}
-            variant="contained"
-          >
-            <img
-              style={{ marginRight: "5px" }}
-              height="30px"
-              width="30px"
-              src={google}
-              alt=""
+          <form onSubmit={handleLoginSubmit}>
+            <TextField
+              sx={{ width: "100%", my: 1 }}
+              id="standard-basic"
+              label="Your Email"
+              name="email"
+              type="email"
+              onBlur={handleOnBlur}
+              variant="standard"
             />
-            Sign In With Google
-          </Button>
+            <TextField
+              sx={{ width: "100%", my: 1 }}
+              id="standard-basic"
+              label="Your Password"
+              type="password"
+              name="password"
+              onBlur={handleOnBlur}
+              variant="standard"
+            />
+            <Box>
+              {isLoading && <CircularProgress />}
+              {user?.email && (
+                <Alert sx={{ width: "100%", my: 1 }} severity="success">
+                  Logged In successfully!
+                </Alert>
+              )}
+              {authError && (
+                <Alert sx={{ width: "100%", my: 1 }} severity="error">
+                  {authError}
+                </Alert>
+              )}
+            </Box>
+            <Button
+              className="login-btn"
+              sx={{ width: "100%", my: 1 }}
+              type="submit"
+              variant="contained"
+            >
+              Login
+            </Button>
+            <Button
+              className="login-btn"
+              sx={{ width: "100%", my: 1 }}
+              onClick={handleGoogleSign}
+              variant="contained"
+            >
+              <img
+                style={{ marginRight: "5px" }}
+                height="30px"
+                src={google}
+                alt=""
+              />
+              Sign In With Google
+            </Button>
+          </form>
+
           <NavLink style={{ textDecoration: "none" }} to="/register">
             <br />
             <Button variant="text">Register Here</Button>

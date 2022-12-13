@@ -9,7 +9,7 @@ import {
 import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import useAuth from "../../../Hooks/useAuth";
-
+import './Register.css'
 
 const Register = () => {
   const [userRegisterData, setUserRegisterData] = useState({});
@@ -92,6 +92,7 @@ const Register = () => {
             />
             {isLoading && <CircularProgress />}
             <Button
+              className="register-btn"
               sx={{ width: "75%", m: 1 }}
               type="submit"
               variant="contained"
