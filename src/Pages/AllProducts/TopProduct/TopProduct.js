@@ -7,7 +7,7 @@ const TopProduct = () => {
   const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
      setIsLoading(true);
-     fetch("https://immense-wildwood-96183.herokuapp.com/apartments/top")
+     fetch("https://real-state-server-mern.onrender.com/apartments/top")
        .then((res) => res.json())
        .then((data) => setProducts(data))
        .finally(() => setIsLoading(false));

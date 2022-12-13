@@ -12,7 +12,7 @@ const MyOrder = () => {
 
   // Get Ordered food by customer email
   useEffect(() => {
-    fetch(`https://immense-wildwood-96183.herokuapp.com/orders/${user?.email}`)
+    fetch(`https://real-state-server-mern.onrender.com/orders/${user?.email}`)
       .then((res) => res.json())
       .then((data) => setOrders(data));
   }, [cancel]);
@@ -26,7 +26,7 @@ const MyOrder = () => {
     if (confirm) {
       axios
         .delete(
-          `https://immense-wildwood-96183.herokuapp.com/order/delete/${id}`
+          `https://real-state-server-mern.onrender.com/order/delete/${id}`
         )
         .then((res) => {
           if (res.data.deletedCount) {

@@ -7,10 +7,10 @@ const RegularProduct = () => {
   const [isLoading, setIsLoading]=useState(false)
   useEffect(() => {
      setIsLoading(true)
-     fetch("https://immense-wildwood-96183.herokuapp.com/apartments/regular")
+     fetch("https://real-state-server-mern.onrender.com/apartments/regular")
        .then((res) => res.json())
        .then((data) => setProducts(data))
-    .finally(()=>setIsLoading(false))
+       .finally(() => setIsLoading(false));
    }, []);
     return (
       <div className="py-5">

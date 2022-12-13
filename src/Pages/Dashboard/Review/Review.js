@@ -27,7 +27,7 @@ const Review = () => {
       customerName: user?.displayName,
     };
     axios
-      .post("https://immense-wildwood-96183.herokuapp.com/review", review)
+      .post("https://real-state-server-mern.onrender.com/review", review)
       .then((res) => {
         if (res.data.insertedId) {
           Swal.fire({

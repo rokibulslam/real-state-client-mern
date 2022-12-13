@@ -3,8 +3,6 @@ import { Col, Nav, Row, Tab, Tabs } from 'react-bootstrap';
 import Navigation from '../../Home/Navigation/Navigation';
 import AllProduct from '../AllProducts.js/AllProduct';
 import FeaturedProduct from '../FeaturedProduct/FeaturedProduct';
-import HomePageProduct from '../HomPageProduct/HomePageProduct';
-import ProductCard from '../ProductCard/ProductCard';
 import RegularProduct from '../RegularProduct/RegularProduct';
 import TopProduct from '../TopProduct/TopProduct';
 

@@ -13,7 +13,7 @@ import "./Reviews.css";
 const Reviews = () => {
   const [reviews, setReviews] = useState([]);
   useEffect(() => {
-    fetch("https://immense-wildwood-96183.herokuapp.com/reviews")
+    fetch("https://real-state-server-mern.onrender.com/reviews")
       .then((res) => res.json())
       .then((data) => setReviews(data));
   }, []);

@@ -43,7 +43,7 @@ const AddProduct = () => {
     e.preventDefault();
     axios
       .post(
-        "https://immense-wildwood-96183.herokuapp.com/apartments",
+        "https://real-state-server-mern.onrender.com/apartments",
         productDetails
       )
 

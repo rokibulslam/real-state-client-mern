@@ -9,7 +9,7 @@ const ManageProduct = () => {
     const [isLoading, setIsLoading] = useState(false);
     useEffect(() => {
       setIsLoading(true);
-    fetch("https://immense-wildwood-96183.herokuapp.com/apartments")
+    fetch("https://real-state-server-mern.onrender.com/apartments")
       .then((res) => res.json())
       .then((data) => setProducts(data))
       .finally(() => setIsLoading(false));
@@ -24,20 +24,19 @@ const ManageProduct = () => {
         setIsLoading(true)
       axios
         .delete(
-          `https://immense-wildwood-96183.herokuapp.com/apartment/delete/${id}`
+          `https://real-state-server-mern.onrender.com/apartment/delete/${id}`
         )
-          .then((res) => {
-              
-              if (res.data.deletedCount) {
-                  setIsLoading(false)
-                Swal.fire({
-                  position: "center",
-                  icon: "success",
-                  title: "Product has been Deleted",
-                  showConfirmButton: false,
-                  timer: 2000,
-                });
-              }
+        .then((res) => {
+          if (res.data.deletedCount) {
+            setIsLoading(false);
+            Swal.fire({
+              position: "center",
+              icon: "success",
+              title: "Product has been Deleted",
+              showConfirmButton: false,
+              timer: 2000,
+            });
+          }
         });
     }
   };

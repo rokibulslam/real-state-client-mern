@@ -7,7 +7,7 @@ const FeaturedProduct = () => {
   const [isLoading, setIsLoading] = useState(false)
   useEffect(() => {
       setIsLoading(true);
-      fetch("https://immense-wildwood-96183.herokuapp.com/apartments/featured")
+      fetch("https://real-state-server-mern.onrender.com/apartments/featured")
         .then((res) => res.json())
         .then((data) => setProducts(data))
         .finally(() => setIsLoading(false));

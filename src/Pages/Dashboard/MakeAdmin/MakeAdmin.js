@@ -13,7 +13,7 @@ const MakeAdmin = () => {
         e.preventDefault();
         const userEmail = { email };
         console.log(email);
-        fetch("https://immense-wildwood-96183.herokuapp.com/users/admin", {
+        fetch("https://real-state-server-mern.onrender.com/users/admin", {
           method: "PUT",
           headers: { "content-type": "application/json" },
           body: JSON.stringify(userEmail),

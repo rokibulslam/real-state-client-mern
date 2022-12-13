@@ -30,7 +30,7 @@ const Purchase = () => {
   const { Name, Price, Category, Description, Image } = product;
 
   useEffect(() => {
-    fetch(`https://immense-wildwood-96183.herokuapp.com/apartment/${id}`)
+    fetch(`https://real-state-server-mern.onrender.com/apartment/${id}`)
       .then((res) => res.json())
       .then((data) => setProduct(data));
   }, [id]);
@@ -58,7 +58,7 @@ const Purchase = () => {
       email: user?.email,
     };
     axios
-      .post("https://immense-wildwood-96183.herokuapp.com/orders", order)
+      .post("https://real-state-server-mern.onrender.com/orders", order)
       .then((res) => {
         if (res.data.insertedId) {
           Swal.fire({
