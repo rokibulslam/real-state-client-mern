@@ -40,81 +40,67 @@ const Register = () => {
     e.preventDefault();
   };
   return (
-    <Box style={{height: '100vh', display: 'flex'}}>
+    <Box style={{ height: "100vh", display: "flex" }}>
       <Container
         sx={{
           display: "flex",
           flexDirection: "column",
-
           justifyContent: "center",
           alignItems: "center",
         }}
       >
         <h1 style={{ textAlign: "center" }}>Register Here</h1>
 
-        {/* <Grid item sx={{ mt: 8 }} xs={12} md={6}> */}
-        {!isLoading && (
-          <form onSubmit={handleRegisterSubmit}>
-            <TextField
-              sx={{ width: "75%", m: 1 }}
-              id="standard-basic"
-              label="Your Name"
-              name="name"
-              onBlur={handleOnBlur}
-              variant="standard"
-            />
-            <TextField
-              sx={{ width: "75%", m: 1 }}
-              id="standard-basic"
-              label="Your Email"
-              name="email"
-              type="email"
-              onBlur={handleOnBlur}
-              variant="standard"
-            />
-            <TextField
-              sx={{ width: "75%", m: 1 }}
-              id="standard-basic"
-              label="Your Password"
-              type="password"
-              name="password"
-              onBlur={handleOnBlur}
-              variant="standard"
-            />
-            <TextField
-              sx={{ width: "75%", m: 1 }}
-              id="standard-basic"
-              label="ReType Your Password"
-              type="password"
-              name="password2"
-              onBlur={handleOnBlur}
-              variant="standard"
-            />
-            {isLoading && <CircularProgress />}
-            <Button
-              className="register-btn"
-              sx={{ width: "75%", m: 1 }}
-              type="submit"
-              variant="contained"
-            >
-              Register
-            </Button>
-            <NavLink style={{ textDecoration: "none" }} to="/login">
-              <Button variant="text">Already Registered? Please Login</Button>
-            </NavLink>
-          </form>
-        )}
-
-        {user?.email && (
-          <Alert sx={{ width: "75%", m: 1 }} severity="success">
-            User Created successfully!
-          </Alert>
-        )}
-        {authError && (
-          <Alert sx={{ width: "75%", m: 1 }} severity="error">
-            {authError}
-          </Alert>
-        )}
+        <form onSubmit={handleRegisterSubmit}>
+          <TextField
+            sx={{ width: "75%", m: 1 }}
+            id="standard-basic"
+            label="Your Name"
+            name="name"
+            onBlur={handleOnBlur}
+            variant="standard"
+          />
+          <TextField
+            sx={{ width: "75%", m: 1 }}
+            id="standard-basic"
+            label="Your Email"
+            name="email"
+            type="email"
+            onBlur={handleOnBlur}
+            variant="standard"
+          />
+          <TextField
+            sx={{ width: "75%", m: 1 }}
+            id="standard-basic"
+            label="Your Password"
+            type="password"
+            name="password"
+            onBlur={handleOnBlur}
+            variant="standard"
+          />
+          <TextField
+            sx={{ width: "75%", m: 1 }}
+            id="standard-basic"
+            label="ReType Your Password"
+            type="password"
+            name="password2"
+            onBlur={handleOnBlur}
+            variant="standard"
+          />
+          <button className="register-btn" type="submit">
+            Register
+          </button>
+        </form>
+        <Box sx={{ width: "50%", my:1}}>
+          {isLoading && <CircularProgress />}
+          {user?.email && (
+            <Alert severity="success">Logged In successfully!</Alert>
+          )}
+          {authError && <Alert severity="error">{authError}</Alert>}
+        </Box>
+        <NavLink style={{ textDecoration: "none" }} to="/login">
+          <Button variant="text">Already Registered? Please Login</Button>
+        </NavLink>
       </Container>
     </Box>
   );

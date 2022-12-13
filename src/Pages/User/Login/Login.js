@@ -83,20 +83,10 @@ const Login = () => {
                 </Alert>
               )}
             </Box>
-            <Button
-              className="login-btn"
-              sx={{ width: "100%", my: 1 }}
-              type="submit"
-              variant="contained"
-            >
+            <button className="login-btn" type="submit">
               Login
-            </Button>
-            <Button
-              className="login-btn"
-              sx={{ width: "100%", my: 1 }}
-              onClick={handleGoogleSign}
-              variant="contained"
-            >
+            </button>
+            <button className="login-btn" onClick={handleGoogleSign}>
               <img
                 style={{ marginRight: "5px" }}
                 height="30px"
@@ -104,7 +94,7 @@ const Login = () => {
                 alt=""
               />
               Sign In With Google
-            </Button>
+            </button>
           </form>
 
           <NavLink style={{ textDecoration: "none" }} to="/register">
