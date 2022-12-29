@@ -14,12 +14,12 @@ const AllProduct = () => {
 
   useEffect(() => {
     dispatch(productsListAction());
-  },[dispatch])
+  },[])
   
      
      return (
        <div className="py-5">
-         {loading && (
+         {!loading && (
            <div>
              <Spinner animation="grow" variant="primary" />
              <Spinner animation="grow" variant="secondary" />

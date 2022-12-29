@@ -1,17 +1,18 @@
 import { fontWeight } from '@mui/system';
 import React from 'react';
-import { Button, Card, ListGroup, ListGroupItem } from 'react-bootstrap';
+import { Card } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import'./Product.css'
 
 const ProductCard = (props) => {
   const { product } = props
-  
+  console.log(product)
     return (
       <div className="col-md-4 col-sm-12 d-flex justify-content-center align-items-center">
-        <Card className="card-container ">
+        <Card className="card-container overflow-hidden">
           <Card.Img
-            style={{ borderRadius: "5px", width: "300px", height: "300px" }}
+            className="fluid card-img"
+            style={{ borderRadius: "5px", height: "250px" }}
             variant="top"
             src={product?.Image}
           />
@@ -25,24 +26,17 @@ const ProductCard = (props) => {
           )}
           <Card.Body className="text-start">
             <Card.Title>
-              <NavLink
-                className="card-title"
-                to={`/home/purchase/${product?._id}`}
-              >
-                {product?.Name}
-              </NavLink>
+              <h3>{product?.Name}</h3>
             </Card.Title>
-            <p
-              style={{
-                background: "transparent",
-                border: "0",
-                fontSize: "20px",
-                fontWeight: "bold",
-                paddingRight: "20px",
-                paddingTop: "5px",
-              }}
-            >
-              ${product?.Price}
+            <div className="d-flex justify-content-between align-items-center">
+              <span>${product?.Price}</span>
+              <NavLink to={`/home/purchase/${product?._id}`}>
+                <button className="card-btn">Buy Now</button>
+              </NavLink>
+            </div>
+
+            <p >
+              {product?.Description.replace(/^(.{80}[^\s]*).*/, "$1")}....
             </p>
           </Card.Body>
         </Card>
