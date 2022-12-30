@@ -14,23 +14,38 @@ const Slide = () => {
      slidesToScroll: 1,
    };
     return (
-      <div className='py-5 px-sm-2'>
+      <div className="py-5 px-sm-2">
         <div className="container">
           <div className="row">
-            <div className="col-md-6">
+            <div className="col-lg-6 col-md-12 justify-content-center align-items-center">
               <Slider {...settings}>
                 <div>
-                  <img src={img1} className="img-fluid" alt="" />
+                  <img
+                    style={{ height: "400px", width: "100%" }}
+                    src={img1}
+                    className="img-fluid"
+                    alt=""
+                  />
                 </div>
                 <div>
-                  <img src={img2} className="img-fluid" alt="" />
+                  <img
+                    style={{ height: "400px", width: "100%" }}
+                    src={img2}
+                    className="img-fluid"
+                    alt=""
+                  />
                 </div>
                 <div>
-                  <img src={img3} className="img-fluid" alt="" />
+                  <img
+                    style={{ height: "400px", width: "100%" }}
+                    src={img3}
+                    className="img-fluid"
+                    alt=""
+                  />
                 </div>
               </Slider>
             </div>
-            <div className="col-md-6 px-5 text-start slide-header">
+            <div className="col-lg-6 col-md-12 px-5 text-start slide-header">
               <h1>Amenities</h1>
               <p>
                 In property and land use planning, amenity is something

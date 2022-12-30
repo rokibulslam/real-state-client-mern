@@ -31,7 +31,7 @@ const Banner = () => {
 
                   <div className="col-md-6">
                     <NavLink to="/productPage">
-                      <button className="banner-btn ">Buy Apartment</button>
+                      <button className="primary-btn ">Buy Apartment</button>
                     </NavLink>
                   </div>
                 </div>

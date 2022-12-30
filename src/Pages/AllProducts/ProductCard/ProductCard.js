@@ -8,7 +8,7 @@ const ProductCard = (props) => {
   const { product } = props
   console.log(product)
     return (
-      <div className="col-md-4 col-sm-12 d-flex justify-content-center align-items-center">
+      <div className="col-xl-4 col-md-6 col-sm-12 d-flex justify-content-center align-items-center">
         <Card className="card-container overflow-hidden">
           <Card.Img
             className="fluid card-img"
@@ -28,14 +28,14 @@ const ProductCard = (props) => {
             <Card.Title>
               <h3>{product?.Name}</h3>
             </Card.Title>
-            <div className="d-flex justify-content-between align-items-center">
-              <span>${product?.Price}</span>
+            <div className="d-flex justify-content-between">
+              <h4 className='te fw-bold'>${product?.Price}</h4>
               <NavLink to={`/home/purchase/${product?._id}`}>
-                <button className="card-btn">Buy Now</button>
+                <button className="card-btn">Book Now</button>
               </NavLink>
             </div>
 
-            <p >
+            <p className='description'>
               {product?.Description.replace(/^(.{80}[^\s]*).*/, "$1")}....
             </p>
           </Card.Body>

@@ -21,7 +21,7 @@ const Features = () => {
                     Interiors & exteriors.
                   </p>
                   <NavLink to="/productPage">
-                    <button className="banner-btn my-5">Buy Apartment</button>
+                    <button className="primary-btn my-5">Buy Apartment</button>
                   </NavLink>
                 </div>
               </div>

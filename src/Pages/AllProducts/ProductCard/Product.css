@@ -1,5 +1,6 @@
 .card-container{
     width: 380px;
+    height: 400px;
 }
 .card-img{
   height: 250px;
@@ -27,4 +28,7 @@
   font-size: 16px;
   font-weight: bolder;
   border-radius: 5px;
+}
+.description{
+  color: rgba(0, 0, 0, 0.623);
 }

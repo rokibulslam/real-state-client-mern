@@ -2,11 +2,11 @@ import {
   Grid,
   Paper,
   Typography,
-  Button,
   Rating,
   Container,
 } from "@mui/material";
 import { Box } from "@mui/system";
+import moment from "moment";
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import "./Reviews.css";
@@ -21,20 +21,20 @@ const Reviews = () => {
   return (
     <div className="review-bg ">
       <h1 className="">Customer Reviews</h1>
-      <Box sx={{ py: 5 }}>
+      <Box
+        sx={{
+          py: 5,
+        }}
+      >
         <Container>
-          <Grid container spacing={2}>
+          <Grid container spacing={10}>
             {reviews?.map((review) => (
               <Grid key={review._id} item xs={12} sm={6} md={4}>
-                <Paper elevation={3} sx={{ p: 2, height: 250, width: 300 }}>
-                  <Typography
-                    sx={{ color: "error.main", fontWeight: 600 }}
-                    variant="h5"
-                    gutterBottom
-                    component="div"
-                  >
-                    Reviewed By
-                  </Typography>
+                <Paper
+                  className="paper"
+                  elevation={5}
+                  sx={{ p: 2}}
+                >
                   <Typography
                     sx={{ color: "info.main", fontWeight: 400 }}
                     variant="h5"
@@ -43,24 +43,32 @@ const Reviews = () => {
                   >
                     {review.customerName}
                   </Typography>
-                  <Box
-                    sx={{
-                      "& > legend": { mt: 2 },
-                    }}
+                  <Typography
+                    variant="h7"
+                    gutterBottom
+                    component="div"
+                    sx={{ textAlign: "center" }}
                   >
-                    <Rating
-                      readOnly
-                      name="simple-controlled"
-                      value={review.star}
-                    />
-                  </Box>
-
-                  <Typography variant="h7" gutterBottom component="div">
                     {review.comment}
                   </Typography>
-                  <Typography variant="h6" gutterBottom component="div">
-                    {review.date}
-                  </Typography>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                    }}
+                  >
+                    <Box>
+                      <Rating
+                        readOnly
+                        name="simple-controlled"
+                        value={review.star}
+                      />
+                    </Box>
+                    <Typography variant="p" gutterBottom component="div">
+                      {moment(review?.date).format('dddd MMM Y')}
+                    </Typography>
+                  </Box>
                 </Paper>
               </Grid>
             ))}
