@@ -19,6 +19,23 @@
   color: rgb(20, 19, 19);
   border-radius: 5px;
 }
+
+/* CSS */
+.card-btn {
+  padding: 2px 7px;
+  border: none;
+  outline: none;
+  color: rgb(255, 255, 255);
+  background: #111;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: .4s;
+}
+.card-btn:hover{
+  transform: scale(1.1);
+  background-color: rgb(134, 80, 25);
+}
+
 .discount-text{
   position: absolute;
   top: 35px;

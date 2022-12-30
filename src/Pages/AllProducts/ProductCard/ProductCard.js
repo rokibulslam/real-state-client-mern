@@ -6,7 +6,6 @@ import'./Product.css'
 
 const ProductCard = (props) => {
   const { product } = props
-  console.log(product)
     return (
       <div className="col-xl-4 col-md-6 col-sm-12 d-flex justify-content-center align-items-center">
         <Card className="card-container overflow-hidden">

@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import {  Card, NavLink } from "react-bootstrap";
+import {  Card  } from "react-bootstrap";
 
 import Swal from "sweetalert2";
 
@@ -47,15 +47,15 @@ const ManageProduct = () => {
         <h4 className="banner-text ">
           <i>Manage APARTMENT</i>
         </h4>
-        
+
         <div className="py-5">
           <div className="row g-5">
             {products.map((product) => (
-              <div className="col-md-4 col-sm-12">
+              <div className="col-xl-4 col-md-6 col-sm-12 d-flex justify-content-center align-items-center">
                 <Card className="card-container">
                   <Card.Img
                     className="img-fluid"
-                    style={{ borderRadius: "5px" }}
+                    style={{ borderRadius: "5px", height: "250px" }}
                     variant="top"
                     src={product?.Image}
                   />
@@ -88,7 +88,7 @@ const ManageProduct = () => {
 
                       <button
                         onClick={() => handleDeleteFood(product._id)}
-                        className="banner-btn"
+                        className="card-btn"
                       >
                         Delete Apartment
                       </button>
