@@ -114,7 +114,7 @@ const useFirebase = () => {
       .then((data) => setAdmin(data.admin))
       .catch((er) => {
         setAuthError(er);
-      });
+      }).finally(()=>{setIsLoading(false)})
   }, [user?.email]);
   // Save user to database
   const saveUserData = (email, name, method) => {
