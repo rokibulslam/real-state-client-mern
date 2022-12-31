@@ -8,7 +8,7 @@ import ProductCard from '../ProductCard/ProductCard';
 
 const HomePageProduct = () => {
   const dispatch = useDispatch();
-  const productList = useSelector(state => state.productList);
+  const productList = useSelector(state => state?.productList);
   const { loading, products } = productList;
   useEffect(() => {
     dispatch(productsListAction())
@@ -29,7 +29,7 @@ const HomePageProduct = () => {
         )}
         <div className="container">
           <div className="row g-5">
-            {products.slice(0, 6)?.map((product) => (
+            {products?.slice(0, 6)?.map((product) => (
               <ProductCard
                 key={product._id}
                 product={product}

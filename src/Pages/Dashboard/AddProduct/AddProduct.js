@@ -43,7 +43,7 @@ const AddProduct = () => {
     e.preventDefault();
     axios
       .post(
-        "https://real-state-server-mern.onrender.com/apartments",
+        "https://pink-combative-kangaroo.cyclic.app/apartments",
         productDetails
       )
 

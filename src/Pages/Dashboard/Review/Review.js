@@ -27,7 +27,7 @@ const Review = () => {
       customerName: user?.displayName,
     };
     axios
-      .post("https://real-state-server-mern.onrender.com/review", review)
+      .post("https://pink-combative-kangaroo.cyclic.app/review", review)
       .then((res) => {
         if (res.data.insertedId) {
           Swal.fire({

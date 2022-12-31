@@ -19,7 +19,7 @@ const AllProduct = () => {
      
      return (
        <div className="py-5">
-         {!loading && (
+         {loading && (
            <div>
              <Spinner animation="grow" variant="primary" />
              <Spinner animation="grow" variant="secondary" />

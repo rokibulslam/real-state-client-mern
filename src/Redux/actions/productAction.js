@@ -8,9 +8,10 @@ export const productsListAction = () => async (dispatch) => {
     try {
         dispatch({ type: PRODUCT_LIST_REQUEST })
         const { data } = await axios.get(
-          "https://real-state-server-mern.onrender.com/apartments"
+          "https://pink-combative-kangaroo.cyclic.app/apartments"
         );
-        dispatch({ type: PRODUCT_LIST_SUCCESS, payload: data });
+      dispatch({ type: PRODUCT_LIST_SUCCESS, payload: data })
+      console.log(data)
     } catch (error) {
         dispatch({
             type: PRODUCT_LIST_FAIL,
@@ -27,7 +28,7 @@ export const productDetailsAction = (id) => async(dispatch) => {
         console.log(id)
         dispatch({ type: PRODUCT_DETAILS_REQUEST })
         const data = axios.get(
-          `https://real-state-server-mern.onrender.com/apartment/${id}`
+          `https://pink-combative-kangaroo.cyclic.app/apartment/${id}`
         );
         dispatch({ type: PRODUCT_DETAILS_SUCCESS, payload: data });
     } catch (error) {

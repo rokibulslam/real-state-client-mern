@@ -8,14 +8,14 @@ const ManageOrder = () => {
     const [update, setUpdate] = useState("");
     
     useEffect(() => {
-        fetch("https://real-state-server-mern.onrender.com/orders")
+        fetch("https://pink-combative-kangaroo.cyclic.app/orders")
           .then((res) => res.json())
           .then((data) => setOrders(data));
     }, [update])
     
     const handlePending = (id, text) => {
       axios
-        .put(`https://real-state-server-mern.onrender.com/order/status/${id}`, {
+        .put(`https://pink-combative-kangaroo.cyclic.app/order/status/${id}`, {
           status: text,
         })
         .then((res) => {
@@ -40,7 +40,7 @@ const ManageOrder = () => {
       if (confirm) {
         axios
           .delete(
-            `https://real-state-server-mern.onrender.com/order/delete/${id}`
+            `https://pink-combative-kangaroo.cyclic.app/order/delete/${id}`
           )
           .then((res) => {
             if (res.data.deletedCount) {

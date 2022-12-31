@@ -9,7 +9,7 @@ const ManageProduct = () => {
     const [isLoading, setIsLoading] = useState(false);
     useEffect(() => {
       setIsLoading(true);
-    fetch("https://real-state-server-mern.onrender.com/apartments")
+    fetch("https://pink-combative-kangaroo.cyclic.app/apartments")
       .then((res) => res.json())
       .then((data) => setProducts(data))
       .finally(() => setIsLoading(false));
@@ -24,7 +24,7 @@ const ManageProduct = () => {
         setIsLoading(true)
       axios
         .delete(
-          `https://real-state-server-mern.onrender.com/apartment/delete/${id}`
+          `https://pink-combative-kangaroo.cyclic.app/apartment/delete/${id}`
         )
         .then((res) => {
           if (res.data.deletedCount) {

@@ -21,7 +21,6 @@ const useFirebase = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [authError, setAuthError] = useState("");
   const [admin, setAdmin] = useState(false);
-console.log(admin)
   const auth = getAuth();
   const googleProvider = new GoogleAuthProvider();
 
@@ -109,14 +108,18 @@ console.log(admin)
   };
   // Get user role from database
   useEffect(() => {
-    fetch(`https://real-state-server-mern.onrender.com/users/${user?.email}`)
+    setIsLoading(true);
+    fetch(`https://pink-combative-kangaroo.cyclic.app/users/${user?.email}`)
       .then((res) => res.json())
-      .then((data) => setAdmin(data.admin));
+      .then((data) => setAdmin(data.admin))
+      .catch((er) => {
+        setAuthError(er);
+      });
   }, [user?.email]);
   // Save user to database
   const saveUserData = (email, name, method) => {
     const userData = { email, name };
-    fetch("https://real-state-server-mern.onrender.com/users", {
+    fetch("https://pink-combative-kangaroo.cyclic.app/users", {
       method: method,
       headers: {
         "content-type": "application/json",

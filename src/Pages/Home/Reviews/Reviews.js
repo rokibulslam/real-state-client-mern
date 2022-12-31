@@ -9,7 +9,7 @@ import StarIcon from "@mui/icons-material/Star";
 const Reviews = () => {
   const [reviews, setReviews] = useState([]);
   useEffect(() => {
-    fetch("https://real-state-server-mern.onrender.com/reviews")
+    fetch("https://pink-combative-kangaroo.cyclic.app/reviews")
       .then((res) => res.json())
       .then((data) => setReviews(data));
   }, []);

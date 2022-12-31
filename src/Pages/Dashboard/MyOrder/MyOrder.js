@@ -12,7 +12,7 @@ const MyOrder = () => {
 
   // Get Ordered food by customer email
   useEffect(() => {
-    fetch(`https://real-state-server-mern.onrender.com/orders/${user?.email}`)
+    fetch(`https://pink-combative-kangaroo.cyclic.app/orders/${user?.email}`)
       .then((res) => res.json())
       .then((data) => setOrders(data));
   }, [cancel]);
@@ -25,9 +25,7 @@ const MyOrder = () => {
 
     if (confirm) {
       axios
-        .delete(
-          `https://real-state-server-mern.onrender.com/order/delete/${id}`
-        )
+        .delete(`https://pink-combative-kangaroo.cyclic.app/order/delete/${id}`)
         .then((res) => {
           if (res.data.deletedCount) {
             Swal.fire({

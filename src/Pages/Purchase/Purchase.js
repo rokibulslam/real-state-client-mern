@@ -30,7 +30,7 @@ const Purchase = () => {
   const { Name, Price, Category, Description, Image } = product;
 
   useEffect(() => {
-    fetch(`https://real-state-server-mern.onrender.com/apartment/${id}`)
+    fetch(`https://pink-combative-kangaroo.cyclic.app/apartment/${id}`)
       .then((res) => res.json())
       .then((data) => setProduct(data));
   }, [id]);
@@ -58,7 +58,7 @@ const Purchase = () => {
       email: user?.email,
     };
     axios
-      .post("https://real-state-server-mern.onrender.com/orders", order)
+      .post("https://pink-combative-kangaroo.cyclic.app/orders", order)
       .then((res) => {
         if (res.data.insertedId) {
           Swal.fire({

@@ -7,7 +7,7 @@ const RegularProduct = () => {
   const [isLoading, setIsLoading]=useState(false)
   useEffect(() => {
      setIsLoading(true)
-     fetch("https://real-state-server-mern.onrender.com/apartments/regular")
+     fetch("https://pink-combative-kangaroo.cyclic.app/apartments/regular")
        .then((res) => res.json())
        .then((data) => setProducts(data))
        .finally(() => setIsLoading(false));

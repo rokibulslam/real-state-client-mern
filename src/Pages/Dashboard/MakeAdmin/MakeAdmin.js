@@ -13,7 +13,7 @@ const MakeAdmin = () => {
         e.preventDefault();
         const userEmail = { email };
         console.log(email);
-        fetch("https://real-state-server-mern.onrender.com/users/admin", {
+        fetch("https://pink-combative-kangaroo.cyclic.app/users/admin", {
           method: "PUT",
           headers: { "content-type": "application/json" },
           body: JSON.stringify(userEmail),

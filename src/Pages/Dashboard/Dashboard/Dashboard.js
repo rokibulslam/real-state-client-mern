@@ -6,26 +6,19 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Divider from "@mui/material/Divider";
 import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-import MailIcon from "@mui/icons-material/Mail";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import { Outlet, Link, NavLink, Route } from "react-router-dom";
+import { Outlet, NavLink } from "react-router-dom";
 import { Button } from "@mui/material";
 import useAuth from "../../../Hooks/useAuth";
-import { FcAddDatabase, FcHeatMap, FcHome, FcPlus, FcRating } from "react-icons/fc";
+import { FcAddDatabase, FcHeatMap, FcHome, FcRating } from "react-icons/fc";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faSignOutAlt} from "@fortawesome/free-solid-svg-icons";
-import ManageOrder from "../ManageOrder/ManageOrder";
 import MakeAdmin from "../MakeAdmin/MakeAdmin";
 import MyOrder from "../MyOrder/MyOrder";
-import { green } from "@mui/material/colors";
-import { height } from "@mui/system";
 import profile from "../../../Images/profile.png";
 
 const drawerWidth = 200;
@@ -88,16 +81,7 @@ function Dashboard(props) {
                 </Button>
               </NavLink>
             </ListItem>
-            {/* <ListItem>
-              <NavLink
-                style={{ textDecoration: "none" }}
-                to="/dashboard/myOrders"
-              >
-                <Button variant="text" style={{ color: "inherit" }}>
-                  My Order
-                </Button>
-              </NavLink>
-            </ListItem> */}
+          
           </Box>
         )}
         {admin && (
@@ -141,16 +125,6 @@ function Dashboard(props) {
                 </Button>
               </NavLink>
             </ListItem>
-            {/* <ListItem>
-              <NavLink
-                style={{ textDecoration: "none" }}
-                to="/dashboard/makeAdmin"
-              >
-                <Button variant="text" style={{ color: "inherit" }}>
-                  Make Admin
-                </Button>
-              </NavLink>
-            </ListItem> */}
           </Box>
         )}
 
