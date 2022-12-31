@@ -50,8 +50,9 @@ function Dashboard(props) {
           alignItems: "center",
         }}
       >
-        <span style={{ color: "red" }}>MY</span>HOM
-        <span style={{ color: "red" }}>E</span>
+        {
+          admin ? <span>ADMIN</span>: <span>USER</span>
+        }
       </Typography>
 
       <Divider style={{ color: "white", height: "2px" }} />
@@ -81,7 +82,6 @@ function Dashboard(props) {
                 </Button>
               </NavLink>
             </ListItem>
-          
           </Box>
         )}
         {admin && (
@@ -91,10 +91,19 @@ function Dashboard(props) {
                 style={{ textDecoration: "none" }}
                 to="/dashboard/addProduct"
               >
-                <span style={{ fontSize: "20px", paddingRight: "2px" }}>
+                <span
+                  style={{
+                    fontSize: "20px",
+                    paddingRight: "2px",
+                    color: "white",
+                  }}
+                >
                   <FcAddDatabase />
                 </span>
-                <Button variant="text" style={{ color: "white" }}>
+                <Button
+                  variant="text"
+                  style={{ color: "white"}}
+                >
                   Add a Product
                 </Button>
               </NavLink>
@@ -104,7 +113,13 @@ function Dashboard(props) {
                 style={{ textDecoration: "none" }}
                 to="/dashboard/manageProduct"
               >
-                <span style={{ fontSize: "20px", paddingRight: "2px" }}>
+                <span
+                  style={{
+                    fontSize: "20px",
+                    paddingRight: "2px",
+                    color: "white",
+                  }}
+                >
                   <FcHeatMap />
                 </span>
                 <Button variant="text" style={{ color: "white" }}>
