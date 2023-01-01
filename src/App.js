@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './Pages/Home/Home/Home';
@@ -17,8 +16,19 @@ import Review from './Pages/Dashboard/Review/Review';
 import Notfound from './Pages/Notfound/Notfound';
 import Contact from './Pages/Contact/Contact';
 import ManageProduct from './Pages/Dashboard/ManageProduct/ManageProduct';
+import useAuth from './Hooks/useAuth';
+import { useEffect, useState } from 'react';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
 
 function App() {
+  const auth = getAuth()
+  const [render, setRerender]= useState()
+  const [admin, setAdmin] = useState(null)
+  const isAdmin = JSON.parse(localStorage.getItem("userRole"));
+  useEffect(() => {
+    setRerender(!render);
+    setAdmin(isAdmin);
+  }, [render]);
   return (
     <div className="App">
       <AuthProvider>
@@ -47,17 +57,15 @@ function App() {
               }
             >
               <Route
-                path="/dashboard/addProduct"
-                element={<AddProduct />}
+                index
+                element={admin ? <MakeAdmin /> : <MyOrder />}
               ></Route>
-              <Route path="/dashboard/orders" element={<ManageOrder />}></Route>
-              <Route path="/dashboard/myOrders" element={<MyOrder />}></Route>
-              <Route
-                path="/dashboard/makeAdmin"
-                element={<MakeAdmin />}
-              ></Route>
-              <Route path="/dashboard/review" element={<Review />}></Route>
-              <Route path="/dashboard/manageProduct" element={<ManageProduct />}></Route>
+              <Route path="addProduct" element={<AddProduct />}></Route>
+              <Route path="orders" element={<ManageOrder />}></Route>
+              <Route path="myOrders" element={<MyOrder />}></Route>
+              <Route path="makeAdmin" element={<MakeAdmin />}></Route>
+              <Route path="review" element={<Review />}></Route>
+              <Route path="manageProduct" element={<ManageProduct />}></Route>
             </Route>
 
             <Route path="*" element={<Notfound></Notfound>}></Route>

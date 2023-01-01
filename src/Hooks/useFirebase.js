@@ -23,7 +23,7 @@ const useFirebase = () => {
   const [admin, setAdmin] = useState(false);
   const auth = getAuth();
   const googleProvider = new GoogleAuthProvider();
-
+  console.log(admin);
   // Google SignIn
   const signInWithGoogle = (location, navigate) => {
     setIsLoading(true);
@@ -45,6 +45,7 @@ const useFirebase = () => {
   };
   // Register New User
   const registerUser = (email, password, name, navigate) => {
+    
     setIsLoading(true);
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
@@ -69,18 +70,38 @@ const useFirebase = () => {
   // Login User
   const loginUser = (email, password, location, navigate) => {
     setIsLoading(true);
+    
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const destination = location?.state?.from || "/dashboard";
         navigate(destination);
         setAuthError("");
+
       })
       .catch((error) => {
         setAuthError(error.message);
       })
       .finally(() => setIsLoading(false));
   };
-
+  // Get user role from database
+  useEffect(() => {
+    setIsLoading(true);
+    fetch(`https://pink-combative-kangaroo.cyclic.app/users/${user?.email}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setAdmin(data.admin);
+      })
+      .catch((er) => {
+        setAuthError(er);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  }, [user?.email]);
+  // set Admin 
+  useEffect(() => {
+    localStorage.setItem('userRole', admin)
+  },[admin])
   // Observe User's State
   useEffect(() => {
     const unsubscribed = onAuthStateChanged(auth, (user) => {
@@ -97,6 +118,7 @@ const useFirebase = () => {
   // Logout User
   const logout = () => {
     setIsLoading(true);
+    localStorage.removeItem('userRole')
     signOut(auth)
       .then(() => {
         // Sign-out successful.
@@ -106,16 +128,7 @@ const useFirebase = () => {
       })
       .finally(() => setIsLoading(false));
   };
-  // Get user role from database
-  useEffect(() => {
-    setIsLoading(true);
-    fetch(`https://pink-combative-kangaroo.cyclic.app/users/${user?.email}`)
-      .then((res) => res.json())
-      .then((data) => setAdmin(data.admin))
-      .catch((er) => {
-        setAuthError(er);
-      }).finally(()=>{setIsLoading(false)})
-  }, [user?.email]);
+
   // Save user to database
   const saveUserData = (email, name, method) => {
     const userData = { email, name };
@@ -137,6 +150,7 @@ const useFirebase = () => {
     registerUser,
     loginUser,
     admin,
+    auth,
   };
 };
 export default useFirebase;

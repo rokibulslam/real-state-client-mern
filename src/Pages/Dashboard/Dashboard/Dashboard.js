@@ -281,8 +281,8 @@ function Dashboard(props) {
         }}
       >
         <Toolbar />
-        {admin && <MakeAdmin></MakeAdmin>}
-        {!admin && <MyOrder></MyOrder>}
+        {/* {admin && <MakeAdmin></MakeAdmin>}
+        {!admin && <MyOrder></MyOrder>} */}
         <Outlet></Outlet>
       </Box>
     </Box>
