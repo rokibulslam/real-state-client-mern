@@ -56,14 +56,13 @@ function App() {
               ></Route>
               <Route path="addProduct" element={<AddProduct />}></Route>
               <Route
-                path="orders"
+                path="manageOrders"
                 element={
                   <AdminRoute>
                     <ManageOrder />
                   </AdminRoute>
                 }
               ></Route>
-              <Route path="myOrders" element={<MyOrder />}></Route>
               <Route
                 path="makeAdmin"
                 element={

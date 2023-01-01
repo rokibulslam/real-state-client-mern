@@ -14,7 +14,15 @@ import Typography from "@mui/material/Typography";
 import { Outlet, NavLink } from "react-router-dom";
 import { Button } from "@mui/material";
 import useAuth from "../../../Hooks/useAuth";
-import { FcAddDatabase, FcHeatMap, FcHome, FcRating } from "react-icons/fc";
+import {
+  FcAddDatabase,
+  FcHeatMap,
+  FcHome,
+  FcRating,
+  FcManager,
+  FcExport,
+  FcRedo,
+} from "react-icons/fc";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faSignOutAlt} from "@fortawesome/free-solid-svg-icons";
 import MakeAdmin from "../MakeAdmin/MakeAdmin";
@@ -33,9 +41,10 @@ function Dashboard(props) {
     setMobileOpen(!mobileOpen);
   };
   
-  const userMenuActivator = (item) => {
+  const menuActivator = (item) => {
    setActiveUserMenu(item);
   }
+ 
   const userMenu = [
     {
       path: "/",
@@ -43,7 +52,7 @@ function Dashboard(props) {
       icon: <FcHome />,
     },
     {
-      path: "/dashboard/myOrders",
+      path: "/dashboard/",
       name: "Order",
       icon: <FcHome />,
     },
@@ -52,6 +61,28 @@ function Dashboard(props) {
       name: "Review",
       icon: <FcRating />,
     },
+  ];
+  const adminMenu = [
+    {
+      path: "/dashboard/",
+      name: "Admin",
+      icon: <FcManager />,
+    },
+    {
+      path: "/dashboard/manageOrders",
+      name: "Order",
+      icon: <FcHome />,
+    },
+    {
+      path: "/dashboard/manageProduct",
+      name: "Products",
+      icon: <FcHeatMap />,
+    },
+    {
+      path: "/dashboard/addProduct",
+      name: "Add Products",
+      icon: <FcExport />,
+    }
   ];
   const drawer = (
     <Box className="dashboard-sidebar">
@@ -75,12 +106,11 @@ function Dashboard(props) {
           <Box>
             {userMenu.map((item, index) => (
               <NavLink
-                activeclassName="active"
+                onClick={() => menuActivator(item.name)}
                 style={{ textDecoration: "none" }}
                 to={item.path}
               >
                 <ListItem
-                  onClick={() => userMenuActivator(item.name)}
                   className="navlink"
                   style={
                     activeUserMenu === item.name
@@ -104,57 +134,38 @@ function Dashboard(props) {
         )}
         {admin && (
           <Box>
-            <ListItem>
+            {adminMenu.map((item, index) => (
               <NavLink
+                onClick={() => menuActivator(item.name)}
                 style={{ textDecoration: "none" }}
-                to="/dashboard/addProduct"
+                to={item.path}
               >
-                <span
-                  style={{
-                    fontSize: "20px",
-                    paddingRight: "2px",
-                    color: "white",
-                  }}
+                <ListItem
+                  className="navlink"
+                  style={
+                    activeUserMenu === item.name
+                      ? {
+                          backgroundColor: "rgba(0, 0, 0, 0.493)",
+                          color: "black",
+                        }
+                      : {}
+                  }
                 >
-                  <FcAddDatabase />
-                </span>
-                <Button variant="text" style={{ color: "white" }}>
-                  Add a Product
-                </Button>
+                  <span
+                    style={{
+                      fontSize: "20px",
+                      paddingRight: "2px",
+                      color: "white",
+                    }}
+                  >
+                    {item.icon}
+                  </span>
+                  <Button variant="text" style={{ color: "white" }}>
+                    {item.name}
+                  </Button>
+                </ListItem>
               </NavLink>
-            </ListItem>
-            <ListItem>
-              <NavLink
-                style={{ textDecoration: "none" }}
-                to="/dashboard/manageProduct"
-              >
-                <span
-                  style={{
-                    fontSize: "20px",
-                    paddingRight: "2px",
-                    color: "white",
-                  }}
-                >
-                  <FcHeatMap />
-                </span>
-                <Button variant="text" style={{ color: "white" }}>
-                  Products
-                </Button>
-              </NavLink>
-            </ListItem>
-            <ListItem>
-              <NavLink
-                style={{ textDecoration: "none" }}
-                to="/dashboard/orders"
-              >
-                <span style={{ fontSize: "20px", paddingRight: "2px" }}>
-                  <FcHeatMap />
-                </span>
-                <Button variant="text" style={{ color: "white" }}>
-                  Manage Order
-                </Button>
-              </NavLink>
-            </ListItem>
+            ))}
           </Box>
         )}
 
@@ -162,7 +173,7 @@ function Dashboard(props) {
           <ListItem>
             <Button style={{ color: "white" }} onClick={logout} variant="text">
               <span style={{ paddingRight: "10px", fontSize: "20px" }}>
-                <FontAwesomeIcon icon={faSignOutAlt} />
+                <FcRedo />
               </span>
               Logout
             </Button>

@@ -17,14 +17,14 @@ import initializeFirebase from "../Pages/User/Firebase/Firebase.init";
 initializeFirebase();
 
 const useFirebase = () => {
-  
+
   const [user, setUser] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [authError, setAuthError] = useState("");
   const [admin, setAdmin] = useState(false);
   const auth = getAuth();
   const googleProvider = new GoogleAuthProvider();
-  console.log(admin);
+ 
   // Google SignIn
   const signInWithGoogle = (location, navigate) => {
     setIsLoading(true);
