@@ -17,21 +17,15 @@ import Notfound from './Pages/Notfound/Notfound';
 import Contact from './Pages/Contact/Contact';
 import ManageProduct from './Pages/Dashboard/ManageProduct/ManageProduct';
 import useAuth from './Hooks/useAuth';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import AdminRoute from './Pages/User/AdminRoute/AdminRoute';
+
 
 function App() {
-  const auth = getAuth()
-  const [render, setRerender]= useState()
-  const [admin, setAdmin] = useState(null)
-  const isAdmin = JSON.parse(localStorage.getItem("userRole"));
-  useEffect(() => {
-    setRerender(!render);
-    setAdmin(isAdmin);
-  }, [render]);
+  const {admin} = useAuth();
   return (
     <div className="App">
-      <AuthProvider>
         <Router>
           <Routes>
             <Route path="/" element={<Home />}></Route>
@@ -61,17 +55,38 @@ function App() {
                 element={admin ? <MakeAdmin /> : <MyOrder />}
               ></Route>
               <Route path="addProduct" element={<AddProduct />}></Route>
-              <Route path="orders" element={<ManageOrder />}></Route>
+              <Route
+                path="orders"
+                element={
+                  <AdminRoute>
+                    <ManageOrder />
+                  </AdminRoute>
+                }
+              ></Route>
               <Route path="myOrders" element={<MyOrder />}></Route>
-              <Route path="makeAdmin" element={<MakeAdmin />}></Route>
+              <Route
+                path="makeAdmin"
+                element={
+                  <AdminRoute>
+                    <MakeAdmin />
+                  </AdminRoute>
+                }
+              ></Route>
               <Route path="review" element={<Review />}></Route>
-              <Route path="manageProduct" element={<ManageProduct />}></Route>
+              <Route
+                path="manageProduct"
+                element={
+                  <AdminRoute>
+                    <ManageProduct />
+                  </AdminRoute>
+                }
+              ></Route>
             </Route>
 
             <Route path="*" element={<Notfound></Notfound>}></Route>
           </Routes>
         </Router>
-      </AuthProvider>
+     
     </div>
   );
 }

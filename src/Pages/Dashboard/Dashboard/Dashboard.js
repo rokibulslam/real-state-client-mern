@@ -20,68 +20,86 @@ import {faSignOutAlt} from "@fortawesome/free-solid-svg-icons";
 import MakeAdmin from "../MakeAdmin/MakeAdmin";
 import MyOrder from "../MyOrder/MyOrder";
 import profile from "../../../Images/profile.png";
-
+import './dashbord.css'
+import { useState } from "react";
 const drawerWidth = 200;
 
 function Dashboard(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
-
+  const [activeUserMenu, setActiveUserMenu] = useState("");
   const { logout, admin, user } = useAuth();
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
-
+  
+  const userMenuActivator = (item) => {
+   setActiveUserMenu(item);
+  }
+  const userMenu = [
+    {
+      path: "/",
+      name: "Home",
+      icon: <FcHome />,
+    },
+    {
+      path: "/dashboard/myOrders",
+      name: "Order",
+      icon: <FcHome />,
+    },
+    {
+      path: "/dashboard/review",
+      name: "Review",
+      icon: <FcRating />,
+    },
+  ];
   const drawer = (
-    <Box
-      style={{
-        backgroundColor: "rgb(49, 58, 70)",
-        height: "100vh",
-        color: "whitesmoke",
-      }}
-    >
+    <Box className="dashboard-sidebar">
       <Typography
-        variant="h4"
+        variant=""
         sx={{
-          mt: 2,
+          py: 2,
           mb: 0,
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
+          color: "whitesmoke",
+          fontSize: "600",
         }}
       >
-        {
-          admin ? <span>ADMIN</span>: <span>USER</span>
-        }
+        {admin ? <span>ADMIN Dashbord</span> : <span>USER Dashbord</span>}
       </Typography>
 
-      <Divider style={{ color: "white", height: "2px" }} />
       <List>
         {!admin && (
           <Box>
-            <ListItem>
-              <NavLink style={{ textDecoration: "none" }} to="/">
-                <span style={{ fontSize: "20px", paddingRight: "2px" }}>
-                  <FcHome />
-                </span>
-                <Button variant="text" style={{ color: "white" }}>
-                  Home
-                </Button>
-              </NavLink>
-            </ListItem>
-            <ListItem>
+            {userMenu.map((item, index) => (
               <NavLink
+                activeclassName="active"
                 style={{ textDecoration: "none" }}
-                to="/dashboard/review"
+                to={item.path}
               >
-                <span style={{ fontSize: "20px", paddingRight: "2px" }}>
-                  <FcRating />
-                </span>
-                <Button variant="text" style={{ color: "white" }}>
-                  Add A Review
-                </Button>
+                <ListItem
+                  onClick={() => userMenuActivator(item.name)}
+                  className="navlink"
+                  style={
+                    activeUserMenu === item.name
+                      ? {
+                          backgroundColor: "rgba(0, 0, 0, 0.493)",
+                          color: "black",
+                        }
+                      : {}
+                  }
+                >
+                  <span style={{ fontSize: "20px", paddingRight: "2px" }}>
+                    {item.icon}
+                  </span>
+                  <Button variant="text" style={{ color: "white" }}>
+                    {item.name}
+                  </Button>
+                </ListItem>
               </NavLink>
-            </ListItem>
+            ))}
           </Box>
         )}
         {admin && (
@@ -100,10 +118,7 @@ function Dashboard(props) {
                 >
                   <FcAddDatabase />
                 </span>
-                <Button
-                  variant="text"
-                  style={{ color: "white"}}
-                >
+                <Button variant="text" style={{ color: "white" }}>
                   Add a Product
                 </Button>
               </NavLink>
@@ -161,17 +176,28 @@ function Dashboard(props) {
     window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <Box sx={{ display: "flex"}}>
+    <Box sx={{ display: "flex" }}>
       <CssBaseline />
       <AppBar
         position="fixed"
-        style={{ backgroundColor: "rgb(250, 251, 254)", color: "#727CF5" }}
+        style={{ backgroundColor: "#6790FF", color: "whitesmoke" }}
         sx={{
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           ml: { sm: `${drawerWidth}px` },
         }}
       >
-        <Toolbar>
+        <Toolbar
+          sx={{
+            display: "flex",
+            justifyContent: {
+              xl: "end",
+              lg: "end",
+              md: "end",
+              sm: "end",
+              xs: "space-between",
+            },
+          }}
+        >
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -181,55 +207,34 @@ function Dashboard(props) {
           >
             <MenuIcon />
           </IconButton>
-          {admin && (
-            <Typography
-              sx={{ flexGrow: 1 }}
-              variant="h6"
-              noWrap
-              component="div"
-            >
-              Admin Dashboard
-            </Typography>
-          )}
-          {!admin && (
-            <Typography
-              sx={{ flexGrow: 1 }}
-              variant="h6"
-              noWrap
-              component="div"
-            >
-              User Dashboard
-            </Typography>
-          )}
-          <span>
-            {user.photoURL ? (
-              <img
-                style={{
-                  height: "45px",
-                  width: "45px",
-                  borderRadius: "50%",
-                  marginRight: "10px",
-                }}
-                src={user.photoURL}
-                alt=""
-              />
-            ) : (
-              <img
-                style={{
-                  height: "45px",
-                  width: "45px",
-                  borderRadius: "50%",
-                  marginRight: "10px",
-                }}
-                src={profile}
-                alt=""
-              />
-            )}
-          </span>
-          <Box>
-            <Typography
-              style={{ color: "black"}}
-              variant="h6" noWrap component="div">
+
+          <Box sx={{ display: "flex", alignItems: "center" }}>
+            <span>
+              {user.photoURL ? (
+                <img
+                  style={{
+                    height: "30px",
+                    width: "30px",
+                    borderRadius: "50%",
+                    marginRight: "10px",
+                  }}
+                  src={user.photoURL}
+                  alt=""
+                />
+              ) : (
+                <img
+                  style={{
+                    height: "30px",
+                    width: "30px",
+                    borderRadius: "50%",
+                    marginRight: "10px",
+                  }}
+                  src={profile}
+                  alt=""
+                />
+              )}
+            </span>
+            <Typography variant="p" noWrap component="div">
               {user.displayName}
             </Typography>
           </Box>
@@ -274,6 +279,7 @@ function Dashboard(props) {
       </Box>
       <Box
         component="main"
+        style={{ minHeight: "100vh", backgroundColor: 'rgb(255, 255, 255)' }}
         sx={{
           flexGrow: 1,
           p: 3,
