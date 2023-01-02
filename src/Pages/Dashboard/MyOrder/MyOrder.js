@@ -54,7 +54,6 @@ const MyOrder = () => {
                 <th>Product</th>
                 <th>Ordered By</th>
                 <th>Email</th>
-
                 <th>Placed</th>
                 <th>Status</th>
                 <th>Manage</th>

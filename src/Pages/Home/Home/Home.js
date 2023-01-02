@@ -1,5 +1,6 @@
 import React from 'react';
-import HomePageProduct from '../../AllProducts/HomPageProduct/HomePageProduct';
+import HomePageProduct from '../../Products/HomPageProduct/HomePageProduct';
+
 import Banner from '../Banner.js/Banner';
 import Featured from '../Featured/Featured';
 import Features from '../Features/Features';

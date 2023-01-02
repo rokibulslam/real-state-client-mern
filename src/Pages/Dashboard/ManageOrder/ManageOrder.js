@@ -12,7 +12,15 @@ const ManageOrder = () => {
           .then((res) => res.json())
           .then((data) => setOrders(data));
     }, [update])
-    
+  const tHead = [
+    "Product",
+    "Ordered By",
+    "Email",
+    "Date",
+    "Price",
+    "Status",
+    "Manage",
+  ];
     const handlePending = (id, text) => {
       axios
         .put(`https://pink-combative-kangaroo.cyclic.app/order/status/${id}`, {
@@ -60,20 +68,13 @@ const ManageOrder = () => {
       <div className="my-0 p-5 bg-white banner-text">
         <div className="container">
           <div>
-            <h1 className="fw-bold mb-5">
-              Manage All Orders
-            </h1>
+            <h1 className="fw-bold mb-5">Manage All Orders</h1>
             <Table responsive striped bordered hover>
               <thead>
                 <tr className="">
-                  <th>Product</th>
-                  <th>Ordered By</th>
-                  <th>Email</th>
-
-                  <th>Placed</th>
-                  <th>Status</th>
-                  <th>Price</th>
-                  <th>Manage</th>
+                  {tHead.map((item, index) => (
+                    <th>{item}</th>
+                  ))}
                 </tr>
               </thead>
               {orders?.map((order) => (
@@ -104,9 +105,10 @@ const ManageOrder = () => {
                       <td>
                         <span
                           style={{
-                            color: "rgb(172, 9, 3)",
+                            color: "black",
+                            backgroundColor: "#7FFF00",
                             margin: "0px",
-                            padding: "5px 8px",
+                            padding: "3px 5px",
                             borderRadius: "3px",
                           }}
                         >
@@ -117,10 +119,10 @@ const ManageOrder = () => {
                       <td>
                         <span
                           style={{
-                            color: "white",
-                            backgroundColor: "rgb(2, 155, 66)",
+                            color: "black",
+                            backgroundColor: "#00FFFF",
                             margin: "0px",
-                            padding: "5px 8px",
+                            padding: "3px 5px",
                             borderRadius: "3px",
                           }}
                         >
@@ -132,28 +134,29 @@ const ManageOrder = () => {
                     <td>
                       <DropdownButton
                         size="sm"
+                        className=""
                         variant="secondary"
                         title="Manage Order"
                       >
                         <Dropdown.Item href="#/action-1">
                           <button
                             style={{
-                              color: "white",
+                              color: "black",
                               border: "0px",
-                              backgroundColor: "green",
+                              backgroundColor: "#00FFFF",
                               borderRadius: "3px",
                             }}
                             onClick={() => handlePending(order._id, "Approved")}
                           >
-                            Approved Order
+                            Approve
                           </button>
                         </Dropdown.Item>
                         <Dropdown.Item href="#/action-2">
                           <button
                             style={{
-                              color: "white",
+                              color: "black",
                               border: "0px",
-                              backgroundColor: "green",
+                              backgroundColor: "#FFFF00",
                               borderRadius: "3px",
                             }}
                             onClick={() => handlePending(order._id, "Shipping")}

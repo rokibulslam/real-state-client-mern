@@ -19,6 +19,7 @@ import { useParams } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 
 import Swal from "sweetalert2";
+import Navigation from "../Home/Navigation/Navigation";
 
 const Purchase = () => {
   const { id } = useParams();
@@ -75,8 +76,8 @@ const Purchase = () => {
 
   return (
     <div>
-          <h1>{id}</h1>
-      <Box>
+      <Navigation></Navigation>
+      <Box sx={{mt:5, pt:5}}>
         <Typography
           sx={{ textAlign: "center", mt: 5, color: "warning.main" }}
           variant="h2"
@@ -85,17 +86,6 @@ const Purchase = () => {
         >
           Purchase
         </Typography>
-        <Container>
-          <Typography
-            sx={{ textAlign: "start", mt: 5, color: "info.main" }}
-            variant="h7"
-            component="div"
-            gutterBottom
-          >
-            {user.displayName} <br />
-            {user.email}
-          </Typography>
-        </Container>
         <Container>
           <Grid container spacing={2}>
             <Grid item xs={12} md={6}>
