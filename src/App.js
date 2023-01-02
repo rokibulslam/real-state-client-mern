@@ -3,10 +3,8 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './Pages/Home/Home/Home';
 import Dashboard from './Pages/Dashboard/Dashboard/Dashboard';
 import Login from './Pages/User/Login/Login';
-import AuthProvider from './Context/AuthProvider';
 import Register from './Pages/User/Register/Register';
 import AddProduct from './Pages/Dashboard/AddProduct/AddProduct';
-import ProductPage from './Pages/AllProducts/ProductPage/ProductPage';
 import Purchase from './Pages/Purchase/Purchase';
 import ManageOrder from './Pages/Dashboard/ManageOrder/ManageOrder';
 import MyOrder from './Pages/Dashboard/MyOrder/MyOrder';
@@ -17,9 +15,8 @@ import Notfound from './Pages/Notfound/Notfound';
 import Contact from './Pages/Contact/Contact';
 import ManageProduct from './Pages/Dashboard/ManageProduct/ManageProduct';
 import useAuth from './Hooks/useAuth';
-import React, { useEffect, useState } from 'react';
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import AdminRoute from './Pages/User/AdminRoute/AdminRoute';
+import ProductPage from './Pages/Products/ProductPage/ProductPage';
 
 
 function App() {

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Col, Nav, Row, Tab, Tabs } from 'react-bootstrap';
 import Navigation from '../../Home/Navigation/Navigation';
 import AllProduct from '../AllProducts.js/AllProduct';
+
 import FeaturedProduct from '../FeaturedProduct/FeaturedProduct';
 import RegularProduct from '../RegularProduct/RegularProduct';
 import TopProduct from '../TopProduct/TopProduct';
