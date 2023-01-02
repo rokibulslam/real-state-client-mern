@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Spinner } from 'react-bootstrap';
-import ProductCard from '../ProductCard/ProductCard';
+import ProductCard from '../../../Component/ProductCard/ProductCard';
+
 
 const TopProduct = () => {
   const [products, setProducts] = useState([]);

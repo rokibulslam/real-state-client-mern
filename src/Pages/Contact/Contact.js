@@ -8,13 +8,15 @@ import './Contact.css'
 
 const Contact = () => {
   const handleOnclick = (e) => {
-    Swal.fire({
-      position: "center",
-      icon: "success",
-      title: "Mail Has Been Send Successfully",
-      showConfirmButton: false,
-      timer: 2000,
-    });
+    setTimeout(() => {
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Mail Has Been Send Successfully",
+        showConfirmButton: false,
+        timer: 2000,
+      });
+    }, 800);
     e.preventDefault()
   }
 
@@ -57,25 +59,45 @@ const Contact = () => {
         </div>
         <div className="p-5 m-y5">
           <div className="container">
-            <Form>
-              <Form.Group
-                className="mb-3"
-                controlId="exampleForm.ControlInput1"
-              >
-                <Form.Label>Email address</Form.Label>
-                <Form.Control  type="email" placeholder="name@example.com" />
-              </Form.Group>
-              <Form.Group
-                className="mb-3"
-                controlId="exampleForm.ControlTextarea1"
-              >
-                <Form.Label>Example textarea</Form.Label>
-                <Form.Control as="textarea" rows={3} />
-              </Form.Group>
-            </Form>
-            <Button onClick={handleOnclick} type="submit"  className="btn-danger">
-              Submit
-            </Button>
+            <form action="" method="" onSubmit={handleOnclick}>
+              <div class="form-group row d-flex flex-column align-items-center  justify-content-center">
+                <label
+                  for="email_address"
+                  class="col-md-4 col-form-label text-md-right"
+                ></label>
+                <div class="col-md-6">
+                  <input
+                    type="email"
+                    id="email_address"
+                    class="form-control"
+                    name="email-address"
+                    placeholder="Enter Your Email"
+                    required
+                    autofocus
+                  />
+                </div>
+                <label
+                  for="message"
+                  class="col-md-4 col-form-label text-md-right"
+                ></label>
+                <div class="col-md-6">
+                  <textarea
+                    type="text"
+                    id="message"
+                    class="form-control"
+                    name="email-address"
+                    placeholder="Write Your Message"
+                    required
+                    autofocus
+                  />
+                </div>
+                <div>
+                  <button type="submit" class="btn btn-primary  m-3">
+                    Register
+                  </button>
+                </div>
+              </div>
+            </form>
           </div>
         </div>
         <Footer></Footer>
