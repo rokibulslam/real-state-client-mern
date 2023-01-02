@@ -12,6 +12,8 @@ const Review = () => {
 
   const date = new Date();
   const currentDate = date.toLocaleDateString();
+
+  // Handle Input Field 
   const handleReviewInfo = (e) => {
     const field = e.target.name;
     const value = e.target.value;
@@ -19,6 +21,7 @@ const Review = () => {
     newReviewData[field] = value;
     setReviewData(newReviewData);
   };
+  // Handle Submit button 
   const onSubmitReview = (e) => {
     const review = {
       ...reviewData,
@@ -45,6 +48,7 @@ const Review = () => {
 
   return (
     <Box>
+      {/* Rating Section  */}
       <Box
         sx={{
           "& > legend": { mt: 2 },
@@ -59,6 +63,7 @@ const Review = () => {
           }}
         />
       </Box>
+      {/* Comment Section  */}
       <form onSubmit={onSubmitReview}>
         <Box
           sx={{

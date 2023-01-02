@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { Dropdown, DropdownButton, Table } from 'react-bootstrap';
 import Swal from 'sweetalert2';
+
 const ManageOrder = () => {
     const [orders, setOrders] = useState([]);
     const [update, setUpdate] = useState("");
@@ -130,7 +131,7 @@ const ManageOrder = () => {
                         </span>
                       </td>
                     )}
-                    {console.log(order)}
+                   
                     <td>
                       <DropdownButton
                         size="sm"

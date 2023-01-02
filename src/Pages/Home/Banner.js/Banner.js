@@ -1,11 +1,9 @@
 import React from 'react';
-import {  Row } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import './Banner.css'
 
 
 const Banner = () => {
- 
     return (
       <div className="banner-bg d-flex align-items-center">
         <div className="container ">

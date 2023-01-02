@@ -12,7 +12,6 @@ const MakeAdmin = () => {
     const handleMakeAdmin = (e) => {
         e.preventDefault();
         const userEmail = { email };
-        console.log(email);
         fetch("https://pink-combative-kangaroo.cyclic.app/users/admin", {
           method: "PUT",
           headers: { "content-type": "application/json" },

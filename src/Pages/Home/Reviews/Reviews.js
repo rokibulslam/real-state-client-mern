@@ -1,66 +1,51 @@
-import { Grid, Paper, Typography, Rating, Container } from "@mui/material";
+import { Typography, Rating } from "@mui/material";
 import { Box } from "@mui/system";
-import moment from "moment";
+
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
-import Slider from "react-slick";
+
 import "./Reviews.css";
-import StarIcon from "@mui/icons-material/Star";
+
+import { Spinner } from "react-bootstrap";
+import Message from "../../../Component/Message";
+import ReviewSlider from "../../../Component/ReviewSlider";
+
 const Reviews = () => {
   const [reviews, setReviews] = useState([]);
+  const [isLoading, setIsLoading]=useState(true)
+  const [error, setError] = useState("")
+  
   useEffect(() => {
+    setIsLoading(true)
     fetch("https://pink-combative-kangaroo.cyclic.app/reviews")
       .then((res) => res.json())
-      .then((data) => setReviews(data));
+      .then((data) => setReviews(data))
+      .catch((er) => setError(er))
+    .finally(()=>setIsLoading(false))
   }, []);
-  // react-slick animation
-  const settings = {
-    className: "center",
-    centerMode: true,
-    infinite: true,
-    centerPadding: "60px",
-    slidesToShow: 3,
-    autoplay: true,
-    speed: 1500,
-    autoplaySpeed: 3000,
-    slidesToScroll: 4,
-    initialSlide: 0,
-    pauseOnHover: true,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 3,
-          infinite: true,
-          dots: true,
-        },
-      },
-      {
-        breakpoint: 800,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 2,
-          initialSlide: 2,
-        },
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 2,
-          initialSlide: 2,
-        },
-      },
-      {
-        breakpoint: 400,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-    ],
-  };
+  
+  let data;
+  if (isLoading) {
+    data = (
+      <div>
+        <Spinner animation="grow" variant="primary" />
+        <Spinner animation="grow" variant="secondary" />
+        <Spinner animation="grow" variant="success" />
+        <Spinner animation="grow" variant="danger" />
+        <Spinner animation="grow" variant="warning" />
+        <Spinner animation="grow" variant="info" />
+      </div>
+    );
+  } else if (error) {
+    data = (
+      <Message
+        message="There was an server side Error!! Please Reload"
+        color="danger"
+      ></Message>
+    )
+  } else {
+    data = (<ReviewSlider reviews={reviews}></ReviewSlider>)
+  }
   return (
     <div className="review-bg">
       <h1 className="">Customer Reviews</h1>
@@ -70,65 +55,7 @@ const Reviews = () => {
           width: "90%",
         }}
       >
-        <Slider {...settings}>
-          {reviews?.map((review) => (
-            <Box className="">
-              <Paper
-                className="paper"
-                key={review._id}
-                elevation={5}
-                sx={{ p: 2, m: 2 }}
-              >
-                <Typography
-                  sx={{ color: "white", fontWeight: 400 }}
-                  variant="h5"
-                  gutterBottom
-                  component="div"
-                >
-                  {review.customerName}
-                </Typography>
-                <Typography
-                  variant="h7"
-                  gutterBottom
-                  component="div"
-                  sx={{ textAlign: "center", color: "white" }}
-                >
-                  {review.comment}
-                </Typography>
-                <Box
-                  sx={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "space-between",
-                  }}
-                >
-                  <Box>
-                    <Rating
-                      readOnly
-                      emptyIcon={
-                        <StarIcon
-                          sx={{ color: "whitesmoke" }}
-                          style={{ opacity: 1 }}
-                          fontSize="inherit"
-                        />
-                      }
-                      name="simple-controlled"
-                      value={review.star}
-                    />
-                  </Box>
-                  <Typography
-                    sx={{ color: "white"}}
-                    variant="p"
-                    gutterBottom
-                    component="div"
-                  >
-                    {moment(review?.date).format("dddd MMM Y")}
-                  </Typography>
-                </Box>
-              </Paper>
-            </Box>
-          ))}
-        </Slider>
+        {data}
         <Typography sx={{ mt: 5 }} variant="h6" gutterBottom component="div">
           <NavLink to="/dashboard/review">Give A Review</NavLink>
         </Typography>

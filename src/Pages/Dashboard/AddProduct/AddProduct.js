@@ -26,9 +26,10 @@ const categories = [
 ];
 
 const AddProduct = () => {
-  
   const [category, setCategory] = useState("");
   const [productDetails, setProductDetails] = useState({});
+
+  // Handle form input fields
   const handleOnChange = (e) => {
     setCategory(e.target.value);
     const field = e.target.name;
@@ -37,9 +38,8 @@ const AddProduct = () => {
     newProductDetails[field] = value;
     setProductDetails(newProductDetails);
   };
-
+  //   Send Product to Database
   const handleSubmit = (e) => {
-    //   Send Product to Database
     e.preventDefault();
     axios
       .post(
@@ -60,7 +60,6 @@ const AddProduct = () => {
           window.location.reload();
         }
       });
-
   };
   return (
     <Container sx={{ display: "flex" }}>

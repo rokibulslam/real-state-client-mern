@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
-import Divider from "@mui/material/Divider";
 import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
 import List from "@mui/material/List";
@@ -15,7 +14,7 @@ import { Outlet, NavLink } from "react-router-dom";
 import { Button } from "@mui/material";
 import useAuth from "../../../Hooks/useAuth";
 import {
-  FcAddDatabase,
+  
   FcHeatMap,
   FcHome,
   FcRating,
@@ -23,10 +22,6 @@ import {
   FcExport,
   FcRedo,
 } from "react-icons/fc";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {faSignOutAlt} from "@fortawesome/free-solid-svg-icons";
-import MakeAdmin from "../MakeAdmin/MakeAdmin";
-import MyOrder from "../MyOrder/MyOrder";
 import profile from "../../../Images/profile.png";
 import './dashbord.css'
 import { useState } from "react";
@@ -84,6 +79,7 @@ function Dashboard(props) {
       icon: <FcExport />,
     }
   ];
+  // Sidebar 
   const drawer = (
     <Box className="dashboard-sidebar">
       <Typography
@@ -100,7 +96,7 @@ function Dashboard(props) {
       >
         {admin ? <span>ADMIN Dashbord</span> : <span>USER Dashbord</span>}
       </Typography>
-
+        {/* Sidebar Items for users  */}
       <List>
         {!admin && (
           <Box>
@@ -126,6 +122,7 @@ function Dashboard(props) {
             ))}
           </Box>
         )}
+        {/* Sidebar items for Admin  */}
         {admin && (
           <Box>
             {adminMenu.map((item, index) => (
@@ -156,7 +153,7 @@ function Dashboard(props) {
             ))}
           </Box>
         )}
-
+  {/* Logout Button  */}
         <Box>
           <ListItem>
             <Button style={{ color: "white" }} onClick={logout} variant="text">
@@ -239,6 +236,7 @@ function Dashboard(props) {
           </Box>
         </Toolbar>
       </AppBar>
+      {/* Sidebar Start  */}
       <Box
         component="nav"
         sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
@@ -276,9 +274,11 @@ function Dashboard(props) {
           {drawer}
         </Drawer>
       </Box>
+      {/* Sidebar End  */}
+      {/* Main Frame  */}
       <Box
         component="main"
-        style={{ minHeight: "100vh", backgroundColor: 'rgb(255, 255, 255)' }}
+        style={{ minHeight: "100vh", backgroundColor: "rgb(255, 255, 255)" }}
         sx={{
           flexGrow: 1,
           p: 3,
@@ -286,8 +286,6 @@ function Dashboard(props) {
         }}
       >
         <Toolbar />
-        {/* {admin && <MakeAdmin></MakeAdmin>}
-        {!admin && <MyOrder></MyOrder>} */}
         <Outlet></Outlet>
       </Box>
     </Box>
@@ -295,10 +293,6 @@ function Dashboard(props) {
 }
 
 Dashboard.propTypes = {
-  /**
-   * Injected by the documentation to work in an iframe.
-   * You won't need it on your project.
-   */
   window: PropTypes.func,
 };
 

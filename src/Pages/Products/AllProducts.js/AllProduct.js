@@ -48,13 +48,6 @@ console.log(error)
        <div className="py-5">
          <div className="container">
            <div className="row g-5 ">
-             {/* {products?.map((product) => (
-               <ProductCard
-                 key={product._id}
-                 product={product}
-                 className="col-md-3 col-sm-12"
-               />
-             ))} */}
              {data}
            </div>
          </div>

@@ -1,12 +1,12 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import {  Card  } from "react-bootstrap";
-
 import Swal from "sweetalert2";
 
 const ManageProduct = () => {
   const [products, setProducts] = useState([]);
-    const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  // Load Apartments from Apartment API 
     useEffect(() => {
       setIsLoading(true);
     fetch("https://pink-combative-kangaroo.cyclic.app/apartments")

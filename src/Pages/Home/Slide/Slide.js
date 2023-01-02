@@ -6,6 +6,7 @@ import img3 from "../../../Images/Apartment/slider-2-1-680x510.jpg";
 import './Slide.css'
 
 const Slide = () => {
+  // React Slick slider 
    const settings = {
      dots: true,
      infinite: true,
