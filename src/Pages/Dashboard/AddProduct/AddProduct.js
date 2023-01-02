@@ -64,8 +64,8 @@ const AddProduct = () => {
   };
   return (
     <Container sx={{ display: "flex" }}>
-      <Container className="banner-text">
-        <h1 className="register-header-text ">Add An Apartment</h1>
+      <Container className="">
+        <h1 className="register-header-text ">Add an Apartment</h1>
 
         <form onSubmit={handleSubmit}>
           <TextField

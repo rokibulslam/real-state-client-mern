@@ -111,15 +111,9 @@ function Dashboard(props) {
                 to={item.path}
               >
                 <ListItem
-                  className="navlink"
-                  style={
-                    activeUserMenu === item.name
-                      ? {
-                          backgroundColor: "rgba(0, 0, 0, 0.493)",
-                          color: "black",
-                        }
-                      : {}
-                  }
+                  className={`navlink ${
+                    activeUserMenu === item.name ? "active-nav" : ""
+                  }`}
                 >
                   <span style={{ fontSize: "20px", paddingRight: "2px" }}>
                     {item.icon}
@@ -141,15 +135,9 @@ function Dashboard(props) {
                 to={item.path}
               >
                 <ListItem
-                  className="navlink"
-                  style={
-                    activeUserMenu === item.name
-                      ? {
-                          backgroundColor: "rgba(0, 0, 0, 0.493)",
-                          color: "black",
-                        }
-                      : {}
-                  }
+                  className={`navlink ${
+                    activeUserMenu === item.name ? "active-nav" : ""
+                  }`}
                 >
                   <span
                     style={{

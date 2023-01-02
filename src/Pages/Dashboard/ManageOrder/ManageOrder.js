@@ -58,7 +58,7 @@ const ManageOrder = () => {
     };
     return (
       <div className="my-0 p-5 bg-white banner-text">
-        <div className="container ">
+        <div className="container">
           <div>
             <h1 className="fw-bold mb-5">
               Manage All Orders

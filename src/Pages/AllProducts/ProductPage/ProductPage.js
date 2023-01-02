@@ -7,7 +7,7 @@ import RegularProduct from '../RegularProduct/RegularProduct';
 import TopProduct from '../TopProduct/TopProduct';
 
 const ProductPage = () => {
- const [key, setKey] = useState("home");
+ 
     return (
       <div>
         <Navigation></Navigation>

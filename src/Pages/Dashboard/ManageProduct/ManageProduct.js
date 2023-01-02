@@ -44,14 +44,15 @@ const ManageProduct = () => {
   return (
     <div className="my-5">
       <div className="container">
-        <h4 className="banner-text ">
-          <i>Manage APARTMENT</i>
-        </h4>
+        <h1 className="">
+          <i>Manage Apartments</i>
+        </h1>
 
         <div className="py-5">
           <div className="row g-5">
-            {products.map((product) => (
+            {products?.map((product) => (
               <div className="col-xl-4 col-md-6 col-sm-12 d-flex justify-content-center align-items-center">
+                
                 <Card className="card-container">
                   <Card.Img
                     className="img-fluid"

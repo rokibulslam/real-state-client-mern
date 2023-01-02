@@ -13,13 +13,12 @@
     justify-content: end;
     align-items: center;
 }
-.active{
-    color: black;
-    text-decoration: underline;
-    border-radius: 5px 30px 5px 30px;
+.active-nav{
+    background-color: black;
+    padding: 20px 40px 40px 20px;
 }
 .navlink{
-
+    
 }
 .navlink:hover{
     background-color: rgba(0, 0, 0, 0.493);
