@@ -4,7 +4,7 @@ import {  NavLink } from "react-router-dom";
 import useAuth from "../../../Hooks/useAuth";
 import "./Navigation.css";
 import profile from "../../../Images/profile.png";
-
+import { AiOutlineShoppingCart } from "react-icons/ai";
 const Navigation = () => {
   const { user, logout } = useAuth();
   return (
@@ -53,53 +53,60 @@ const Navigation = () => {
                 Contact
               </NavLink>
             </Nav>
-            {user.email ? (
-              <div className="d-flex justify-content-center align-items-center">
-                <span>
-                  {user.photoURL ? (
-                    <img
-                      style={{
-                        height: "45px",
-                        width: "45px",
-                        borderRadius: "50%",
-                        marginRight: "10px",
-                      }}
-                      src={user.photoURL}
-                      alt=""
-                    />
-                  ) : (
-                    <img
-                      style={{
-                        height: "45px",
-                        width: "45px",
-                        borderRadius: "50%",
-                        marginRight: "10px",
-                      }}
-                      src={profile}
-                      alt=""
-                    />
-                  )}
-                </span>
-                <p className="text-success text-decoration-none me-3 mb-lg-0">
-                  {user.displayName}
-                </p>
-                <p
-                  className="logout-button  text-decoration-none me-3 mb-lg-0 nav-text-color fs-5"
-                  onClick={logout}
+            <div className="d-flex justify-content-center align-items-center">
+              {user.email ? (
+                <div className="d-flex justify-content-center align-items-center">
+                  <span>
+                    {user.photoURL ? (
+                      <img
+                        style={{
+                          height: "30px",
+                          width: "30px",
+                          borderRadius: "50%",
+                          marginRight: "10px",
+                        }}
+                        src={user.photoURL}
+                        alt=""
+                      />
+                    ) : (
+                      <img
+                        style={{
+                          height: "45px",
+                          width: "45px",
+                          borderRadius: "50%",
+                          marginRight: "10px",
+                        }}
+                        src={profile}
+                        alt=""
+                      />
+                    )}
+                  </span>
+                  <p className="text-success text-decoration-none me-3 mb-lg-0">
+                    {user.displayName}
+                  </p>
+                  <p
+                    className="logout-button  text-decoration-none me-3 mb-lg-0 nav-text-color fs-5"
+                    onClick={logout}
+                  >
+                    Logout
+                  </p>
+                </div>
+              ) : (
+                <NavLink
+                  to="/login"
+                  className="nav-text-color text-decoration-none me-3"
                 >
-                  Logout
-                </p>
-              </div>
-            ) : (
-              <NavLink
-                to="/login"
-                className="nav-text-color text-decoration-none me-3"
-              >
-                <p className="logout-button text-decoration-none me-3 mb-lg-0 fs-5">
-                  Login
-                </p>
+                  <p className="logout-button text-decoration-none me-3 mb-lg-0 fs-5">
+                    Login
+                  </p>
+                </NavLink>
+              )}
+              <NavLink to="cart">
+                <span>
+                  <AiOutlineShoppingCart size={30} />
+                </span>
               </NavLink>
-            )}
+            </div>
           </Navbar.Collapse>
         </Container>
       </Navbar>

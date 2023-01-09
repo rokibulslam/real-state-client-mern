@@ -8,10 +8,12 @@ import ProductCard from '../../../Component/ProductCard/ProductCard';
 import { productsListAction } from '../../../Redux/actions/productAction';
 
 
+
 const HomePageProduct = () => {
   const dispatch = useDispatch();
   const productList = useSelector(state => state?.productList);
   const { loading, products, error } = productList;
+  
   useEffect(() => {
     dispatch(productsListAction())
   }, [dispatch]);
@@ -34,7 +36,7 @@ const HomePageProduct = () => {
           color="danger"
         ></Message>
       );
-    } else {
+    } else if (products?.length) {
       data = (products
         ?.slice(0, 6)
         ?.map((product) => (

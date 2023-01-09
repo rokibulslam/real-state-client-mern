@@ -35,7 +35,6 @@ const Purchase = () => {
       .then((res) => res.json())
       .then((data) => setProduct(data));
   }, [id]);
-  console.log(product)
   const handelOrderField = (e) => {
     const field = e.target.name;
     const value = e.target.value;
