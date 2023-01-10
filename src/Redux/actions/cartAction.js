@@ -1,4 +1,4 @@
-import { ADD_TO_CART, GET_CART_TOTAL, REMOVE_FROM_CART } from "../constants/actionTypes"
+import { ADD_TO_CART, SET_CART_TOTAL, REMOVE_FROM_CART } from "../constants/actionTypes"
 
 
 export const addToCart = (product) => {
@@ -13,9 +13,9 @@ export const remomveCart = (product) => {
         payload: product
     }
 }
-export const getCartTotal = (cart) => {
+export const setCartTotal = (cart) => {
     return {
-        type: GET_CART_TOTAL,
+        type: SET_CART_TOTAL,
         payload: cart
     }
 }

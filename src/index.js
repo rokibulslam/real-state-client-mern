@@ -5,14 +5,17 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Provider } from 'react-redux';
-import store from './Redux/store'
+import store, { persistor } from './Redux/store'
 import AuthProvider from './Context/AuthProvider';
+import { PersistGate } from 'redux-persist/integration/react';
 
 ReactDOM.render(
   <React.StrictMode>
     <AuthProvider>
       <Provider store={store}>
-        <App />
+        <PersistGate loading={null} persistor={persistor}>
+          <App />
+        </PersistGate>
       </Provider>
     </AuthProvider>
   </React.StrictMode>,

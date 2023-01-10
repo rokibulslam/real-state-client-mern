@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Row } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux';
-import { addToCart, getCartTotal, remomveCart } from '../../Redux/actions/cartAction';
+import { addToCart, remomveCart, setCartTotal } from '../../Redux/actions/cartAction';
 
 const Cart = () => {
   const cart = useSelector((state) => state.cart.cart);
@@ -12,7 +12,7 @@ const Cart = () => {
       (accu, curr) => accu + curr.Price * curr.quantity,
       0
     )
-    dispatch(getCartTotal(cart))
+    
     return totalPrice;
   }
   const grandTotal = () => {
@@ -21,6 +21,7 @@ const Cart = () => {
       0
     );
     const total = subTotal + shipping;
+    dispatch(setCartTotal(total))
     return total;
   }
   return (
@@ -94,7 +95,7 @@ const Cart = () => {
             padding: "0 15px 0px 15px",
           }}
         >
-          Checkout
+          Proceed To Checkout
         </button>
       </div>
     </div>

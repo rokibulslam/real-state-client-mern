@@ -1,10 +1,9 @@
 
-import { ADD_TO_CART, GET_CART_TOTAL, REMOVE_FROM_CART } from "../constants/actionTypes";
+import { ADD_TO_CART, REMOVE_FROM_CART, SET_CART_TOTAL } from "../constants/actionTypes";
 
 
 const initialState = {
   cart: [],
-  cartTotal: 0,
 shipping: 30,
   grandTotal:0
 };
@@ -44,6 +43,11 @@ const cartReducer = (state = initialState, action) => {
             return {
                 ...state,
                 cart:state.cart.filter((product)=>product._id!== action.payload._id)
+            }
+        case SET_CART_TOTAL:
+            return {
+                ...state,
+                grandTotal:action.payload
             }
         default:
             return state;
