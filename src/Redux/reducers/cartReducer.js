@@ -1,13 +1,13 @@
 
-import { ADD_TO_CART, REMOVE_FROM_CART } from "../constants/actionTypes";
+import { ADD_TO_CART, GET_CART_TOTAL, REMOVE_FROM_CART } from "../constants/actionTypes";
 
 
 const initialState = {
-    cart: [],
-    shipping: 30,
-    total: 0,
-    grandTotal: 0,
-}
+  cart: [],
+  cartTotal: 0,
+shipping: 30,
+  grandTotal:0
+};
 
 const cartReducer = (state = initialState, action) => {
     const selectedProduct = state.cart.find(
@@ -27,9 +27,10 @@ const cartReducer = (state = initialState, action) => {
                     cart: [...newcart, selectedProduct]
                 };
             }
+            
             return {
                 ...state,
-                cart: [...state.cart, { ...action.payload, quantity:1}]
+                cart: [...state.cart, { ...action.payload, quantity: 1 }],
             }
         case REMOVE_FROM_CART:
             if (selectedProduct.quantity > 1) {
