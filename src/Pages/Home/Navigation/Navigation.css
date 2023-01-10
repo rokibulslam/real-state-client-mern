@@ -4,6 +4,19 @@
     
     
 }
+.shopping-cart{
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    right: -5px;
+    top: -15px;
+    border-radius: 50%;
+    background-color: red;
+    color: whitesmoke;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .nav-text-color{
     color: rgb(17, 17, 17);
 }

@@ -3,7 +3,10 @@ import { ADD_TO_CART, REMOVE_FROM_CART } from "../constants/actionTypes";
 
 
 const initialState = {
-    cart:[]
+    cart: [],
+    shipping: 30,
+    total: 0,
+    grandTotal: 0,
 }
 
 const cartReducer = (state = initialState, action) => {

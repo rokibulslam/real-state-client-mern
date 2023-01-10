@@ -5,7 +5,9 @@ import useAuth from "../../../Hooks/useAuth";
 import "./Navigation.css";
 import profile from "../../../Images/profile.png";
 import { AiOutlineShoppingCart } from "react-icons/ai";
+import { useSelector } from "react-redux";
 const Navigation = () => {
+  const cart = useSelector((state) => state.cart.cart);
   const { user, logout } = useAuth();
   return (
     <div>
@@ -28,7 +30,7 @@ const Navigation = () => {
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
               <NavLink
-                to="/home"
+                to="/"
                 className="  text-decoration-none me-3 nav-text-color fs-5"
                 href="#features"
               >
@@ -101,8 +103,13 @@ const Navigation = () => {
                   </p>
                 </NavLink>
               )}
-              <NavLink to="cart">
-                <span>
+              <NavLink style={{color:'green'}} to="/cart">
+                <span style={{ position: "relative" }}>
+                  <span
+                    className="shopping-cart"
+                  >
+                    <span style={{fontSize:'11px', fontWeight:'bolder'}}>{cart.length}</span>
+                  </span>
                   <AiOutlineShoppingCart size={30} />
                 </span>
               </NavLink>
