@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Row } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { addToCart, remomveCart, setCartTotal } from '../../Redux/actions/cartAction';
 
 const Cart = () => {
@@ -86,17 +87,19 @@ const Cart = () => {
             </tr>
           </tbody>
         </table>
-        <button
-          style={{
-            border: 0,
-            backgroundColor: "black",
-            color: "whitesmoke",
-            borderRadius: "2px",
-            padding: "0 15px 0px 15px",
-          }}
-        >
-          Proceed To Checkout
-        </button>
+        <Link to="/checkout">
+          <button
+            style={{
+              border: 0,
+              backgroundColor: "black",
+              color: "whitesmoke",
+              borderRadius: "2px",
+              padding: "0 15px 0px 15px",
+            }}
+          >
+            Proceed To Checkout
+          </button>
+        </Link>
       </div>
     </div>
   );

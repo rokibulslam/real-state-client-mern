@@ -18,6 +18,8 @@ import useAuth from "./Hooks/useAuth";
 import AdminRoute from "./Pages/User/AdminRoute/AdminRoute";
 import ProductPage from "./Pages/Products/ProductPage/ProductPage";
 import ShoppingCart from "./Pages/ShoppingCart/ShoppingCart";
+import Checkout from "./Pages/Checkout/Checkout";
+
 
 function App() {
   const { admin } = useAuth();
@@ -32,6 +34,7 @@ function App() {
           <Route path="/register" element={<Register />}></Route>
           <Route path="cart" element={<ShoppingCart />}></Route>
           <Route path="/contact" element={<Contact />}></Route>
+          <Route path="/checkout" element={<Checkout />}></Route>
           <Route
             path="/home/purchase/:id"
             element={
