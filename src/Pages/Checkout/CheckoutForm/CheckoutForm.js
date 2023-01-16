@@ -68,10 +68,9 @@ const CheckoutForm = () => {
       }
       if (paymentIntent.status === "succeeded") {
         const orderDetails = {
+          ...cart,
           status: "Pending",
           userEmail: user.email,
-          cart: cart,
-          shippingAdress:shippingAdress,
           transactionId: paymentIntent.id,
         };
         dispatch(createOrder(orderDetails))
