@@ -11,6 +11,7 @@ export const PRODUCT_DETAILS_FAIL = "PRODUCT_DETAILS_FAIL";
 // Cart 
 export const ADD_TO_CART = "ADD_TO_CART";
 export const REMOVE_FROM_CART = "REMOVE_FROM_CART";
+export const DELETE_CART = "DELETE_CART";
 export const SET_CART_TOTAL = "SET_CART_TOTAL";
 export const SAVE_SHIPPING_ADRESS = "SAVE_SHIPPING_ADRESS";
 

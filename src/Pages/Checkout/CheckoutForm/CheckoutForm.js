@@ -3,7 +3,8 @@ import React, { useState } from 'react'
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import useAuth from '../../../Hooks/useAuth';
-import { createOrder } from '../../../Redux/actions/orderAction';
+import { createOrder } from '../../../Redux/actions/cartAction';
+
 
 
 const CheckoutForm = () => {
@@ -27,10 +28,10 @@ const CheckoutForm = () => {
       body: JSON.stringify({ price }),
     })
       .then((res) => res.json())
-      .then((data) => setClientSecret(data.clientSecret))
+      .then((data) => setClientSecret(data?.clientSecret))
       .catch((err) => setCardError(err));
   }, [price])
-  
+  console.log(clientSecret);
     const handleSubmit = async (event) => {
         event.preventDefault();
           if (!stripe || !elements) {
