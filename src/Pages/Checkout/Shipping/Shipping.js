@@ -1,15 +1,21 @@
 import React, { useState } from "react";
 import { Form } from "react-bootstrap";
+import { useDispatch } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { saveShippingAdress } from "../../../Redux/actions/cartAction";
+
 
 const Shipping = () => {
   const [radio, setRadio] = useState('')
   const [formData, setFormData] = useState('');
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
   const handleForm = (e) => {
     e.preventDefault()
-    console.log(formData);
+    dispatch(saveShippingAdress(formData));
+    navigate("/payment")
   }
   const handleInputField = (e) => {
-
     const name = e.target.name;
     const value = e.target.value;
     const newFormData = { ...formData };
@@ -97,10 +103,10 @@ const Shipping = () => {
         id={`reverse-radio-2`}
       />
       {/* Others method  */}
-
-      <button type="submit" className="">
-        Continue
-      </button>
+        <button type="submit" className="">
+          Continue
+        </button>
+      
     </form>
   );
 };

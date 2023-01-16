@@ -87,7 +87,7 @@ const Cart = () => {
             </tr>
           </tbody>
         </table>
-        <Link to="/checkout">
+        <Link to="/shippingAdress">
           <button
             style={{
               border: 0,

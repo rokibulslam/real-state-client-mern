@@ -1,10 +1,6 @@
 import React from 'react'
-import { useDispatch } from 'react-redux';
-
 import { useSelector } from 'react-redux'
 import Cart from '../../Component/Cart/Cart';
-import { addToCart, remomveCart } from '../../Redux/actions/cartAction';
-
 import Navigation from '../Home/Navigation/Navigation';
 
 const ShoppingCart = () => {

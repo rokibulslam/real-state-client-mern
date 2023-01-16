@@ -11,6 +11,8 @@
     "@fortawesome/react-fontawesome": "^0.1.17",
     "@mui/icons-material": "^5.4.1",
     "@mui/material": "^5.4.1",
+    "@stripe/react-stripe-js": "^1.16.3",
+    "@stripe/stripe-js": "^1.46.0",
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
