@@ -10,6 +10,7 @@ import { createOrder } from '../../../Redux/actions/cartAction';
 const CheckoutForm = () => {
   const [cardError, setCardError] = useState('');
   const [clientSecret, setClientSecret] = useState('');
+  const [processing, setProcessing]=useState(false)
   const dispatch = useDispatch();
   const { user } = useAuth();
   const price = useSelector((state) => state.cart.grandTotal);
@@ -19,6 +20,11 @@ const CheckoutForm = () => {
   const stripe = useStripe();
   const elements = useElements();
   // Create PaymentIntent as soon as the page Loads 
+  try {
+    
+  } catch (err) {
+    
+  }
   useEffect(() => {
     fetch("http://localhost:5000/payment-intent", {
       method: "POST",
@@ -29,10 +35,11 @@ const CheckoutForm = () => {
     })
       .then((res) => res.json())
       .then((data) => setClientSecret(data?.clientSecret))
-      .catch((err) => setCardError(err));
+      .catch((err) => setCardError("Server Error Please Try Again"));
   }, [price])
   console.log(clientSecret);
-    const handleSubmit = async (event) => {
+  const handleSubmit = async (event) => {
+      
         event.preventDefault();
           if (!stripe || !elements) {
             return;
@@ -52,6 +59,7 @@ const CheckoutForm = () => {
         else {
           setCardError('')
         }
+    setProcessing(true)
          const { paymentIntent, error: confirmError } =
            await stripe.confirmCardPayment(
              clientSecret,
@@ -67,6 +75,9 @@ const CheckoutForm = () => {
         setCardError(confirmError)
         return;
       }
+      else {
+        setCardError('')
+    }
       if (paymentIntent.status === "succeeded") {
         const orderDetails = {
           ...cart,
@@ -76,13 +87,16 @@ const CheckoutForm = () => {
         };
         dispatch(createOrder(orderDetails))
       }
-    }
+    setProcessing(false)
+  }
+  console.log(cardError);
   return (
     <div>
-      <p>You Have To Pay $ {price.grandTotal}</p>
+        <p>You Have To Pay $ {price.grandTotal}</p>
+      <p style={{ color: "red" }}>{}</p>
       <form onSubmit={handleSubmit}>
         <CardElement />
-        <button type="submit" disabled={!stripe || !elements}>
+        <button type="submit" disabled={!stripe || !elements || processing}>
           Pay
         </button>
       </form>

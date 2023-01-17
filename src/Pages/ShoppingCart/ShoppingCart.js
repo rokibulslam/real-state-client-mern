@@ -1,11 +1,12 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import Cart from '../../Component/Cart/Cart';
+import { deletCart } from '../../Redux/actions/cartAction';
 import Navigation from '../Home/Navigation/Navigation';
 
 const ShoppingCart = () => {
   const cart = useSelector(state => state.cart.cart)
-  
+  const dispatch = useDispatch()
   let data;
   if (!cart.length) {
     data = (<h1>Your Cart is Empty</h1>)
@@ -20,6 +21,7 @@ const ShoppingCart = () => {
       <div className='pt-5 mt-5'>
         <div className="container-fluid">
          {data}
+         <button onClick={()=>{dispatch(deletCart())}}>Remove Cart</button>
         </div>
       </div>
     </div>

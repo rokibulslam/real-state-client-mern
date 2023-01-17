@@ -1,5 +1,5 @@
 import axios from "axios";
-import { ADD_TO_CART, SET_CART_TOTAL, REMOVE_FROM_CART, SAVE_SHIPPING_ADRESS, DELETE_CART, CREATE_ORDER_SUCCESS, CREATE_ORDER_FAIL } from "../constants/actionTypes"
+import { ADD_TO_CART, SET_CART_TOTAL, REMOVE_FROM_CART, SAVE_SHIPPING_ADRESS, DELETE_CART, CREATE_ORDER_SUCCESS, CREATE_ORDER_FAIL, CREATE_ORDER_REQUEST } from "../constants/actionTypes"
 
 
 export const addToCart = (product) => {
@@ -23,19 +23,19 @@ export const setCartTotal = (cart) => {
 export const deletCart = () => {
   return {
     type:DELETE_CART
-  }
+  } 
 }
 export const saveShippingAdress = (data) => {
   return {
     type: SAVE_SHIPPING_ADRESS,
     payload: data,
-  };
-};
+  }
+}
 
 export const createOrder = (order) => async (dispatch) => {
   console.log(order);
-
   try {
+    dispatch({type:CREATE_ORDER_REQUEST})
     const config = {
       headers: {
         "Content-Type": "application/json",
@@ -46,7 +46,6 @@ export const createOrder = (order) => async (dispatch) => {
       order,
       config
     );
-
     dispatch({ type: CREATE_ORDER_SUCCESS, payload: data })
     dispatch({ type: DELETE_CART })
     console.log(data)
