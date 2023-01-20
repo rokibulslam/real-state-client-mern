@@ -16,7 +16,7 @@ const MyOrder = () => {
       .then((res) => res.json())
       .then((data) => setOrders(data));
   }, [cancel]);
-
+console.log(orders)
   // Delete Ordered Food Item by ID
   const handleDelete = (id) => {
     const confirm = window.confirm(
@@ -80,7 +80,7 @@ const MyOrder = () => {
                     </div>
                   </td>
                   <td>{order.customerName}</td>
-                  <td>{order.email}</td>
+                  <td>{order.userEmail}</td>
 
                   <td>{order.date}</td>
                   {order.status === "Approved" ? (
@@ -126,7 +126,7 @@ const MyOrder = () => {
                     </button>
                   </td>
                   <td>
-                    <span className="fw-bold">${order.Price}</span>
+                    <span className="fw-bold">$ {order.totalPrice}</span>
                   </td>
                 </tr>
               </tbody>
