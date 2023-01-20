@@ -11,7 +11,7 @@ const initialState = {
   cart: [],
   grandTotal: 0,
   shippingAdress: {},
-  payment:{}
+
 };
 
 const cartReducer = (state = initialState, action) => {
@@ -65,11 +65,6 @@ const cartReducer = (state = initialState, action) => {
         ...state,
         shippingAdress: action.payload,
       };
-    case CREATE_ORDER_SUCCESS:
-      return {
-        ...state,
-        payment: action.payload
-      }
     case DELETE_CART:
       return {
         ...state,

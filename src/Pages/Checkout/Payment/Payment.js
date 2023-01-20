@@ -7,11 +7,12 @@ import { useDispatch, useSelector } from "react-redux";
 import StripeCheckout from "react-stripe-checkout";
 import useAuth from "../../../Hooks/useAuth";
 import Swal from "sweetalert2";
+import { createOrder, deletCart } from "../../../Redux/actions/cartAction";
 
 const Payment = () => {
   const [cardError, setCardError] = useState("");
-  const [clientSecret, setClientSecret] = useState("");
-  const [stripePromise, setStripePromise] = useState(null);
+  const [transactionId, setTransactionId]=useState('')
+  
   const [processing, setProcessing] = useState(false);
   const dispatch = useDispatch();
   const { user } = useAuth();
@@ -32,18 +33,24 @@ const Payment = () => {
       footer: '<a href="">Why do I have this issue?</a>',
     });
   };
+  
   const payNow = async (token) => {
     try {
       const response = await axios({
-        url: "http://localhost:5000/payment",
+        url: "http://localhost:5000/orders",
         method: "post",
         data: {
-          amount: price * 100,
+          userEmail:user.email,
+          paymentMethod: "stripe",
+          price,
+          shippingAdress,
+          cart,
           token,
         },
-      })
-      if (response.status === 200) {
-        handleSuccess();
+      });
+      if (response.status === 200) { 
+        handleSuccess()
+        dispatch(deletCart())
         console.log(response);
       }
     } catch (error) {
@@ -51,7 +58,7 @@ const Payment = () => {
       console.log(error);
     }
   };
-  console.log(clientSecret);
+  
   return (
     <div>
       <h1>Payment</h1>
