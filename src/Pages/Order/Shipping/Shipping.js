@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Form } from "react-bootstrap";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import useAuth from "../../../Hooks/useAuth";
 import { saveShippingAdress } from "../../../Redux/actions/cartAction";
 
 
@@ -10,10 +11,12 @@ const Shipping = () => {
   const [formData, setFormData] = useState('');
   const navigate = useNavigate()
   const dispatch = useDispatch()
+  const cart = useSelector(state => state.cart.cart);
+console.log(cart);
   const handleForm = (e) => {
     e.preventDefault()
     dispatch(saveShippingAdress(formData));
-    navigate("/payment")
+    navigate("/order")
   }
   const handleInputField = (e) => {
     const name = e.target.name;
@@ -22,6 +25,11 @@ const Shipping = () => {
     newFormData[name] = value
     setFormData(newFormData);
   }
+  useEffect(() => {
+     if (cart.length===0) {
+      navigate("/cart");
+    }
+  }, []);
   return (
     <div style={{backgroundColor:'black'}} className="d-flex min-vh-100 align-items-center justify-content-center flex-column">
       <h1 className="text-white">Shipping Adress</h1>

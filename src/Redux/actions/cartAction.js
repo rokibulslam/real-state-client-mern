@@ -31,30 +31,3 @@ export const saveShippingAdress = (data) => {
     payload: data,
   }
 }
-export const createOrder = (order) => async (dispatch) => {
-  console.log(order);
-  try {
-    dispatch({type:CREATE_ORDER_REQUEST})
-    const config = {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
-    const { data } = await axios.post(
-      "http://localhost:5000/orders",
-      order,
-      config
-    );
-    dispatch({ type: CREATE_ORDER_SUCCESS, payload: data })
-    dispatch({ type: DELETE_CART })
-    console.log(data)
-  } catch (error) {
-    dispatch({
-      type: CREATE_ORDER_FAIL,
-      payload:
-        error.response && error.response.data.message
-          ? error.response.data.message
-          : error.message,
-    });
-  }
-};

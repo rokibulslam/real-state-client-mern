@@ -9,10 +9,13 @@ const PrivateRoute = ({ children }) => {
   if (isLoading) {
     return <CircularProgress />;
   }
-  if (user?.email) {
+  if (user.email) {
     return children;
   }
-  return <Navigate to="/login" state={{ from: location }} />;
+   if (!user) {
+     return <Navigate to="/login" state={{ from: location }} replace />;
+   }
+  return children
 };
 
 export default PrivateRoute;
