@@ -18,7 +18,6 @@ import useAuth from "./Hooks/useAuth";
 import AdminRoute from "./Pages/User/AdminRoute/AdminRoute";
 import ProductPage from "./Pages/Products/ProductPage/ProductPage";
 import ShoppingCart from "./Pages/ShoppingCart/ShoppingCart";
-
 import Payment from "./Pages/Checkout/Payment/Payment";
 import Shipping from "./Pages/Checkout/Shipping/Shipping";
 
@@ -30,19 +29,25 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Home />}></Route>
-          
+
           <Route path="/productPage" element={<ProductPage />}></Route>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/register" element={<Register />}></Route>
           <Route path="cart" element={<ShoppingCart />}></Route>
           <Route path="/contact" element={<Contact />}></Route>
-          <Route path="/shippingAdress" element={<Shipping />}></Route>
-          <Route path="/payment" element={<Payment />}></Route>
           <Route
-            path="/home/purchase/:id"
+            path="/payment"
             element={
               <PrivateRoute>
-                <Purchase />
+                <Payment />
+              </PrivateRoute>
+            }
+          ></Route>
+          <Route
+            path="/shippingAdress"
+            element={
+              <PrivateRoute>
+                <Shipping></Shipping>
               </PrivateRoute>
             }
           ></Route>
