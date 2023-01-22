@@ -1,6 +1,5 @@
 import {
   ADD_TO_CART,
-  CREATE_ORDER_SUCCESS,
   DELETE_CART,
   REMOVE_FROM_CART,
   SAVE_SHIPPING_ADRESS,
@@ -10,8 +9,8 @@ import {
 const initialState = {
   cart: [],
   grandTotal: 0,
-  shippingAdress: {},
-
+  shipping:30,
+  shippingAdress: {}
 };
 
 const cartReducer = (state = initialState, action) => {

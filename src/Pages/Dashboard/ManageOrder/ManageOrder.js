@@ -15,9 +15,7 @@ const ManageOrder = () => {
     }, [update])
   const tHead = [
     "Product",
-    "Ordered By",
-    "Email",
-    "Date",
+    "Shipping",
     "Price",
     "Status",
     "Manage",
@@ -74,7 +72,7 @@ const ManageOrder = () => {
               <thead>
                 <tr className="">
                   {tHead.map((item, index) => (
-                    <th>{item}</th>
+                    <th key={index}>{item}</th>
                   ))}
                 </tr>
               </thead>
@@ -82,26 +80,44 @@ const ManageOrder = () => {
                 <tbody>
                   <tr className="py-5">
                     <td>
-                      {console.log(order)}
-                      <div className="d-flex align-items-center justify-content-between">
-                        <img
-                          style={{
-                            height: "50px",
-                            width: "50px",
-                            borderRadius: "50%",
-                            marginLeft: "3px",
-                          }}
-                          src={order.Image}
-                          alt=""
-                        />
-                        {order.Name}
-                      </div>
+                      {order.cartItem.map((product, index) => (
+                        <div
+                          key={index}
+                          className="d-flex align-items-center justify-content-between mb-2 text-end"
+                        >
+                          <img
+                            style={{
+                              height: "50px",
+                              width: "50px",
+                              borderRadius: "50%",
+                              marginLeft: "3px",
+                            }}
+                            src={product.Image}
+                            alt=""
+                          />
+                          <div>
+                            <p className="mb-0 ">{product.Name}</p>
+                            <p className="mb-0 ">
+                              Quantity: {product.quantity}
+                            </p>
+                          </div>
+                        </div>
+                      ))}
                     </td>
-                    <td>{order.customerName}</td>
-                    <td>{order.email}</td>
-
-                    <td>{order.date}</td>
-                    <td className="fw-bold">${order.Price}</td>
+                    <td>
+                      <p className="mb-0 ">{order.shippingAddress.email}</p>
+                      <p className="mb-0">{order.shippingAddress.name}</p>
+                      <p className="mb-0 ">{order.shippingAddress.address}</p>
+                      <p className="mb-0 ">{order.shippingAddress.country}</p>
+                      <p className="mb-0">{order.date}</p>
+                    </td>
+                    <td className="fw-bold">
+                      <p style={{ color: "red" }}>$ {order.totalPrice}</p>
+                      <p className="mb-0">Payment By {order.paymentBy}</p>
+                      <p className="mb-0">
+                        TransactionId {order.transactionId}
+                      </p>
+                    </td>
                     {order.status === "Pending" ? (
                       <td>
                         <span
@@ -131,7 +147,7 @@ const ManageOrder = () => {
                         </span>
                       </td>
                     )}
-                   
+
                     <td>
                       <DropdownButton
                         size="sm"

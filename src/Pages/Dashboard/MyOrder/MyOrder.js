@@ -48,12 +48,12 @@ console.log(orders)
 
       {orders.length ? (
         <div className="container">
-          <Table striped bordered hover responsive>
+          <Table bordered hover responsive className="">
             <thead>
               <tr className="">
                 <th>Product</th>
-                <th>Ordered By</th>
-                <th>Email</th>
+
+                <th>Order Details</th>
                 <th>Placed</th>
                 <th>Status</th>
                 <th>Manage</th>
@@ -62,25 +62,35 @@ console.log(orders)
             </thead>
             {orders?.map((order) => (
               <tbody key={order._id}>
-                <tr className="py-5 bg-white text-white">
+                <tr className="py-5 bg-white text-black">
                   <td>
-                    {console.log(order)}
-                    <div className="d-flex align-items-center justify-content-between">
-                      <img
-                        style={{
-                          height: "50px",
-                          width: "50px",
-                          borderRadius: "50%",
-                          marginLeft: "3px",
-                        }}
-                        src={order.Image}
-                        alt=""
-                      />
-                      {order.Name}
-                    </div>
+                    {order.cartItem.map((product, index) => (
+                      <div
+                        key={index }  className="d-flex align-items-center justify-content-between mb-2 text-end">
+                        <img
+                          style={{
+                            height: "50px",
+                            width: "50px",
+                            borderRadius: "50%",
+                            marginLeft: "3px",
+                          }}
+                          src={product.Image}
+                          alt=""
+                        />
+                        <div>
+                          <p className="mb-0 ">{product.Name}</p>
+                          <p className="mb-0 ">Quantity: {product.quantity}</p>
+                        </div>
+                      </div>
+                    ))}
                   </td>
-                  <td>{order.customerName}</td>
-                  <td>{order.userEmail}</td>
+                  <td>
+                    <p className="mb-0 ">{order.shippingAddress.email}</p>
+                    <p className="mb-0">{order.shippingAddress.name}</p>
+                    <p className="mb-0 ">{order.shippingAddress.address}</p>
+                    <p className="mb-0 ">{order.shippingAddress.country}</p>
+                    <p className="mb-0">{order.date}</p>
+                  </td>
 
                   <td>{order.date}</td>
                   {order.status === "Approved" ? (
@@ -126,7 +136,9 @@ console.log(orders)
                     </button>
                   </td>
                   <td>
-                    <span className="fw-bold">$ {order.totalPrice}</span>
+                    <p style={{color:"red"}}>$ {order.totalPrice}</p>
+                    <p className="mb-0">Payment By {order.paymentBy}</p>
+                    <p className="mb-0">TransactionId {order.transactionId}</p>
                   </td>
                 </tr>
               </tbody>

@@ -48,9 +48,7 @@ const Payment = () => {
           userEmail:user.email,
           paymentMethod: "stripe",
           date:currentDate,
-          price,
-          shippingAdress,
-          cart,
+          ...cart,
           token,
         },
       });
