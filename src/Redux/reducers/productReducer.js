@@ -1,4 +1,7 @@
 import {
+  DELETE_A_PRODCUT_FAIL,
+  DELETE_A_PRODCUT_REQUEST,
+  DELETE_A_PRODCUT_SUCCESS,
   PRODUCT_LIST_FAIL,
   PRODUCT_LIST_REQUEST,
   PRODUCT_LIST_SUCCESS,
@@ -8,7 +11,7 @@ const initialState = {
   products: [],
   loading: true,
   error: null,
-  proudct: {},
+  isSuccess:false
 };
 export const productsListReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -18,19 +21,27 @@ export const productsListReducer = (state = initialState, action) => {
       return { loading: false, products: action.payload };
     case PRODUCT_LIST_FAIL:
       return { loading: false, error: action.payload };
-    default:
-      return state;
-  }
-};
-
-export const productDetailsReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case PRODUCT_LIST_REQUEST:
-      return { ...state, loading: true };
-    case PRODUCT_LIST_SUCCESS:
-      return { product: action.payload, loading: false };
-    case PRODUCT_LIST_FAIL:
-      return { loading: false, error: action.payload };
+    case DELETE_A_PRODCUT_REQUEST:
+      return {
+        ...state,
+        loading: true,
+        isSuccess: false,
+        error: null,
+        products:[]
+      }
+    case DELETE_A_PRODCUT_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        isSuccess: true,
+      }
+    case DELETE_A_PRODCUT_FAIL:
+      return {
+        ...state,
+        loading: false,
+        isSuccess: false,
+        error:action.payload
+      }
     default:
       return state;
   }

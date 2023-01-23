@@ -2,17 +2,20 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { Dropdown, DropdownButton, Table } from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
 import Swal from 'sweetalert2';
+import { deleteAorder, getALLOrder, updateAnOrder } from '../../../Redux/actions/orderAction';
 
 const ManageOrder = () => {
-    const [orders, setOrders] = useState([]);
-    const [update, setUpdate] = useState("");
-    
+    // const [orders, setOrders] = useState([]);
+    // const [update, setUpdate] = useState("");
+  const dispatch = useDispatch()
+  const { orderData, loading, isSuccess, update } = useSelector(
+    (state) => state.manageOrder
+  );
     useEffect(() => {
-        fetch("https://pink-combative-kangaroo.cyclic.app/orders")
-          .then((res) => res.json())
-          .then((data) => setOrders(data));
-    }, [update])
+        dispatch(getALLOrder())
+    }, [update, dispatch, isSuccess])
   const tHead = [
     "Product",
     "Shipping",
@@ -21,48 +24,40 @@ const ManageOrder = () => {
     "Manage",
   ];
     const handlePending = (id, text) => {
-      axios
-        .put(`https://pink-combative-kangaroo.cyclic.app/order/status/${id}`, {
-          status: text,
-        })
-        .then((res) => {
-          if (res.data.acknowledged) {
-            Swal.fire({
-              position: "center",
-              icon: "success",
-              title: `Order has been ${text}`,
-              showConfirmButton: false,
-              timer: 2000,
-            });
-            setUpdate(res.data);
-          }
-        });
+      dispatch(updateAnOrder(id, text))
     };
-
+  useEffect(() => {
+    if (update) {
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Order Status Updated Successfully",
+          showConfirmButton: false,
+          timer: 2000,
+        });
+      }
+  }, [update])
+  
     const handleDelete = (id) => {
       const confirm = window.confirm(
         "Are You Sure? You are going to cancel your order"
       );
 
       if (confirm) {
-        axios
-          .delete(
-            `https://pink-combative-kangaroo.cyclic.app/order/delete/${id}`
-          )
-          .then((res) => {
-            if (res.data.deletedCount) {
-              Swal.fire({
-                position: "center",
-                icon: "success",
-                title: "Order has been Cancelled Successfully",
-                showConfirmButton: false,
-                timer: 2000,
-              });
-            }
-          })
-          .then((data) => setUpdate(data));
+        dispatch(deleteAorder(id))
       }
     };
+  useEffect(() => {
+    if (isSuccess) {
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Order deleted Successfully",
+        showConfirmButton: false,
+        timer: 2000,
+      });
+    }
+  }, [isSuccess]);
     return (
       <div className="my-0 p-5 bg-white banner-text">
         <div className="container">
@@ -76,7 +71,7 @@ const ManageOrder = () => {
                   ))}
                 </tr>
               </thead>
-              {orders?.map((order) => (
+              {orderData?.map((order) => (
                 <tbody>
                   <tr className="py-5">
                     <td>

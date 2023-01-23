@@ -1,46 +1,42 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import {  Card  } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
 import Swal from "sweetalert2";
+import { deleteProduct, productsListAction } from "../../../Redux/actions/productAction";
 
 const ManageProduct = () => {
-  const [products, setProducts] = useState([]);
+  
   const [isLoading, setIsLoading] = useState(false);
-  // Load Apartments from Apartment API 
+  const dispatch = useDispatch()
+  const { products, loading, isSuccess } = useSelector(
+    (state) => state.productList
+  );
+  // Load Apartments from Apartment API
     useEffect(() => {
-      setIsLoading(true);
-    fetch("https://pink-combative-kangaroo.cyclic.app/apartments")
-      .then((res) => res.json())
-      .then((data) => setProducts(data))
-      .finally(() => setIsLoading(false));
-  }, [isLoading]);
+      dispatch(productsListAction())
+  }, [dispatch, isSuccess]);
 
   // Delete a Food Item
-  const handleDeleteFood = (id) => {
+  const handleDeleteApartment = (id) => {
     const confirm = window.confirm(
       "Are You Sure? You are going to delete Product"
     );
       if (confirm) {
-        setIsLoading(true)
-      axios
-        .delete(
-          `https://pink-combative-kangaroo.cyclic.app/apartment/delete/${id}`
-        )
-        .then((res) => {
-          if (res.data.deletedCount) {
-            setIsLoading(false);
-            Swal.fire({
-              position: "center",
-              icon: "success",
-              title: "Product has been Deleted",
-              showConfirmButton: false,
-              timer: 2000,
-            });
-          }
-        });
+      dispatch(deleteProduct(id))
     }
   };
-
+  useEffect(() => {
+    if (isSuccess) {
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Product has been Deleted Successfully",
+        showConfirmButton: false,
+        timer: 2000,
+      });
+    }
+  }, [isSuccess]);
   return (
     <div className="my-5">
       <div className="container">
@@ -88,7 +84,7 @@ const ManageProduct = () => {
                       </p>
 
                       <button
-                        onClick={() => handleDeleteFood(product._id)}
+                        onClick={() => handleDeleteApartment(product._id)}
                         className="card-btn"
                       >
                         Delete Apartment
