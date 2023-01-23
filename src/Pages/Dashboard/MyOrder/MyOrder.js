@@ -3,20 +3,31 @@ import useAuth from "../../../Hooks/useAuth";
 import Swal from "sweetalert2";
 import axios from "axios";
 import { Table } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { deleteAorder, getMyOrder } from "../../../Redux/actions/orderAction";
 
 const MyOrder = () => {
   const { user } = useAuth();
-  const { email } = user.email;
-  const [orders, setOrders] = useState([]);
-  const [cancel, setCancel] = useState("");
-
+  const dispatch = useDispatch()
+  const { orderData, isSuccess } = useSelector((state) => state.manageOrder);
   // Get Ordered food by customer email
   useEffect(() => {
-    fetch(`https://pink-combative-kangaroo.cyclic.app/orders/${user?.email}`)
-      .then((res) => res.json())
-      .then((data) => setOrders(data));
-  }, [cancel]);
-console.log(orders)
+    dispatch(getMyOrder(user?.email));
+  }, [isSuccess, dispatch]);
+
+  useEffect(() => {
+    if (isSuccess) {
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Order has been Cancelled Successfully",
+        showConfirmButton: false,
+        timer: 2000,
+      });
+    }
+  }, [isSuccess]);
+  
+  
   // Delete Ordered Food Item by ID
   const handleDelete = (id) => {
     const confirm = window.confirm(
@@ -24,21 +35,7 @@ console.log(orders)
     );
 
     if (confirm) {
-      axios
-        .delete(`https://pink-combative-kangaroo.cyclic.app/order/delete/${id}`)
-        .then((res) => {
-          if (res.data.deletedCount) {
-            Swal.fire({
-              position: "center",
-              icon: "success",
-              title: "Order has been Cancelled Successfully",
-              showConfirmButton: false,
-              timer: 2000,
-            });
-            setCancel(res.data);
-          }
-        })
-        .then((data) => setCancel(data));
+      dispatch(deleteAorder(id))  
     }
   };
 
@@ -46,7 +43,7 @@ console.log(orders)
     <div className="my-5">
       <h1 className="fw-normal bg-white">My Orders</h1>
 
-      {orders.length ? (
+      {orderData.length ? (
         <div className="container">
           <Table bordered hover responsive className="">
             <thead>
@@ -60,13 +57,15 @@ console.log(orders)
                 <th>Price</th>
               </tr>
             </thead>
-            {orders?.map((order) => (
+            {orderData?.map((order) => (
               <tbody key={order._id}>
                 <tr className="py-5 bg-white text-black">
                   <td>
                     {order.cartItem.map((product, index) => (
                       <div
-                        key={index }  className="d-flex align-items-center justify-content-between mb-2 text-end">
+                        key={index}
+                        className="d-flex align-items-center justify-content-between mb-2 text-end"
+                      >
                         <img
                           style={{
                             height: "50px",
@@ -136,7 +135,7 @@ console.log(orders)
                     </button>
                   </td>
                   <td>
-                    <p style={{color:"red"}}>$ {order.totalPrice}</p>
+                    <p style={{ color: "red" }}>$ {order.totalPrice}</p>
                     <p className="mb-0">Payment By {order.paymentBy}</p>
                     <p className="mb-0">TransactionId {order.transactionId}</p>
                   </td>
