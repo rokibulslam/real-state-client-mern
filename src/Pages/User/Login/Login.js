@@ -41,8 +41,8 @@ const Login = () => {
   return (
     <div>
       <Navigation></Navigation>
-      <div style={{ height: "100vh", display: "flex" }}>
-        <Container
+      <div style={{ height: "100vh", display: "flex", alignItems:"center", justifyContent:"center" }}>
+        {user.email ? <h1 style={{color:'black'}}>You Are Already Registered</h1>:<Container
           sx={{
             display: "flex",
             alignItems: "center",
@@ -96,12 +96,11 @@ const Login = () => {
               Sign In With Google
             </button>
           </form>
-
           <NavLink style={{ textDecoration: "none" }} to="/register">
             <br />
             <Button variant="text">Register Here</Button>
           </NavLink>
-        </Container>
+        </Container>}
       </div>
     </div>
   );

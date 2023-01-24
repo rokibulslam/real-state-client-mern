@@ -18,13 +18,13 @@ initializeFirebase();
 
 const useFirebase = () => {
 
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [authError, setAuthError] = useState("");
   const [admin, setAdmin] = useState(false);
   const auth = getAuth();
   const googleProvider = new GoogleAuthProvider();
- console.log(admin)
+ 
   // Google SignIn
   const signInWithGoogle = (location, navigate) => {
     setIsLoading(true);
@@ -32,7 +32,6 @@ const useFirebase = () => {
       .then((result) => {
         const user = result?.user;
         setUser(user);
-
         // Save user to database
         saveUserData(user?.email, user?.displayName, "PUT");
         setAuthError("");
@@ -46,7 +45,6 @@ const useFirebase = () => {
   };
   // Register New User
   const registerUser = (email, password, name, navigate) => {
-    
     setIsLoading(true);
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
@@ -71,10 +69,9 @@ const useFirebase = () => {
   // Login User
   const loginUser = (email, password, location, navigate) => {
     setIsLoading(true);
-    
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        const destination = location?.state?.from || "/dashboard";
+        const destination = "/dashboard" || location?.state?.from;
         navigate(destination);
         setAuthError("");
 
@@ -91,6 +88,7 @@ const useFirebase = () => {
       .then((res) => res.json())
       .then((data) => {
         setAdmin(data.admin);
+        
       })
       .catch((er) => {
         setAuthError(er);
@@ -100,11 +98,13 @@ const useFirebase = () => {
       });
   }, [user?.email]);
 
+ 
   // Observe User's State
   useEffect(() => {
     const unsubscribed = onAuthStateChanged(auth, (user) => {
       if (user) {
         setUser(user);
+        localStorage.setItem('user',user.email)
       } else {
         setUser({});
       }
@@ -116,10 +116,10 @@ const useFirebase = () => {
   // Logout User
   const logout = () => {
     setIsLoading(true);
-    localStorage.removeItem('userRole')
+    
     signOut(auth)
       .then(() => {
-        // Sign-out successful.
+        localStorage.removeItem("user")
       })
       .catch((error) => {
         // An error happened.

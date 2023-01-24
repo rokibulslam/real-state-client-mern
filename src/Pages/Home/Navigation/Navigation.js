@@ -1,6 +1,6 @@
 import React from "react";
 import {  Container, Nav, Navbar } from "react-bootstrap";
-import {  NavLink } from "react-router-dom";
+import {  NavLink, useNavigate } from "react-router-dom";
 import useAuth from "../../../Hooks/useAuth";
 import "./Navigation.css";
 import profile from "../../../Images/profile.png";
@@ -9,6 +9,11 @@ import { useSelector } from "react-redux";
 const Navigation = () => {
   const cart = useSelector((state) => state.cart.cart);
   const { user, logout } = useAuth();
+  const navigate = useNavigate()
+  const handleLogOut = () => {
+    navigate('/login')
+    logout()
+  }
   return (
     <div>
       <Navbar
@@ -56,7 +61,7 @@ const Navigation = () => {
               </NavLink>
             </Nav>
             <div className="d-flex justify-content-center align-items-center">
-              {user.email ? (
+              {user?.email ? (
                 <div className="d-flex justify-content-center align-items-center">
                   <span>
                     {user.photoURL ? (
@@ -88,7 +93,7 @@ const Navigation = () => {
                   </p>
                   <p
                     className="logout-button  text-decoration-none me-3 mb-lg-0 nav-text-color fs-5"
-                    onClick={logout}
+                    onClick={()=>handleLogOut()}
                   >
                     Logout
                   </p>

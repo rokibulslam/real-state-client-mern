@@ -5,13 +5,14 @@ import { CircularProgress } from "@mui/material";
 
 const PrivateRoute = ({ children }) => {
   const { user, isLoading, admin } = useAuth();
+  const userData = localStorage.getItem('user')
+  console.log(userData);
   let location = useLocation();
-  console.log(user)
+  
   if (isLoading) {
     return <CircularProgress />;
   }
-
-  if (user && !admin) {
+  if (userData) {
     return children;
   }
   return <Navigate to="/login" state={{ from: location }}></Navigate>;
