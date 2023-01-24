@@ -14,42 +14,49 @@ const initialState = {
   products: [],
   loading: true,
   error: null,
-  isSuccess:false
+  deleted: false,
+  update:false,
 };
 export const productsListReducer = (state = initialState, action) => {
   switch (action.type) {
     case PRODUCT_LIST_REQUEST:
-      return { loading: true, products: [] };
+      return {
+        loading: true, products: []
+      };
     case PRODUCT_LIST_SUCCESS:
-      return { loading: false, products: action.payload };
+      return {
+        loading: false, products: action.payload
+      };
     case PRODUCT_LIST_FAIL:
-      return { loading: false, error: action.payload };
+      return {
+        loading: false, error: action.payload
+      };
     case DELETE_A_PRODCUT_REQUEST:
       return {
         ...state,
         loading: true,
-        isSuccess: false,
+        deleted: false,
         error: null,
-        products:[]
+        products: [],
       }
     case DELETE_A_PRODCUT_SUCCESS:
       return {
         ...state,
         loading: false,
-        isSuccess: true,
+        deleted: true,
       }
     case DELETE_A_PRODCUT_FAIL:
       return {
         ...state,
         loading: false,
-        isSuccess: false,
+        delete: false,
         error:action.payload
       }
     case UPDATE_PRODUCT_REQUEST:
       return {
         ...state,
         loading: true,
-        isSuccess: false,
+        update: false,
         error: null,
         products:[]
       }
@@ -57,13 +64,13 @@ export const productsListReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        isSuccess:true,
+        update:true,
       }
     case UPDATE_PRODUCT_FAIL:
       return {
         ...state,
         loading: false,
-        isSuccess: false,
+        update: false,
         error:action.payload
       }
     default:

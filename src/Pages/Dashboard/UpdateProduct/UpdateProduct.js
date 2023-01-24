@@ -1,8 +1,11 @@
 import { Button, Container, MenuItem, TextField } from '@mui/material';
 import React, { useState } from 'react'
+import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import LoadingSpinner from '../../../Component/LoadingSpinner';
 import { updateProduct } from '../../../Redux/actions/productAction';
 const categories = [
   {
@@ -23,10 +26,10 @@ const UpdateProduct = (params) => {
     const { id } = useParams()
    const [category, setCategory] = useState("");
    
-    const { products, loading } = useSelector(state => state.productList)
+    const { products, loading, update } = useSelector(state => state.productList)
     const dispatch =useDispatch()
     const product = products.find((item) => id === item._id)
-    const [productDetails, setProductDetails] = useState();
+    const [productDetails, setProductDetails] = useState({});
    console.log(product)
     console.log(productDetails)
    // Handle form input fields
@@ -43,11 +46,24 @@ const UpdateProduct = (params) => {
         e.preventDefault()
         dispatch(updateProduct(id, productDetails))
     }
+    useEffect(() => {
+        if (update) {
+            setProductDetails({})
+            Swal.fire({
+            position: "center",
+            icon: "success",
+            title: `Product Updated Successfully`,
+            showConfirmButton: false,
+                timer: 2000,
+            
+          });
+        }
+    },[update])
   return (
     <Container sx={{ display: "flex" }}>
       <Container className="">
-        <h1 className="register-header-text ">{id}</h1>
-
+        <h1 className="register-header-text ">Update Apartment</h1>
+        {loading && <LoadingSpinner />}
         <form onSubmit={handleSubmit}>
           <TextField
             sx={{ width: "75%", m: 1 }}
@@ -111,7 +127,7 @@ const UpdateProduct = (params) => {
             ))}
           </TextField>
           <Button sx={{ width: "75%", m: 1 }} type="submit" variant="contained">
-            Add Apartment
+            Update Apartment
           </Button>
         </form>
       </Container>

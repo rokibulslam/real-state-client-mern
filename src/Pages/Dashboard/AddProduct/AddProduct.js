@@ -52,12 +52,11 @@ const AddProduct = () => {
           Swal.fire({
             position: "center",
             icon: "success",
-            title: `Food Item Inserted Successfully`,
+            title: `Product Inserted Successfully`,
             showConfirmButton: false,
             timer: 2000,
           });
           setProductDetails({});
-          window.location.reload();
         }
       });
   };

@@ -11,13 +11,13 @@ const ManageProduct = () => {
   
   const [isLoading, setIsLoading] = useState(false);
   const dispatch = useDispatch()
-  const { products, loading, isSuccess } = useSelector(
+  const { products, loading, deleted } = useSelector(
     (state) => state.productList
   );
   // Load Apartments from Apartment API
     useEffect(() => {
       dispatch(productsListAction())
-  }, [dispatch, isSuccess]);
+  }, [dispatch, deleted]);
 
   // Delete a Food Item
   const handleDeleteApartment = (id) => {
@@ -29,7 +29,7 @@ const ManageProduct = () => {
     }
   };
   useEffect(() => {
-    if (isSuccess) {
+    if (deleted) {
       Swal.fire({
         position: "center",
         icon: "success",
@@ -38,7 +38,7 @@ const ManageProduct = () => {
         timer: 2000,
       });
     }
-  }, [isSuccess]);
+  }, [deleted]);
   return (
     <div className="my-5">
       <div className="container">
