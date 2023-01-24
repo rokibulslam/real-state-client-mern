@@ -11,7 +11,7 @@ export const getUsers = () =>async(dispatch)=> {
       },
     };
     const { data } = await axios.get(
-      "http://localhost:5000/users",
+      "https://pink-combative-kangaroo.cyclic.app/users",
       config
     );
       console.log(data)
@@ -38,8 +38,8 @@ export const updateUserRole = (email, role) => async (dispatch) => {
       },
     };
     const { data } = await axios.put(
-      `http://localhost:5000/update/user/${email}`,
-      {role:role},
+      `https://pink-combative-kangaroo.cyclic.app/update/user/${email}`,
+      { role: role },
       config
     );
     dispatch({

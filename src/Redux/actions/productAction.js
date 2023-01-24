@@ -52,7 +52,7 @@ export const updateProduct = (id, product) => async (dispatch) => {
       },
     };
     const { data } = await axios.put(
-      `http://localhost:5000/apartment/update/${id}`,
+      `https://pink-combative-kangaroo.cyclic.app/apartment/update/${id}`,
       product,
       config
     );

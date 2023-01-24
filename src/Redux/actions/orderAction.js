@@ -12,7 +12,7 @@ export const createOrder = (order) => async (dispatch) => {
       },
     };
     const { data } = await axios.post(
-      "http://localhost:5000/orders",
+      "https://pink-combative-kangaroo.cyclic.app/orders",
       order,
       config
     );
