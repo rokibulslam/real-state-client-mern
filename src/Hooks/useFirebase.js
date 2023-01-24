@@ -24,7 +24,7 @@ const useFirebase = () => {
   const [admin, setAdmin] = useState(false);
   const auth = getAuth();
   const googleProvider = new GoogleAuthProvider();
- 
+ console.log(admin)
   // Google SignIn
   const signInWithGoogle = (location, navigate) => {
     setIsLoading(true);
@@ -99,10 +99,7 @@ const useFirebase = () => {
         setIsLoading(false);
       });
   }, [user?.email]);
-  // set Admin 
-  useEffect(() => {
-    localStorage.setItem('userRole', admin)
-  },[admin])
+
   // Observe User's State
   useEffect(() => {
     const unsubscribed = onAuthStateChanged(auth, (user) => {
