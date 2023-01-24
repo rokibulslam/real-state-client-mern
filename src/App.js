@@ -20,6 +20,7 @@ import ShoppingCart from "./Pages/ShoppingCart/ShoppingCart";
 
 import Shipping from "./Pages/Order/Shipping/Shipping";
 import Order from "./Pages/Order/Order";
+import UpdateProduct from "./Pages/Dashboard/UpdateProduct/UpdateProduct";
 
 function App() {
   const { admin } = useAuth();
@@ -59,22 +60,9 @@ function App() {
           >
             <Route index element={admin ? <MakeAdmin /> : <MyOrder />}></Route>
             <Route path="addProduct" element={<AddProduct />}></Route>
-            <Route
-              path="manageOrders"
-              element={
-                
-                  <ManageOrder />
-                
-              }
-            ></Route>
-            <Route
-              path="makeAdmin"
-              element={
-                
-                  <MakeAdmin />
-                
-              }
-            ></Route>
+            <Route path="manageOrders" element={<ManageOrder />}></Route>
+
+            <Route path="makeAdmin" element={<MakeAdmin />}></Route>
             <Route
               path="myOrder"
               element={
@@ -84,14 +72,8 @@ function App() {
               }
             ></Route>
             <Route path="review" element={<Review />}></Route>
-            <Route
-              path="manageProduct"
-              element={
-                
-                  <ManageProduct />
-                
-              }
-            ></Route>
+            <Route path="manageProduct" element={<ManageProduct />}></Route>
+            <Route path="updateProduct/:id" element={<UpdateProduct />}></Route>
           </Route>
 
           <Route path="*" element={<Notfound></Notfound>}></Route>

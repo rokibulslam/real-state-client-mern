@@ -1,5 +1,5 @@
 import axios from "axios";
-import { DELETE_A_PRODCUT_FAIL, DELETE_A_PRODCUT_REQUEST, DELETE_A_PRODCUT_SUCCESS, PRODUCT_LIST_FAIL, PRODUCT_LIST_REQUEST, PRODUCT_LIST_SUCCESS } from "../constants/actionTypes";
+import { DELETE_A_PRODCUT_FAIL, DELETE_A_PRODCUT_REQUEST, DELETE_A_PRODCUT_SUCCESS, PRODUCT_LIST_FAIL, PRODUCT_LIST_REQUEST, PRODUCT_LIST_SUCCESS, UPDATE_PRODUCT_FAIL, UPDATE_PRODUCT_REQUEST, UPDATE_PRODUCT_SUCCESS } from "../constants/actionTypes";
 
 /*=========================
 GET ALL PRODUCT LIST ACTION
@@ -34,6 +34,35 @@ export const deleteProduct = (id) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: DELETE_A_PRODCUT_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+export const updateProduct = (id, product) => async (dispatch) => {
+  console.log(id);
+  try {
+    dispatch({ type: UPDATE_PRODUCT_REQUEST });
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+    const { data } = await axios.put(
+      `http://localhost:5000/apartment/update/${id}`,
+      product,
+      config
+    );
+    dispatch({
+      type: UPDATE_PRODUCT_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: UPDATE_PRODUCT_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message
