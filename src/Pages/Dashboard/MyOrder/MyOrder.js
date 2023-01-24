@@ -5,11 +5,13 @@ import axios from "axios";
 import { Table } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteAorder, getMyOrder } from "../../../Redux/actions/orderAction";
+import LoadingSpinner from "../../../Component/LoadingSpinner";
+
 
 const MyOrder = () => {
   const { user } = useAuth();
   const dispatch = useDispatch()
-  const { orderData, isSuccess } = useSelector((state) => state.manageOrder);
+  const { orderData, isSuccess, loading } = useSelector((state) => state.manageOrder);
   // Get Ordered food by customer email
   useEffect(() => {
     dispatch(getMyOrder(user?.email));
@@ -42,7 +44,7 @@ const MyOrder = () => {
   return (
     <div className="my-5">
       <h1 className="fw-normal bg-white">My Orders</h1>
-
+      {loading && <LoadingSpinner />}
       {orderData.length ? (
         <div className="container">
           <Table bordered hover responsive className="">
@@ -109,13 +111,7 @@ const MyOrder = () => {
                   ) : (
                     <td>
                       <span
-                        style={{
-                          color: "white",
-                          backgroundColor: "rgb(3, 194, 194)",
-                          margin: "0px",
-                          padding: "5px 8px",
-                          borderRadius: "3px",
-                        }}
+                        className="blue-trans-btn"
                       >
                         {order.status}
                       </span>
@@ -135,7 +131,7 @@ const MyOrder = () => {
                     </button>
                   </td>
                   <td>
-                    <p style={{ color: "red" }}>$ {order.totalPrice}</p>
+                    <p className="red-trans-btn d-inline">$ {order.totalPrice}</p>
                     <p className="mb-0">Payment By {order.paymentBy}</p>
                     <p className="mb-0">TransactionId {order.transactionId}</p>
                   </td>

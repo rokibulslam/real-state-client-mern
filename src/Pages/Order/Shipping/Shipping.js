@@ -102,7 +102,7 @@ console.log(cart);
           id={`reverse-radio-2`}
         /> */}
         {/* Others method  */}
-        <button type="submit" className="">
+        <button style={{border:'0px', borderRadius:'5px'}} type="submit" className="">
           Continue
         </button>
       </form>

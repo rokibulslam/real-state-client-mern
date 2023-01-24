@@ -5,12 +5,13 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { getUsers, updateUserRole } from '../../../Redux/actions/userAction';
+import LoadingSpinner from '../../../Component/LoadingSpinner';
 
 
 const MakeAdmin = () => {
   const [userRole, setUserRole]=useState(null)
   const dispatch = useDispatch()
-  const {users, update}= useSelector(state=>state.users)
+  const {users, update, loading}= useSelector(state=>state.users)
     const [email, setEmail] = useState('')
     const [success, setSuccess] = useState('')
   useEffect(() => {
@@ -30,6 +31,8 @@ const MakeAdmin = () => {
   return (
     <div>
       <div className="container">
+        <h1>User Management</h1>
+        {loading && <LoadingSpinner/>}
         <Table>
           <thead>
             <th>User Name</th>
@@ -42,9 +45,22 @@ const MakeAdmin = () => {
               <tr>
                 <td>{user.name}</td>
                 <td>{user.email}</td>
-                <td>{user.role}</td>
-                <td style={{cursor:"pointer", }} onClick={()=>handleRole(user?.role, user?.email)}>
-                  Make {user.role==='admin'? 'user':'admin'}
+                <td>
+                  {user.role === "admin" ? (
+                    <span className="yellow-trans-btn">Admin</span>
+                  ) : (
+                    <span className="blue-trans-btn">Admin</span>
+                  )}
+                </td>
+                <td
+                  style={{ cursor: "pointer" }}
+                  onClick={() => handleRole(user?.role, user?.email)}
+                >
+                  {user.role === "admin" ? (
+                    <span className="green-btn">Make User</span>
+                  ) : (
+                    <span className="red-btn">Make Admin</span>
+                  )}
                 </td>
               </tr>
             </tbody>

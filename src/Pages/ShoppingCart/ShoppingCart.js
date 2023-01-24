@@ -21,7 +21,7 @@ const ShoppingCart = () => {
       <div className='pt-5 mt-5'>
         <div className="container-fluid">
          {data}
-         <button onClick={()=>{dispatch(deletCart())}}>Remove Cart</button>
+         {cart.length && <button style={{border:0, backgroundColor:'red', color:'white', borderRadius:"5px"}} onClick={()=>{dispatch(deletCart())}}>Remove Cart</button>}
         </div>
       </div>
     </div>

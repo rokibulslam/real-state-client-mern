@@ -97,8 +97,8 @@ const Order = () => {
             className="d-flex w-100 justify-content-between"
             style={{ color: "red" }}
           >
-            <span>Grand Total:</span>
-            <span>$ {cart.grandTotal}</span>
+            <span className="red-trans-btn">Grand Total:</span>
+            <span className="red-trans-btn">$ {cart.grandTotal}</span>
           </div>
         </div>
         <StripeCheckout

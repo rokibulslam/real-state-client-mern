@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import {  Card  } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Swal from "sweetalert2";
+import LoadingSpinner from "../../../Component/LoadingSpinner";
 import { deleteProduct, productsListAction } from "../../../Redux/actions/productAction";
 
 const ManageProduct = () => {
@@ -43,7 +44,7 @@ const ManageProduct = () => {
         <h1 className="">
           <i>Manage Apartments</i>
         </h1>
-
+        {loading && <LoadingSpinner />}
         <div className="py-5">
           <div className="row g-5">
             {products?.map((product) => (
