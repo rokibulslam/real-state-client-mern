@@ -1,26 +1,41 @@
-# Welocome To my Websites Frontend Repository(Ongoing)
+# Welocome To my Websites Frontend Repository
 
 Here is my Project Link [MY HOME](https://real-state-mern.web.app/).
 
 ### This is a MERN stack project
 
 ### Technology Used: 
-### Frontend: 
-* HTML, CSS, Javascript, ES6, React, React router v@6, Firebase Authentication, Bootstrap, Material UI, Context API.
-### Backend: 
-* CRUD operartion with Nodejs, Express, MongoDB
-### Other Technology: 
-* Fontawesome Icon, React Icon,Heroku for backend deployment, Firebase for frontend development.
+* React, Redux, Redux Thunk, Redux Persist, React router v@6,  Bootstrap, Material UI, Context API.
+* NodeJS, ExpressJS, MongoDB
+* Payment Gateway(Stripe), Firebase Authentication, 
+* Fontawesome Icon, React Icon, 
 
 ### Features:
-* Fully Responsive Web Application
-* User Authentication. User can login with email, password or google sign in option. New user can register for first time.
-* Two Dashboard facilities. One is for user dashboard and other is Admin Dashboard. User can not get access of admin dashboard.
-* When an admin login to website, it redirects to admin dashboard.
-* Admin can delete Apartments, Add Product in different categories.
-* Admin also see all orders in Manage order section and can manage order by canceling order, change order status.
-* User can see user dashboard. He can add review and this review show on homepage dynamically
-* User can manage order, can cancel order, see order status.
+* Responsive Web Application
+* Shopping Cart
+* Payment Gateway
+* Login with Google or Register
+* User & Admin Dashboard
+    # Admin_Roles
+    * Manage Users(Can make a user admin/user). Except Super Admin
+    * Add Products
+    * Delete Product
+    * Update Product
+    * See All Orders
+    * Update Order Status, Cancel Order
+    # User_Roles
+    * See Orders
+    * Cancel Order & See order status
+    * Give Review
+### Achievement
+* Now using Redux is enjoyable for me. But boilerplate code is too much. In my next project I definitely use Redux Toolkit & RTK Query.
+* Can develope authentication system with firebase.
+* Dashboard Management with user/admin was challanging for me because of google login & register user. I learn a lot from here such as local storage give me a solution.
+* Specially lots of backend knowladge is on my basket. Such as mongoDB query, middleware, Express the tiny framework but very powerfull.
+### Lots of error, undefined takes my time but gives me lots of knowladge, experience for my future project.
 
-### Redux, Payment gateway, JWT, Shopping cart will be implemented soon.....
+### Thank you 
+
+
+
 
