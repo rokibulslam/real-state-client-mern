@@ -84,7 +84,7 @@ const useFirebase = () => {
   // Get user role from database
   useEffect(() => {
     setIsLoading(true);
-    fetch(`http://localhost:5000/users/${user?.email}`)
+    fetch(`https://pink-combative-kangaroo.cyclic.app/users/${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
         setAdmin(data.admin);
@@ -130,7 +130,7 @@ const useFirebase = () => {
   // Save user to database
   const saveUserData = (email, name, method) => {
     const userData = { email, name };
-    fetch("http://localhost:5000/users", {
+    fetch("https://pink-combative-kangaroo.cyclic.app/users", {
       method: method,
       headers: {
         "content-type": "application/json",
