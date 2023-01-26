@@ -88,7 +88,7 @@ const ManageProduct = () => {
                         onClick={() => handleDeleteApartment(product._id)}
                         className="card-btn"
                       >
-                        Delete Apartment
+                        Delete
                       </button>
                       <NavLink to={`/dashboard/updateProduct/${product._id}`} >
                         <button

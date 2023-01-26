@@ -25,17 +25,17 @@ import {
 import profile from "../../../Images/profile.png";
 import './dashbord.css'
 import { useState } from "react";
+import LoadingSpinner from "../../../Component/LoadingSpinner";
 const drawerWidth = 200;
 
 function Dashboard(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [activeUserMenu, setActiveUserMenu] = useState("");
-  const { logout, admin, user } = useAuth();
+  const { logout, admin, user, isLoading } = useAuth();
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
-  
   const menuActivator = (item) => {
    setActiveUserMenu(item);
   }
@@ -174,6 +174,7 @@ function Dashboard(props) {
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
+      {isLoading && <LoadingSpinner />}
       <AppBar
         position="fixed"
         style={{ backgroundColor: "#6790FF", color: "whitesmoke" }}

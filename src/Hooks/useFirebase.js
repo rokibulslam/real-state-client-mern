@@ -84,11 +84,10 @@ const useFirebase = () => {
   // Get user role from database
   useEffect(() => {
     setIsLoading(true);
-    fetch(`https://pink-combative-kangaroo.cyclic.app/users/${user?.email}`)
+    fetch(`http://localhost:5000/users/${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
         setAdmin(data.admin);
-        
       })
       .catch((er) => {
         setAuthError(er);
@@ -97,10 +96,11 @@ const useFirebase = () => {
         setIsLoading(false);
       });
   }, [user?.email]);
-
+  console.log(admin)
  
   // Observe User's State
   useEffect(() => {
+    setIsLoading(true)
     const unsubscribed = onAuthStateChanged(auth, (user) => {
       if (user) {
         setUser(user);
@@ -130,7 +130,7 @@ const useFirebase = () => {
   // Save user to database
   const saveUserData = (email, name, method) => {
     const userData = { email, name };
-    fetch("https://pink-combative-kangaroo.cyclic.app/users", {
+    fetch("http://localhost:5000/users", {
       method: method,
       headers: {
         "content-type": "application/json",

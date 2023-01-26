@@ -47,7 +47,7 @@ const MyOrder = () => {
       {loading && <LoadingSpinner />}
       {orderData.length ? (
         <div className="container">
-          <Table bordered hover responsive className="">
+          <Table responsive bordered hover>
             <thead>
               <tr className="">
                 <th>Product</th>
@@ -110,11 +110,7 @@ const MyOrder = () => {
                     </td>
                   ) : (
                     <td>
-                      <span
-                        className="blue-trans-btn"
-                      >
-                        {order.status}
-                      </span>
+                      <span className="blue-trans-btn">{order.status}</span>
                     </td>
                   )}
                   <td>
@@ -131,7 +127,9 @@ const MyOrder = () => {
                     </button>
                   </td>
                   <td>
-                    <p className="red-trans-btn d-inline">$ {order.totalPrice}</p>
+                    <p className="red-trans-btn d-inline">
+                      $ {order.totalPrice}
+                    </p>
                     <p className="mb-0">Payment By {order.paymentBy}</p>
                     <p className="mb-0">TransactionId {order.transactionId}</p>
                   </td>
