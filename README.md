@@ -10,31 +10,22 @@ Here is my Project Link [MY HOME](https://real-state-mern.web.app/).
 * Payment Gateway(Stripe), Firebase Authentication, 
 * Fontawesome Icon, React Icon, 
 
-### Features:
-* Responsive Web Application
-* Shopping Cart
-* Payment Gateway
-* Login with Google or Register
-* User & Admin Dashboard
-    # Admin_Roles
-    * Manage Users(Can make a user admin/user). Except Super Admin
-    * Add Products
-    * Delete Product
-    * Update Product
-    * See All Orders
-    * Update Order Status, Cancel Order
-    # User_Roles
-    * See Orders
-    * Cancel Order & See order status
-    * Give Review
-### Achievement
-* Now using Redux is enjoyable for me. But boilerplate code is too much. In my next project I definitely use Redux Toolkit & RTK Query.
-* Can develope authentication system with firebase.
-* Dashboard Management with user/admin was challanging for me because of google login & register user. I learn a lot from here such as local storage give me a solution.
-* Specially lots of backend knowladge is on my basket. Such as mongoDB query, middleware, Express the tiny framework but very powerfull.
-### Lots of error, undefined takes my time but gives me lots of knowladge, experience for my future project.
+### Features & Acheivement
+* I designed and developed a user interface that dynamically adjusts to different screen sizes and devices, ensuring optimal user experience. Additionally, I created a login system that prioritizes security for both users and administrators, complete with distinct dashboards for each group.
 
-### Thank you 
+* In the admin dashboard, administrators have the ability to modify user and moderator roles, as well as create, update, and delete products. They can also update order statuses as needed.
+
+* Users, on the other hand, have access to a dashboard that allows them to add items to their shopping cart, pay securely using Stripe, view their order statuses, and provide feedback through product reviews.
+
+* To create a smooth and efficient user experience, I utilized reusable components and implemented form validation. Additionally, I prioritized user-friendly error handling and built robust REST APIs to ensure seamless communication between the different parts of the system.
+
+
+### Major Challenges:
+* User management: This includes creating user roles such as admin and moderator, and managing registered users, as well as those who sign in using third-party authentication services like Google. Updating and securely storing user information in a database.
+* Payment Processing: This involves implementing secure payment methods and ensuring that all transactions are properly recorded and tracked
+
+
+### Thank you for your valuable time
 
 
 
